@@ -37,14 +37,13 @@ export class Login extends Component {
         password: `${this.state.password}`
       }
     }).then(function(response) {
-      debugger
       let jwt = response.data.jwt;
       loginAction.loginUser(jwt);
       return true;
   }).catch(function(err) {
     console.log("Error logging in", err);
   });
-
+    
     this.setState({
       email: '', password: ''
     })
