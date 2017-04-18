@@ -20,7 +20,7 @@ export class Search extends Component {
 
   getRestaurantsZip(event) {
     event.preventDefault()
-    fetch(`http://localhost:4000/zip_view/${this.state.zip}`, {
+    fetch(`http://localhost:4000/zip_view/${this.state.field}`, {
     method: 'post',
     headers: {
       Authorization: `${localStorage.jwt}`,
