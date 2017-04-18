@@ -1,7 +1,7 @@
 export default (state=[], action) => {
   switch (action.type) {
-    case "AUTHENTICATE_USER":
-      return action.payload
+    case "SET_TOKEN":
+      return {jwt: action.payload}
     default:
       return state
   }
