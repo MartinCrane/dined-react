@@ -10,13 +10,11 @@ export class Search extends Component {
     method: 'post',
     headers: {
       Authorization: localStorage.jwt,
-    }
-  }).then(res => {
-
-  })
-
+      }
+    }).then(res => {
+    })
   }
-
+  
   render(){
     return(
         <div className="">
