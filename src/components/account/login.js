@@ -30,7 +30,6 @@ export class Login extends Component {
 
   handleOnSubmit(event) {
     event.preventDefault()
-    // authService(this.state.email, this.state.password)
     axios({
       method: 'post',
       url: 'http://localhost:4000/sessions',
@@ -45,6 +44,7 @@ export class Login extends Component {
   }).catch(function(err) {
     console.log("Error logging in", err);
   });
+  
     this.setState({
       email: '', password: ''
     })
