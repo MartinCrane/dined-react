@@ -7,14 +7,14 @@ export class Search extends Component {
     super()
     this.state = {
       name: 'start',
-      zip: '',
+      field: '',
       results: [],
     };
   }
 
-  handleOnZipChange(event) {
+  handleOnFieldChange(event) {
     this.setState({
-      zip: event.target.value
+      field: event.target.value
     });
   }
 
@@ -26,27 +26,28 @@ export class Search extends Component {
       Authorization: `${localStorage.jwt}`,
     }
   }).then(res => res.json()).
-  then(res => {
+    then(res => {
       this.setState({
         results: res
       })
-  })
+    })
   }
 
   render(){
-    let displaySelectedZip = this.state.results.map((rest) => <li>{rest.name}</li>)
+    let displaySelectedField = this.state.results.map((rest) => <li>{rest.name} </li>)
 
     return(
         <div className="">
           <input
             type="text"
-            onChange={(event) => this.handleOnZipChange(event)}
-            placeholder="zipcode"
+            onChange={(event) => this.handleOnFieldChange(event)}
+            placeholder="Field"
             value={this.state.zip} />
+
           <button onClick={event => this.getRestaurantsZip(event)}>API SEARCH</button>
-          <h1>{this.state.name}</h1>
+
           <ul>
-            {displaySelectedZip}
+            {displaySelectedField}
           </ul>
         </div>
 

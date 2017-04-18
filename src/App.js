@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-// import { Restuarant } from './components/restuarant/Restuarant'
-// import { Login } from './components/account/login'
-// import { RestuarantThumb } from './components/restuarant/RestuarantThumb'
-import { ConnectedLogin } from './components/account/login'
-import { Search } from './components/search/search'
+import { ConnectedLogin } from './components/account/Login'
+import { Search } from './components/search/Search'
 import logo from './logo.svg';
 
 import './App.css';

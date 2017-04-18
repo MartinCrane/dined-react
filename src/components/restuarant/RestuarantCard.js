@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export class Restuarant extends Component {
+export class RestuarantCard extends Component {
   render(){
     return(
         <div className="restuarantCard">
