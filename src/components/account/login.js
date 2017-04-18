@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import loginAction from '../../actions/loginAction'
+import setToken from '../../actions/setToken'
 import axios from 'axios'
 import { authService } from '../../actions/authService'
+import { bindActionCreators } from 'redux'
+import {connect} from 'react-redux'
 export class Login extends Component {
 
   constructor(props){
@@ -38,12 +40,12 @@ export class Login extends Component {
       }
     }).then(function(response) {
       let jwt = response.data.jwt;
-      loginAction.loginUser(jwt);
+      setToken(jwt);
       return true;
   }).catch(function(err) {
     console.log("Error logging in", err);
   });
-    
+  debugger
     this.setState({
       email: '', password: ''
     })
@@ -51,7 +53,7 @@ export class Login extends Component {
 
 
   render(){
-    return(
+    return(<div>
       <form onSubmit={(event) => this.handleOnSubmit(event)} >
         <p>
           <input
@@ -67,7 +69,20 @@ export class Login extends Component {
         </p>
         <input type="submit" />
       </form>
+      <h2>{this.state.jwt}</h2>
+    </div>
     )
   }
-
 }
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    setToken: setToken
+  }, dispatch)
+}
+const mapStateToProps = (state)=>{
+  return{
+    jwt: state.account.jwt,
+  }
+}
+
+export const ConnectedLogin = connect(mapStateToProps,mapDispatchToProps)(Login)
