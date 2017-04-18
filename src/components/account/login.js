@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { setLogin } from '../../actions/setToken'
+import { getRestaurantsZip } from '../../actions/getRestaurantsZip'
 import axios from 'axios'
 import { bindActionCreators } from 'redux'
 import {connect} from 'react-redux'
@@ -9,7 +10,6 @@ export class Login extends Component {
 
   constructor(props){
     super(props);
-
     this.state = {
       email: '',
       password: ''
@@ -41,8 +41,7 @@ export class Login extends Component {
     }).then((response)=>{
       let jwt = response.data.jwt;
       localStorage.setItem(`jwt`, jwt)
-      this.props.setLogin(jwt);
-      return true;
+      this.props.setLogin(jwt)
   }).catch(function(err) {
     console.log("Error logging in", err);
   });
@@ -76,9 +75,8 @@ export class Login extends Component {
 }
 
     const mapDispatchToProps = (dispatch) => {
-      debugger
       return bindActionCreators({
-        setLogin
+        setLogin: setLogin
       }, dispatch)
     }
 
