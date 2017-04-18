@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { loginAction } from '../../actions/loginAction'
+import loginAction from '../../actions/loginAction'
 import axios from 'axios'
 import { authService } from '../../actions/authService'
 export class Login extends Component {
@@ -37,13 +37,13 @@ export class Login extends Component {
         password: `${this.state.password}`
       }
     }).then(function(response) {
-      let jwt = response.id_token;
+      let jwt = response.data.jwt;
       loginAction.loginUser(jwt);
       return true;
   }).catch(function(err) {
     console.log("Error logging in", err);
   });
-
+    
     this.setState({
       email: '', password: ''
     })
