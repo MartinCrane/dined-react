@@ -1,8 +1,8 @@
-export const setToken = (jwt) => {
-  debugger
+export const setLogin = (jwt) => {
+debugger
   return {
-    type: 'SET_TOKEN',
-    payload: jwt
+    type: 'SET_LOGIN',
+    payload: true
   }
 }
 

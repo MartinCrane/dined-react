@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import setToken from '../../actions/setToken'
+import { setLogin } from '../../actions/setToken'
 import axios from 'axios'
-import { authService } from '../../actions/authService'
 import { bindActionCreators } from 'redux'
 import {connect} from 'react-redux'
+
+
 export class Login extends Component {
 
   constructor(props){
@@ -29,7 +30,6 @@ export class Login extends Component {
 
   handleOnSubmit(event) {
     event.preventDefault()
-
     // authService(this.state.email, this.state.password)
     axios({
       method: 'post',
@@ -40,12 +40,11 @@ export class Login extends Component {
       }
     }).then(function(response) {
       let jwt = response.data.jwt;
-      setToken(jwt);
+      setLogin(jwt);
       return true;
   }).catch(function(err) {
     console.log("Error logging in", err);
   });
-  debugger
     this.setState({
       email: '', password: ''
     })
@@ -69,20 +68,21 @@ export class Login extends Component {
         </p>
         <input type="submit" />
       </form>
-      <h2>{this.state.jwt}</h2>
+
     </div>
     )
   }
 }
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({
-    setToken: setToken
-  }, dispatch)
-}
-const mapStateToProps = (state)=>{
-  return{
-    jwt: state.account.jwt,
-  }
+    const mapDispatchToProps = (dispatch) => {
+      return bindActionCreators({
+        setLogin
+      }, dispatch)
+    }
+
+    const mapStateToProps = (state)=>{
+      return{
+        login: state.login,
+      }
 }
 
 export const ConnectedLogin = connect(mapStateToProps,mapDispatchToProps)(Login)
