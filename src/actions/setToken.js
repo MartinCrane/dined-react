@@ -1,5 +1,4 @@
 export const setLogin = (jwt) => {
-debugger
   return {
     type: 'SET_LOGIN',
     payload: true

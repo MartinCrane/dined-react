@@ -38,9 +38,10 @@ export class Login extends Component {
         email: `${this.state.email}`,
         password: `${this.state.password}`
       }
-    }).then(function(response) {
+    }).then((response)=>{
       let jwt = response.data.jwt;
-      setLogin(jwt);
+      localStorage.setItem(`jwt`, jwt)
+      this.props.setLogin(jwt);
       return true;
   }).catch(function(err) {
     console.log("Error logging in", err);
@@ -68,12 +69,14 @@ export class Login extends Component {
         </p>
         <input type="submit" />
       </form>
-
+      <h2>{this.props.login}</h2>
     </div>
     )
   }
 }
+
     const mapDispatchToProps = (dispatch) => {
+      debugger
       return bindActionCreators({
         setLogin
       }, dispatch)
@@ -81,7 +84,7 @@ export class Login extends Component {
 
     const mapStateToProps = (state)=>{
       return{
-        login: state.login,
+        login: state.account.login,
       }
 }
 
