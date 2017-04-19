@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { setLogin } from '../../actions/setToken'
-import { getRestaurantsZip } from '../../actions/getRestaurantsZip'
-import axios from 'axios'
 import { bindActionCreators } from 'redux'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
+import axios from 'axios'
+import { setLogin } from '../../actions/setLogin'
+import { accountLogin } from '../../actions/account'
+import { getRestaurantsZip } from '../../actions/getRestaurantsZip'
 
 
 export class Login extends Component {
@@ -16,6 +17,8 @@ export class Login extends Component {
     };
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    // this.accountLogin = accountLogin.bind(this)
+
   }
 
   handleChange(field, evt) {
@@ -27,21 +30,9 @@ export class Login extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    axios({
-      method: 'post',
-      url: 'http://localhost:4000/sessions',
-      data: {
-        email: `${this.state.email}`,
-        password: `${this.state.password}`
-      }
-    }).then((response)=>{
-      let jwt = response.data.jwt;
-      localStorage.setItem(`jwt`, jwt)
-      this.props.setLogin(jwt)
-  }).catch(function(err) {
-    console.log("Error logging in", err);
-  });
-
+    localStorage.setItem(`jwt`, '')
+    accountLogin(this.state.email, this.state.password)
+    setLogin()
     this.setState({
       email: '', password: ''
     })
@@ -50,7 +41,8 @@ export class Login extends Component {
 
   render(){
     return(<div>
-      <form onSubmit={(event) => this.handleOnSubmit(event)} >
+      <form onSubmit={(event) => this.handleSubmit(event)} className="form" >
+        <h1>Login</h1>
         <p>
           <input
             type="text"

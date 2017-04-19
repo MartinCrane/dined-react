@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { setLogin } from '../../actions/setToken'
-import { getRestaurantsZip } from '../../actions/getRestaurantsZip'
-import axios from 'axios'
 import { bindActionCreators } from 'redux'
 import {connect} from 'react-redux'
+import axios from 'axios'
+import { setLogin } from '../../actions/setLogin'
+import { accountRegister } from '../../actions/account'
+import { getRestaurantsZip } from '../../actions/getRestaurantsZip'
 
 
-export class Login extends Component {
+export class Registration extends Component {
 
   constructor(props){
     super(props);
@@ -15,7 +16,6 @@ export class Login extends Component {
       password: '',
       passwordConfirm: ''
     };
-
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -26,53 +26,45 @@ export class Login extends Component {
     });
   }
 
-
-  handleOnSubmit(event) {
+  handleSubmit(event) {
     event.preventDefault()
-    axios({
-      method: 'post',
-      url: 'http://localhost:4000/sessions',
-      data: {
-        email: `${this.state.email}`,
-        password: `${this.state.password}`,
-        passwordConfirm: `${this.state.passwordConfirm}`
-      }
-    }).then((response)=>{
-      let jwt = response.data.jwt;
-      localStorage.setItem(`jwt`, jwt)
-      this.props.setLogin(jwt)
-  }).catch(function(err) {
-    console.log("Error logging in", err);
-  });
 
-    this.setState({
-      email: '', password: '', passwordConfirm: ''
-    })
+    if (this.state.password !== this.state.passwordConfirm) {
+      return alert("Password and Password Confirmation must match!")
+    } else {
+      accountRegister(this.state.email, this.state.password)
+      debugger
+      this.setState({
+        email: '', password: '', passwordConfirm: ''
+      })
+    }
+
   }
 
 
   render(){
     return(<div>
-      <form onSubmit={this.handleSubmit(event)} >
-        <p>
-          <input
-            type="text"
-            onChange={this.handleChange.bind(null, "email")}
-            placeholder="e-mail"
-            value={this.state.email} />
+      <form onSubmit={(event) => this.handleSubmit(event)} className="form">
+          <h1>Registration</h1>
+          <p>
+            <input
+              type="text"
+              onChange={this.handleChange.bind(null, "email")}
+              placeholder="e-mail"
+              value={this.state.email} />
 
-          <input
-            type="text"
-            onChange={this.handleChange.bind(null, "password")}
-            placeholder="password"
-            value={this.state.password} />
+            <input
+              type="text"
+              onChange={this.handleChange.bind(null, "password")}
+              placeholder="password"
+              value={this.state.password} />
 
-          <input
-            type="text"
-            onChange={(event) => this.handleOnPasswordChange(event)}
-            placeholder="password"
-            value={this.state.passwordConfirm} />
-        </p>
+            <input
+              type="text"
+              onChange={this.handleChange.bind(null, "passwordConfirm")}
+              placeholder="password"
+              value={this.state.passwordConfirm} />
+          </p>
         <input type="submit" />
       </form>
     </div>
@@ -80,16 +72,16 @@ export class Login extends Component {
   }
 }
 
-    // const mapDispatchToProps = (dispatch) => {
-    //   return bindActionCreators({
-    //     setLogin: setLogin
-    //   }, dispatch)
-    // }
-    //
-    // const mapStateToProps = (state)=>{
-    //   return{
-    //     login: state.account.login,
-    //   }
-}
+    const mapDispatchToProps = (dispatch) => {
+      return bindActionCreators({
+        setLogin: setLogin
+      }, dispatch)
+    }
 
-// export const ConnectedLogin = connect(mapStateToProps,mapDispatchToProps)(Login)
+    const mapStateToProps = (state)=>{
+      return{
+        login: state.account.login,
+      }
+    }
+
+    export const ConnectedRegister = connect(mapStateToProps,mapDispatchToProps)(Registration)

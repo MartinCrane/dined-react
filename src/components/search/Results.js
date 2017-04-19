@@ -9,10 +9,10 @@ export class Results extends Component {
     };
   }
 
-
-
   render(){
-    let restuarantThumbList = this.props.results.map((restuarant) => <RestuarantThumb restuarant = {restuarant} />)
+    let restuarantThumbList = this.props.results.map((restuarant, index) =>
+                                <RestuarantThumb key={index} restuarant = {restuarant} />)
+                              
     return(
         <div className="resultsContainer">
           {restuarantThumbList}

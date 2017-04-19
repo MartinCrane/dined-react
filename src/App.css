@@ -20,6 +20,23 @@ margin-left: .2em;
   border-radius: 0px 0px 7px 7px;
 }
 
+.form {
+  max-width: 30em;
+  margin-left: 3em;
+  margin-top: 1em;
+  border-width: 4px;
+  border-style: solid;
+  border-color: black 3em;
+  background-color: #faffeb;
+  opacity: 0.9;
+}
+.resultsContainer {
+
+  margin: 3em;
+
+
+}
+
 .header-text {
   margin-top: 0em;
   margin-bottom: .2em;
@@ -31,7 +48,7 @@ margin-left: .2em;
   padding-left: 0em;
 }
 
-.bordered {
+/*.bordered {
   margin-top: 1.5em;
   margin-left: 1em;
   margin-right: 1em;
@@ -44,7 +61,7 @@ margin-left: .2em;
   background-color: white;
   height: 100%;
   min-height: 4.8em;
-}
+}*/
 
 .prompt {
   margin-left: 1em;
@@ -62,6 +79,7 @@ margin-left: .2em;
   background-color: #faffeb;
   opacity: 0.9;
 }
+
 .restuarantThumb {
   max-width: 30em;
   height: 7em;
