@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import axios from 'axios'
 import { setLogin } from '../../actions/setLogin'
+import { clearFavorites } from '../../actions/favorites'
 
 
 
@@ -16,6 +17,7 @@ export class Logout extends Component {
   logout() {
     localStorage.removeItem('jwt')
     this.props.setLogin(false)
+    this.props.clearFavorites()
   }
 
   render(){
@@ -29,7 +31,8 @@ export class Logout extends Component {
 
     const mapDispatchToProps = (dispatch) => {
       return bindActionCreators({
-        setLogin: setLogin
+        setLogin: setLogin,
+        clearFavorites: clearFavorites
       }, dispatch)
     }
 
