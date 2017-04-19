@@ -3,9 +3,10 @@ import React, { Component } from 'react';
 export class RestuarantCard extends Component {
   render(){
     return(
-        <div className="restuarantCard">
-          <h1>Name </h1>
-          <h1>Price </h1>
+        <div className="restuarantThumb">
+          <h1>name: {this.props.restuarant.name}</h1>
+          <h1>price: {this.props.restuarant.price} </h1>
+          <h1>address: {this.props.restuarant.address} </h1>
         </div>
     )
   }
