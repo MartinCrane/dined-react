@@ -21,6 +21,7 @@ export class Logout extends Component {
   render(){
     return(<div>
       <button onClick={this.logout}>logout</button> <h2>{this.props.login ? "logged in" : "logged out"}</h2>
+      <h2>{this.props.email}</h2>
       </div>
     )
   }
@@ -35,6 +36,7 @@ export class Logout extends Component {
     const mapStateToProps = (state)=>{
       return{
         login: state.account.login,
+        email: state.account.email
       }
 }
 

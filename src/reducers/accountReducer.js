@@ -1,7 +1,7 @@
-export default (state={login: false}, action) => {
+export default (state={login: false, email: ''}, action) => {
   switch (action.type) {
     case "SET_LOGIN":
-      return {login: action.payload}
+      return action.payload
     default:
       return state
   }

@@ -13,9 +13,9 @@ export const accountRegister = (email, password, reducer) =>{
     }).then((response)=>{
       let jwt = response.data.jwt;
       localStorage.setItem(`jwt`, jwt)
-      reducer(true)
+      reducer({login: true, email: response.data.email})
     }).catch((response)=> {
-      reducer(false)
+      reducer({login: false, email: ''})
     });
 }
 
@@ -30,9 +30,9 @@ export const accountLogin = (email, password, reducer) =>{
   }).then((response) => {
     let jwt = response.data.jwt
     localStorage.setItem(`jwt`, jwt)
-    reducer(true)
+    reducer({login: true, email: response.data.email})
   }).catch((response)=> {
-    reducer(false)
+    reducer({login: false, email: ''})
   });
 }
 
