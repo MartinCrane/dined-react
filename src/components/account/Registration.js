@@ -4,7 +4,6 @@ import {connect} from 'react-redux'
 import axios from 'axios'
 import { setLogin } from '../../actions/setLogin'
 import { accountRegister } from '../../actions/account'
-import { getRestaurantsZip } from '../../actions/getRestaurantsZip'
 
 
 export class Registration extends Component {
@@ -28,7 +27,6 @@ export class Registration extends Component {
 
   handleSubmit(event) {
       event.preventDefault(event)
-
       if (this.state.password !== this.state.passwordConfirm) {
         return alert("Password and Password Confirmation must match!")
       } else {
@@ -38,39 +36,37 @@ export class Registration extends Component {
       this.setState({
         email: '', password: '', passwordConfirm: ''
       })
-    
-
   }
 
 
   render() {
     return(<div>
       <form onSubmit={(event) => this.handleSubmit(event)} className="form">
-          <h1>Registration</h1>
-          <p>
-            <input
-              type="text"
-              onChange={this.handleChange.bind(null, "email")}
-              placeholder="e-mail"
-              value={this.state.email} />
+            <h1>Registration</h1>
+            <p>
+              <input
+                type="text"
+                onChange={this.handleChange.bind(null, "email")}
+                placeholder="e-mail"
+                value={this.state.email} />
 
-            <input
-              type="text"
-              onChange={this.handleChange.bind(null, "password")}
-              placeholder="password"
-              value={this.state.password} />
+              <input
+                type="text"
+                onChange={this.handleChange.bind(null, "password")}
+                placeholder="password"
+                value={this.state.password} />
 
-            <input
-              type="text"
-              onChange={this.handleChange.bind(null, "passwordConfirm")}
-              placeholder="password"
-              value={this.state.passwordConfirm} />
-          </p>
-        <input type="submit" />
-      </form>
-    </div>
-    )
-  }
+              <input
+                type="text"
+                onChange={this.handleChange.bind(null, "passwordConfirm")}
+                placeholder="password"
+                value={this.state.passwordConfirm} />
+            </p>
+          <input type="submit" />
+        </form>
+      </div>
+      )
+    }
 }
 
     const mapDispatchToProps = (dispatch) => {
@@ -79,10 +75,4 @@ export class Registration extends Component {
       }, dispatch)
     }
 
-    const mapStateToProps = (state)=>{
-      return{
-        login: state.account.login,
-      }
-    }
-
-    export const ConnectedRegister = connect(mapStateToProps,mapDispatchToProps)(Registration)
+    export const ConnectedRegister = connect(null,mapDispatchToProps)(Registration)

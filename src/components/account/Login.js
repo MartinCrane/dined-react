@@ -5,7 +5,6 @@ import axios from 'axios'
 import { setLogin } from '../../actions/setLogin'
 import { setFavorites } from '../../actions/setFavorites'
 import { accountLogin } from '../../actions/account'
-import { getRestaurantsZip } from '../../actions/getRestaurantsZip'
 
 
 export class Login extends Component {

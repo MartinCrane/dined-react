@@ -7,18 +7,18 @@ export const addToFavorites = (restaurant) =>{
   }
 }
 
+export const clearFavorites = () =>{
+  return {
+    type: "CLEAR_FAVORITES"
+  }
+}
+
 export const updateFavoritesServer = (restaurant) => {
-  return fetch(`http://localhost:4000/`, {
+  return fetch(`http://localhost:4000/add_favorites`, {
     method: 'post',
     headers: {
       Authorization: `${localStorage.jwt}`,
     },
     body: `${restaurant.yelp_id}`
   })
-}
-
-export const clearFavorites = () =>{
-  return {
-    type: "CLEAR_FAVORITES"
-  }
 }
