@@ -29,9 +29,9 @@ export class Login extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    localStorage.setItem(`jwt`, '')
-    accountLogin(this.state.email, this.state.password)
-    setLogin()
+
+    setLogin(accountLogin(this.state.email, this.state.password))
+    
     this.setState({
       email: '', password: ''
     })
