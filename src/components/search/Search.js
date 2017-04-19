@@ -11,43 +11,47 @@ export class Search extends Component {
       field: '',
       results: [],
     };
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleOnFieldChange(event) {
+  handleChange(field, evt) {
     this.setState({
-      field: event.target.value
-    });
-  }
+      [field]: evt.target.value
+   });
+ }
 
-  getRestaurantsZip(event) {
+  handleSubmit(event) {
     event.preventDefault()
-    fetch(`http://localhost:4000/zip_view/${this.state.field}`, {
-    method: 'post',
-    headers: {
-      Authorization: `${localStorage.jwt}`,
-    }
-  }).then(res => res.json()).
-    then(res => {
-      this.setState({
-        results: res
+    return fetch(`http://localhost:4000/zip_view/${this.state.field}`, {
+      method: 'post',
+      headers: {
+        Authorization: `${localStorage.jwt}`,
+      }
+    }).then(res => res.json()).
+      then(res => {
+        this.setState({
+          results: res
+        })
       })
-    })
+
   }
 
   render(){
-    let displaySelectedField = this.state.results.map((rest) => <li>{rest.name}</li>)
 
     return(
-        <div className="restuarantCard">
-          <input
-            type="text"
-            onChange={(event) => this.handleOnFieldChange(event)}
-            placeholder="Field"
-            value={this.state.field} />
-          <button onClick={event => this.getRestaurantsZip(event)}>API SEARCH</button>
+        <div className="form">
+          <form onSubmit={event => this.handleSubmit(event)}>
+            <h1>Search</h1>
+              <input
+                type="text"
+                onChange={this.handleChange.bind(null, "field")}
+                placeholder="Field"
+                value={this.state.field} />
 
+          <input type="submit" />
+        </form>
           <Results results={this.state.results} />
-
         </div>
 
     )
