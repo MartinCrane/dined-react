@@ -12,21 +12,23 @@ import './App.css';
 
 class App extends Component {
 
-  logout() {
-    return localStorage.removeItem('jwt')
-  }
-
   render() {
+    let login = <div> <ConnectedLogout /> <Search /></div>
+    let logout = <div> <ConnectedLogin /></div>
+
     return (
         <div>
-
-          <ConnectedLogout/>
-          <ConnectedLogin />
-          <ConnectedRegister />
-          <Search />
+          {this.props.login ? login : logout}
         </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state)=>{
+  return{
+    login: state.account.login,
+    email: state.account.email
+  }
+}
+
+export const ConnectedApp = connect(mapStateToProps)(App)
