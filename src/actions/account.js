@@ -31,16 +31,15 @@ export const accountLogin = (email, password, reducerAccount, reducerFavorites) 
     let jwt = response.data.jwt
     localStorage.setItem(`jwt`, jwt)
     reducerAccount({login: true, email: response.data.email})
-    reducerFavorites(response.favorites)
+    reducerFavorites(response.data.favorites)
   }).catch((response)=> {
     reducerAccount({login: false, email: ''})
   });
 }
 
-export const accountRestore = (store) =>{
-
+export const restoreAccount = (store) =>{
   if (localStorage.jwt) {
-    return fetch(`http://localhost:4000/ping`, {
+    return fetch(`http://localhost:4000/restoreAccount`, {
       method: 'post',
       headers: {
         Authorization: `${localStorage.jwt}`,
@@ -54,10 +53,7 @@ export const accountRestore = (store) =>{
         }
         store.dispatch({type: 'ADD_TO_FAVORITES', payload: res.favorites})
         store.dispatch({type: 'SET_LOGIN', payload: {login: true, email: res.email}})
-        // store.dispatch({type: 'ADD_TO_FAVORITES', payload: res.favorites})
       }).catch(function(err) {
       })
-    } else {
-      return
     }
 }
