@@ -34,11 +34,9 @@ export class Search extends Component {
           results: res
         })
       })
-
   }
 
   render(){
-
     return(
         <div className="form">
           <form onSubmit={event => this.handleSubmit(event)}>

@@ -27,21 +27,23 @@ export class Registration extends Component {
   }
 
   handleSubmit(event) {
-    event.preventDefault()
-    if (this.state.password !== this.state.passwordConfirm) {
-      return alert("Password and Password Confirmation must match!")
-    } else {
-      accountRegister(this.state.email, this.state.password)
-      debugger
+      event.preventDefault(event)
+
+      if (this.state.password !== this.state.passwordConfirm) {
+        return alert("Password and Password Confirmation must match!")
+      } else {
+         accountRegister(this.state.email, this.state.password, this.props.setLogin)
+      }
+
       this.setState({
         email: '', password: '', passwordConfirm: ''
       })
-    }
+    
 
   }
 
 
-  render(){
+  render() {
     return(<div>
       <form onSubmit={(event) => this.handleSubmit(event)} className="form">
           <h1>Registration</h1>

@@ -18,7 +18,6 @@ export class Login extends Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     // this.accountLogin = accountLogin.bind(this)
-
   }
 
   handleChange(field, evt) {
@@ -29,13 +28,12 @@ export class Login extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    localStorage.setItem(`jwt`, '')
-    accountLogin(this.state.email, this.state.password)
-    setLogin()
+    accountLogin(this.state.email, this.state.password, this.props.setLogin)
     this.setState({
       email: '', password: ''
     })
   }
+
 
 
   render(){
@@ -58,6 +56,7 @@ export class Login extends Component {
         <input type="submit" />
       </form>
       <h2>{this.props.login}</h2>
+
     </div>
     )
   }
