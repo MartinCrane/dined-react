@@ -21,7 +21,6 @@ export class Search extends Component {
    });
  }
 
-
   handleSubmit(event) {
     event.preventDefault()
     return fetch(`http://localhost:4000/zip_view/${this.state.field}`, {

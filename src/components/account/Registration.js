@@ -28,7 +28,6 @@ export class Registration extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
-
     if (this.state.password !== this.state.passwordConfirm) {
       return alert("Password and Password Confirmation must match!")
     } else {

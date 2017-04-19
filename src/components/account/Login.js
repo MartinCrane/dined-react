@@ -27,7 +27,6 @@ export class Login extends Component {
    });
   }
 
-
   handleSubmit(event) {
     event.preventDefault()
     localStorage.setItem(`jwt`, '')
