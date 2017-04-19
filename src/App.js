@@ -27,8 +27,7 @@ class App extends Component {
 
 const mapStateToProps = (state)=>{
   return{
-    login: state.account.login,
-    email: state.account.email
+    login: state.account.login
   }
 }
 

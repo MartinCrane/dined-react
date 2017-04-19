@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import axios from 'axios'
 import { setLogin } from '../../actions/setLogin'
+import { setFavorites } from '../../actions/setFavorites'
 import { accountLogin } from '../../actions/account'
 import { getRestaurantsZip } from '../../actions/getRestaurantsZip'
 
@@ -28,7 +29,7 @@ export class Login extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    accountLogin(this.state.email, this.state.password, this.props.setLogin)
+    accountLogin(this.state.email, this.state.password, this.props.setLogin, this.props.setFavorites)
     this.setState({
       email: '', password: ''
     })
@@ -64,7 +65,8 @@ export class Login extends Component {
 
     const mapDispatchToProps = (dispatch) => {
       return bindActionCreators({
-        setLogin: setLogin
+        setLogin: setLogin,
+        setFavorites: setFavorites
       }, dispatch)
     }
 

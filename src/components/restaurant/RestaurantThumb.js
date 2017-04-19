@@ -2,21 +2,18 @@ import React, { Component } from 'react';
 import { RestaurantCard } from './RestaurantCard'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import {addToFavorites} from '../../actions/favorites'
+import { addToFavorites } from '../../actions/favorites'
+import { updateFavoritesServer } from '../../actions/favorites'
 
 
 export class RestaurantThumb extends Component {
-  constructor(props){
-    super(props);
-
-    this.state = {
-      restaurantCard: false
-    }
+  constructor(){
+    super();
     this.handleClick = this.handleClick.bind(this)
   }
 
   handleClick(event) {
-    debugger
+    updateFavoritesServer(this.props.restaurant)
     this.props.addToFavorites(this.props.restaurant)
   }
 
@@ -40,8 +37,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 const mapStateToProps = (state)=>{
   return{
-    login: state.account.login,
-    email: state.account.email
+    login: state.account.login
   }
 }
 

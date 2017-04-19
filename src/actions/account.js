@@ -19,7 +19,7 @@ export const accountRegister = (email, password, reducer) =>{
     });
 }
 
-export const accountLogin = (email, password, reducer) =>{
+export const accountLogin = (email, password, reducerAccount, reducerFavorites) =>{
   return axios({
     method: 'post',
     url: 'http://localhost:4000/sessions',
@@ -30,13 +30,15 @@ export const accountLogin = (email, password, reducer) =>{
   }).then((response) => {
     let jwt = response.data.jwt
     localStorage.setItem(`jwt`, jwt)
-    reducer({login: true, email: response.data.email})
+    reducerAccount({login: true, email: response.data.email})
+    reducerFavorites(response.favorites)
   }).catch((response)=> {
-    reducer({login: false, email: ''})
+    reducerAccount({login: false, email: ''})
   });
 }
 
-export const accountPing = (store) =>{
+export const accountRestore = (store) =>{
+
   if (localStorage.jwt) {
     return fetch(`http://localhost:4000/ping`, {
       method: 'post',
@@ -50,7 +52,9 @@ export const accountPing = (store) =>{
         if (res.logged_in === "true") {
           log = true
         }
-        store.dispatch({type: 'SET_LOGIN', payload: log})
+        store.dispatch({type: 'ADD_TO_FAVORITES', payload: res.favorites})
+        store.dispatch({type: 'SET_LOGIN', payload: {login: true, email: res.email}})
+        // store.dispatch({type: 'ADD_TO_FAVORITES', payload: res.favorites})
       }).catch(function(err) {
       })
     } else {
