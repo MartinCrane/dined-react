@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Results } from './Results'
 
 
 export class Search extends Component {
@@ -34,21 +35,19 @@ export class Search extends Component {
   }
 
   render(){
-    let displaySelectedField = this.state.results.map((rest) => <li>{rest.name} </li>)
+    let displaySelectedField = this.state.results.map((rest) => <li>{rest.name}</li>)
 
     return(
-        <div className="">
+        <div className="restuarantCard">
           <input
             type="text"
             onChange={(event) => this.handleOnFieldChange(event)}
             placeholder="Field"
-            value={this.state.zip} />
-
+            value={this.state.field} />
           <button onClick={event => this.getRestaurantsZip(event)}>API SEARCH</button>
 
-          <ul>
-            {displaySelectedField}
-          </ul>
+          <Results results={this.state.results} />
+
         </div>
 
     )

@@ -14,21 +14,18 @@ export class Login extends Component {
       email: '',
       password: ''
     };
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleOnEmailChange(event) {
+  handleChange(field, evt) {
     this.setState({
-      email: event.target.value
-    });
+      [field]: evt.target.value
+   });
   }
 
-  handleOnPasswordChange(event) {
-    this.setState({
-      password: event.target.value
-    });
-  }
 
-  handleOnSubmit(event) {
+  handleSubmit(event) {
     event.preventDefault()
     axios({
       method: 'post',
@@ -44,7 +41,7 @@ export class Login extends Component {
   }).catch(function(err) {
     console.log("Error logging in", err);
   });
-  
+
     this.setState({
       email: '', password: ''
     })
@@ -57,12 +54,13 @@ export class Login extends Component {
         <p>
           <input
             type="text"
-            onChange={(event) => this.handleOnEmailChange(event)}
+            onChange={this.handleChange.bind(null, "email")}
             placeholder="e-mail"
             value={this.state.email} />
+
           <input
             type="text"
-            onChange={(event) => this.handleOnPasswordChange(event)}
+            onChange={this.handleChange.bind(null, "password")}
             placeholder="password"
             value={this.state.password} />
         </p>
