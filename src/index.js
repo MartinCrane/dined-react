@@ -4,7 +4,7 @@ import thunk from 'redux-thunk'
 import axios from 'axios'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
-import  App from './App';
+import { ConnectedApp } from './App';
 import  { accountPing } from './actions/account';
 import './index.css';
 import rootReducer from './reducers'
@@ -15,7 +15,7 @@ const store = createStore(rootReducer, applyMiddleware(thunk),window.__REDUX_DEV
 
   ReactDOM.render(
       <Provider store={store} >
-        <App />
+        <ConnectedApp />
       </Provider>,
     document.getElementById('root')
   );
