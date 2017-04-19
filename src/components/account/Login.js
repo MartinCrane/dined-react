@@ -29,13 +29,27 @@ export class Login extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
+    // accountLogin(this.state.email, this.state.password)
+    axios({
+      method: 'post',
+      url: 'http://localhost:4000/sessions',
+      data: {
+        email: `${this.state.email}`,
+        password: `${this.state.password}`
+      }
+    }).then((response) => {
+      let jwt = response.data.jwt
+      localStorage.setItem(`jwt`, jwt)
+      this.props.setLogin(true)
+    }).catch((response)=> {
+      this.props.setLogin(false)
+    });
 
-    setLogin(accountLogin(this.state.email, this.state.password))
-    
     this.setState({
       email: '', password: ''
     })
   }
+
 
 
   render(){
@@ -58,6 +72,7 @@ export class Login extends Component {
         <input type="submit" />
       </form>
       <h2>{this.props.login}</h2>
+
     </div>
     )
   }

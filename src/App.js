@@ -11,9 +11,15 @@ import './App.css';
 
 class App extends Component {
 
+  logout() {
+    return localStorage.removeItem('jwt')
+  }
+
   render() {
     return (
         <div>
+          
+          <button onClick={this.logout}>logout</button>
           <ConnectedLogin />
           <ConnectedRegister />
           <Search />
