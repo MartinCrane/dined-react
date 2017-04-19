@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { ConnectedLogin } from './components/account/Login'
 import { ConnectedRegister } from './components/account/Registration'
+import { ConnectedLogout } from './components/account/Logout'
 import { Search } from './components/search/Search'
 
 import logo from './logo.svg';
@@ -18,8 +19,8 @@ class App extends Component {
   render() {
     return (
         <div>
-          
-          <button onClick={this.logout}>logout</button>
+
+          <ConnectedLogout/>
           <ConnectedLogin />
           <ConnectedRegister />
           <Search />
