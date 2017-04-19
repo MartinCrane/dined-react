@@ -17,7 +17,9 @@ class App extends Component {
 
     return (
         <div>
-          {this.props.login ? login : logout}
+          {/* {this.props.login ? login : logout} */}
+          {login}
+          {logout}
         </div>
     );
   }

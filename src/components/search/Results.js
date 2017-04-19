@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { RestaurantThumb } from '../restaurant/RestaurantThumb'
+import { ConnectedRestaurantThumb } from '../restaurant/RestaurantThumb'
 
 export class Results extends Component {
 
@@ -11,7 +11,7 @@ export class Results extends Component {
 
   render(){
     let restaurantThumbList = this.props.results.map((restaurant, index) =>
-            <RestaurantThumb key={index} restaurant = {restaurant} />)
+            <ConnectedRestaurantThumb key={index} restaurant = {restaurant} />)
 
     return(
         <div className="resultsContainer">
