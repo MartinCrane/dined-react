@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const accountRegister = (email, password) =>{
+export const accountRegister = (email, password, reducer) =>{
   return axios({
       method: 'post',
       url: 'http://localhost:4000/accounts',
@@ -13,42 +13,27 @@ export const accountRegister = (email, password) =>{
     }).then((response)=>{
       let jwt = response.data.jwt;
       localStorage.setItem(`jwt`, jwt)
-      return response
-  }).catch(function(err) {
-    console.log("Error logging in", err);
-  });
-
+      reducer(true)
+    }).catch((response)=> {
+      reducer(false)
+    });
 }
 
-export const accountLogin = (email, password) =>{
-  //   return axios({
-  //     method: 'post',
-  //     url: 'http://localhost:4000/sessions',
-  //     data: {
-  //       email: `${email}`,
-  //       password: `${password}`
-  //     }
-  //   }).then((response)=>{
-  //     let jwt = response.data.jwt;
-  //     localStorage.setItem(`jwt`, jwt)
-  //     return true
-  // }).catch(function(err) {
-  //     return false
-  // });
-  // return axios({
-  //   method: 'post',
-  //   url: 'http://localhost:4000/sessions',
-  //   data: {
-  //     email: `${email}`,
-  //     password: `${password}`
-  //   }
-  // }).then((response) => {
-  //   let jwt = response.data.jwt
-  //   localStorage.setItem(`jwt`, jwt)
-  //   this.props.setLogin(true)
-  // }).catch((response)=> {
-  //   this.props.setLogin(false)
-  // });
+export const accountLogin = (email, password, reducer) =>{
+  return axios({
+    method: 'post',
+    url: 'http://localhost:4000/sessions',
+    data: {
+      email: `${email}`,
+      password: `${password}`
+    }
+  }).then((response) => {
+    let jwt = response.data.jwt
+    localStorage.setItem(`jwt`, jwt)
+    reducer(true)
+  }).catch((response)=> {
+    reducer(false)
+  });
 }
 
 export const accountPing = (store) =>{

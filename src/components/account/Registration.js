@@ -27,35 +27,23 @@ export class Registration extends Component {
   }
 
   handleSubmit(event) {
-    event.preventDefault()
-    if (this.state.password !== this.state.passwordConfirm) {
-      return alert("Password and Password Confirmation must match!")
-    } else {
-      axios({
-        method: 'post',
-        url: 'http://localhost:4000/accounts',
-        data: {
-          account: {
-            email: `${this.state.email}`,
-            password: `${this.state.password}`
-          }
-        }
-      }).then((response) => {
-        let jwt = response.data.jwt
-        localStorage.setItem(`jwt`, jwt)
-        this.props.setLogin(true)
-      }).catch((response)=> {
-        this.props.setLogin(false)
-      });
+      event.preventDefault(event)
+
+      if (this.state.password !== this.state.passwordConfirm) {
+        return alert("Password and Password Confirmation must match!")
+      } else {
+         accountRegister(this.state.email, this.state.password, this.props.setLogin)
+      }
+
       this.setState({
         email: '', password: '', passwordConfirm: ''
       })
-    }
+    
 
   }
 
 
-  render(){
+  render() {
     return(<div>
       <form onSubmit={(event) => this.handleSubmit(event)} className="form">
           <h1>Registration</h1>
