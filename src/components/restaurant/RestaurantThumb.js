@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Collapse, Well } from 'react-bootstrap';
+import { Button, Collapse, Well, Image } from 'react-bootstrap';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { addToFavorites, removeFromFavorites } from '../../actions/favorites'
@@ -42,9 +42,8 @@ export class RestaurantThumb extends Component {
                           <h2>{this.props.restaurant.address}</h2>
                           <h2>{this.props.restaurant.price}</h2>
                           <h2>{this.props.restaurant.rating}</h2>
-                          <img src={this.props.restaurant.image_url} />
+                          <Image src={this.props.restaurant.image_url} responsive />
                         </div>
-
                       </Collapse>
                   </div>
 
