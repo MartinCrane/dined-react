@@ -17,6 +17,7 @@ export class RestaurantThumb extends Component {
   }
 
   handleClick(event) {
+
     if (this.props.action === "Add to Favorites") {
       updateAddFavoritesServer(this.props.restaurant)
       this.props.addToFavorites(this.props.restaurant)
@@ -24,6 +25,7 @@ export class RestaurantThumb extends Component {
       updateDeleteFavoritesServer(this.props.restaurant)
       this.props.removeFromFavorites(this.props.restaurant)
     }
+    this.props.removeFromDisplay(this.props.restaurant.yelp_id)
   }
 
   price_function(price){

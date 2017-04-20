@@ -5,11 +5,16 @@ import { Col } from 'react-bootstrap';
 import { ButtonToolbar } from 'react-bootstrap';
 
 export class Favorites extends Component {
-
+    removeFromDisplay() {
+        return
+    }
   render(){
 
     let restaurantThumbList = this.props.favorites.map((restaurant, index) =>
-          <Col sm={4} md={4}><ConnectedRestaurantThumb key={index} restaurant={restaurant} action={"Remove from Favorites"}/></Col>)
+          <Col sm={4} md={4}><ConnectedRestaurantThumb key={index}
+                                                       restaurant={restaurant}
+                                                       action={"Remove from Favorites"}
+                                                       removeFromDisplay = {this.removeFromDisplay}/></Col>)
 
     return(
         <div>

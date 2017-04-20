@@ -21,12 +21,20 @@ export class Search extends Component {
     };
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.removeFromDisplay = this.removeFromDisplay.bind(this)
   }
 
   handleChange(field, evt) {
       this.setState({
         [field]: evt.target.value
      });
+   }
+
+   removeFromDisplay(id) {
+
+     this.setState({
+       results: this.state.results.filter((r) => r.yelp_id != id)
+     })
    }
 
   handleSubmit(event) {
@@ -66,6 +74,11 @@ export class Search extends Component {
                                     placeholder="Search by Name"
                                     onChange={this.handleChange.bind(null, "term")}
                                     />
+                                  <FormControl  type="text"
+                                    value={this.state.field}
+                                    placeholder="Add a Location"
+                                    onChange={this.handleChange.bind(null, "location")}
+                                    />
                     <InputGroup.Button>
                        {this.state.open ? null : options}
                      </InputGroup.Button>
@@ -75,11 +88,6 @@ export class Search extends Component {
 
                     <Collapse in={this.state.open}>
                       <div>
-                        <FormControl  type="text"
-                                      value={this.state.field}
-                                      placeholder="Add a Location"
-                                      onChange={this.handleChange.bind(null, "location")}
-                                      />
                         <h1>option3</h1>
                       </div>
                     </Collapse>
@@ -88,7 +96,7 @@ export class Search extends Component {
                   </Button>
               </FormGroup>
         </form>
-          <Results results={this.state.results} />
+          <Results results={this.state.results} removeFromDisplay={this.removeFromDisplay}/>
         </div>
     )
   }
