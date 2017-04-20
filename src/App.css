@@ -12,16 +12,15 @@ h2 {
 p {
   font-size: 2em
 }
-.grey {
+/*.grey {
   transform: matrix3d(1,0,0.00,.0001,0.00,1,0.05,.0001,0,-0.05,1,0,0,,03,1);
   -webkit-transform: matrix3d(1,0,0.00,.0001,0.00,1,0.05,.0001,0,-0.05,1,0,0,,03,1);
   padding: 2em;
-  border-width: 4px;
-  border-style: dotted;
   border-color: black 3em;
   opacity: 0.9;
   background-color: #eee;
-}
+}*/
+
 .restaurantCard {
   max-width: 30em;
   height: 15em;
@@ -43,8 +42,8 @@ p {
 .restaurantThumb {
   max-width: 100%;
   padding: 2em;
-  font-size: .4em;
-  display: block;
+  font-size: .5em;
+  margin: 1em;
   border-width: 2px;
   border-style: solid;
   border-color: black 3em;

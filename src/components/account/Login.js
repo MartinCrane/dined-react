@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
+import { FormGroup, ControlLabel, HelpBlock, FormControl, FieldGroup } from 'react-bootstrap';
 import { connect } from 'react-redux'
 import { setLogin } from '../../actions/setLogin'
 import { setFavorites } from '../../actions/setFavorites'
@@ -32,6 +33,16 @@ export class Login extends Component {
     })
   }
 
+  FieldGroup({ id, label, help, ...props }) {
+    return (
+      <FormGroup controlId={id}>
+        <ControlLabel>{label}</ControlLabel>
+        <FormControl {...props} />
+        {help && <HelpBlock>{help}</HelpBlock>}
+      </FormGroup>
+    );
+  }
+
   render(){
     return(<div>
       <form onSubmit={(event) => this.handleSubmit(event)} className="grey" >
@@ -44,7 +55,7 @@ export class Login extends Component {
             value={this.state.email} />
 
           <input
-            type="text"
+            type="password"
             onChange={this.handleChange.bind(null, "password")}
             placeholder="password"
             value={this.state.password} />

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Collapse, Well } from 'react-bootstrap';
+import { Button, Collapse, Well, Image } from 'react-bootstrap';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { addToFavorites, removeFromFavorites } from '../../actions/favorites'
@@ -26,10 +26,36 @@ export class RestaurantThumb extends Component {
     }
   }
 
+  price_function(price){
+    debugger
+    switch (price) {
+      case price = "":
+        return "N/A"
+        break;
+      case price = 1:
+        return "$"
+        break;
+      case price = 2:
+        return "$$"
+        break;
+      case price = 3:
+        return "$$$"
+        break;
+      case price = 4:
+        return "$$$$"
+        break;
+      default:
+          return "N/A"
+    }
+
+  }
+
   render(){
-    let title = <div><h1>{this.props.restaurant.name} /
-                {this.props.restaurant.price} /
-                {this.props.restaurant.address} </h1>
+    let title = <div>
+                  <h1>{this.props.restaurant.name}</h1>
+                  <h1>Price Range: {this.price_function(this.props.restaurant.price)}</h1>
+                  <h1>{this.props.restaurant.address} </h1>
+                  <h1>Rating: {this.props.restaurant.rating}</h1>
                 </div>
 
     let details = <div>
@@ -42,9 +68,8 @@ export class RestaurantThumb extends Component {
                           <h2>{this.props.restaurant.address}</h2>
                           <h2>{this.props.restaurant.price}</h2>
                           <h2>{this.props.restaurant.rating}</h2>
-                          <img src={this.props.restaurant.image_url} />
+                          <Image src={this.props.restaurant.image_url} responsive />
                         </div>
-
                       </Collapse>
                   </div>
 

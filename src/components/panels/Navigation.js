@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { MenuItem, NavDropdown, Nav, NavItem, Navbar, FormControl, FormGroup, Button } from 'react-bootstrap';
 import { setLogin } from '../../actions/setLogin'
 import { clearFavorites } from '../../actions/favorites'
+import { selectNavigation } from '../../actions/navigation'
 
 
 export class Navigation extends Component {
@@ -19,6 +20,10 @@ export class Navigation extends Component {
     this.props.clearFavorites()
   }
 
+  changeNavigation(event) {
+    this.props.selectNavigation(event)
+  }
+
   render(){
     let logout = <NavItem eventKey={1} href="#"onClick={(event) => this.logout(event)} >Logout</NavItem>
     return(
@@ -31,10 +36,10 @@ export class Navigation extends Component {
           </Navbar.Header>
           <Nav>
             {this.props.login ? logout : null}
-            <NavDropdown eventKey={3} title="x" id="basic-nav-dropdown">
-              <MenuItem eventKey={3.1}>Favorites</MenuItem>
-              <MenuItem eventKey={3.2}>Location</MenuItem>
-              <MenuItem eventKey={3.3}>Add Rest</MenuItem>
+            <NavDropdown eventKey={3} onSelect={(event) => {this.changeNavigation(event)}} title="where to?" id="basic-nav-dropdown">
+              <MenuItem eventKey={"favorites"} >Favorites</MenuItem>
+              <MenuItem eventKey={"map"}>Map</MenuItem>
+              <MenuItem eventKey={"search"}>Search</MenuItem>
               <MenuItem divider />
               <MenuItem eventKey={3.4}>Separated link</MenuItem>
             </NavDropdown>
@@ -56,14 +61,16 @@ export class Navigation extends Component {
     const mapDispatchToProps = (dispatch) => {
       return bindActionCreators({
         setLogin: setLogin,
-        clearFavorites: clearFavorites
+        clearFavorites: clearFavorites,
+        selectNavigation: selectNavigation
       }, dispatch)
     }
 
     const mapStateToProps = (state)=>{
       return{
         login: state.account.login,
-        email: state.account.email
+        email: state.account.email,
+        navigation: state.navigation
       }
 }
 
