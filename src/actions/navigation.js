@@ -1,24 +1,6 @@
-export const selectSearch = (response) => {
+export const selectNavigation = (response) => {
   return {
-    type: 'SELECT_NAV_SEARCH',
-    payload: response
-  }
-}
-export const selectFavories = (response) => {
-  return {
-    type: 'SELECT_NAV_FAVORITES',
-    payload: response
-  }
-}
-export const selectMap = (response) => {
-  return {
-    type: 'SELECT_NAV_MAP',
-    payload: response
-  }
-}
-export const select = (response) => {
-  return {
-    type: 'SELECT_NAV_MAP',
+    type: 'SELECT_NAVIGATION',
     payload: response
   }
 }
