@@ -63,7 +63,8 @@ export class Navigation extends Component {
     const mapStateToProps = (state)=>{
       return{
         login: state.account.login,
-        email: state.account.email
+        email: state.account.email,
+        
       }
 }
 

@@ -44,7 +44,6 @@ export class RestaurantThumb extends Component {
                           <h2>{this.props.restaurant.rating}</h2>
                           <Image src={this.props.restaurant.image_url} responsive />
                         </div>
-
                       </Collapse>
                   </div>
 
