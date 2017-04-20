@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
-import { FormGroup, ControlLabel, HelpBlock, FormControl, FieldGroup } from 'react-bootstrap';
+import { FormGroup, ControlLabel, HelpBlock, FormControl,  } from 'react-bootstrap';
 import { connect } from 'react-redux'
 import { setLogin } from '../../actions/setLogin'
 import { setFavorites } from '../../actions/setFavorites'
@@ -63,7 +63,6 @@ export class Login extends Component {
         <input type="submit" />
       </form>
       <h2>{this.props.login}</h2>
-
     </div>
     )
   }
