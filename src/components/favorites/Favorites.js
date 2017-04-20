@@ -6,7 +6,7 @@ export class Favorites extends Component {
 
   render(){
     let restaurantThumbList = this.props.favorites.map((restaurant, index) =>
-            <ConnectedRestaurantThumb key={index} restaurant={restaurant} />)
+            <ConnectedRestaurantThumb key={index} restaurant={restaurant} action={"Remove from Favorites"}/>)
     return(
         <div >
           <h1>Favorites</h1>

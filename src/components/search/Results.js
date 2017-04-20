@@ -11,7 +11,7 @@ export class Results extends Component {
 
   render(){
     let restaurantThumbList = this.props.results.map((restaurant, index) =>
-            <ConnectedRestaurantThumb key={index} restaurant={restaurant} />)
+            <ConnectedRestaurantThumb key={index} restaurant={restaurant} action={"Add to Favorites"}/>)
 
     return(
         <div className="resultsContainer">

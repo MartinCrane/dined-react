@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { MenuItem, NavDropdown, Nav, NavItem, Navbar } from 'react-bootstrap';
+import { MenuItem, NavDropdown, Nav, NavItem, Navbar, FormControl, FormGroup, Button } from 'react-bootstrap';
 
 import { setLogin } from '../../actions/setLogin'
 import { clearFavorites } from '../../actions/favorites'
@@ -40,6 +40,13 @@ export class Navigation extends Component {
               <MenuItem eventKey={3.4}>Separated link</MenuItem>
             </NavDropdown>
             <NavItem >{this.props.email}</NavItem>
+              <Navbar.Form pullLeft>
+              <FormGroup>
+                <FormControl type="text" placeholder="Search" />
+                </FormGroup>
+              {' '}
+              <Button type="submit">Submit</Button>
+            </Navbar.Form>
           </Nav>
         </Navbar>
       </div>
