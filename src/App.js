@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Row, Col, Grid } from 'react-bootstrap';
-import { Main } from './components/panels/Main'
+import { ConnectedMain } from './components/panels/Main'
 import { ConnectedLogin } from './components/account/Login'
 import { ConnectedSearch } from './components/search/Search'
 import { ConnectedRegister } from './components/account/Registration'
@@ -23,7 +23,7 @@ class App extends Component {
           <ConnectedNavigation/>
         </Row>
         <Row className="container">
-          {this.props.login ? <Main /> : logout}
+          {this.props.login ? <ConnectedMain /> : logout}
         </Row>
       </Grid>
     );
