@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { ConnectedRestaurantThumb } from '../restaurant/RestaurantThumb'
 import { Col } from 'react-bootstrap';
+import { ButtonToolbar } from 'react-bootstrap';
 
 export class Favorites extends Component {
 

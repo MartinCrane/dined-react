@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Collapse, Well, Image } from 'react-bootstrap';
+import { Button, Collapse, Well, Image, ButtonToolbar } from 'react-bootstrap';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { addToFavorites, removeFromFavorites } from '../../actions/favorites'
@@ -50,14 +50,12 @@ export class RestaurantThumb extends Component {
                 </div>
 
     let details = <div>
-                    <Button bsStyle="primary" bsSize="xsmall" onClick={ ()=> this.setState({ open: !this.state.open })}>
-                        {this.state.open ? 'Less Details' : 'More Details'}
-                    </Button>
+                    <br></br>
                       <Collapse in={this.state.open}>
                         <div>
                             <br></br>
                             <Image src={this.props.restaurant.image_url} responsive />
-                            <h1>MAPCOMPONENT</h1>
+                            <h1>MAP COMPONENT</h1>
                         </div>
                       </Collapse>
                   </div>
@@ -65,7 +63,14 @@ export class RestaurantThumb extends Component {
     return(
       <div className="restaurantThumb" >
           {title}
-          <Button bsStyle="primary" bsSize="xsmall" onClick={this.handleClick}>{this.props.action}</Button>
+          <br></br>
+          <ButtonToolbar>
+            <Button bsStyle="primary" bsSize="xsmall" onClick={this.handleClick}>{this.props.action}</Button>
+            <Button bsStyle="primary" bsSize="xsmall" onClick={ () => this.setState({ open: !this.state.open })}>
+              {this.state.open ? 'Less Details' : 'More Details'}
+            </Button>
+
+          </ButtonToolbar>
           {details}
       </div>
     )
