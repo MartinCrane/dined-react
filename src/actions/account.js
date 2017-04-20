@@ -47,10 +47,6 @@ export const restoreAccount = (store) =>{
       }).
       then(res => res.json()).
       then(res => {
-        let log = false
-        if (res.logged_in === "true") {
-          log = true
-        }
         store.dispatch({type: 'ADD_TO_FAVORITES', payload: res.favorites})
         store.dispatch({type: 'SET_LOGIN', payload: {login: true, email: res.email}})
       }).catch(function(err) {

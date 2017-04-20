@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-
 import { setLogin } from '../../actions/setLogin'
 import { setFavorites } from '../../actions/setFavorites'
 import { accountLogin } from '../../actions/account'
