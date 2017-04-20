@@ -27,7 +27,6 @@ export class RestaurantThumb extends Component {
   }
 
   price_function(price){
-    debugger
     switch (price) {
       case price = "":
         return "N/A"

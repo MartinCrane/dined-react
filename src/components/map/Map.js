@@ -2,7 +2,8 @@ import { Component } from 'react'
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-export class Map extends Component {
+
+export class MaybeMap extends Component {
   componentDidMount(){
     this.loadMap()
   }
@@ -20,7 +21,6 @@ export class Map extends Component {
   loadMap() {
     debugger
     if (this.props && this.props.google) {
-      // google is available
       const {google} = this.props;
       const maps = google.maps;
       debugger
@@ -37,7 +37,7 @@ export class Map extends Component {
       })
       this.map = new maps.Map(node, mapConfig)
     }
-    //
+
   }
 
     render() {

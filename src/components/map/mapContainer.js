@@ -9,8 +9,8 @@ export class Container extends Component {
       return <div>Loading...</div>
     }
     const style = {
-      width: '100vw',
-      height: '100vh'
+      width: '500px',
+      height: '500px'
     }
 
     return (
