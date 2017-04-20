@@ -7,8 +7,7 @@ import { ConnectedSearch } from './components/search/Search'
 import { ConnectedRegister } from './components/account/Registration'
 import { ConnectedNavigation } from './components/panels/Navigation'
 import logo from './logo.svg';
-
-
+import  GoogleApiWrapper from './components/map/mapContainer'
 import './App.css';
 
 class App extends Component {
@@ -25,7 +24,10 @@ class App extends Component {
         <Row className="container">
           {this.props.login ? <ConnectedMain /> : logout}
         </Row>
+        <GoogleApiWrapper />
       </Grid>
+
+
     );
   }
 }
