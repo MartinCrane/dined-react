@@ -21,12 +21,14 @@ export const clearFavorites = () =>{
 }
 
 export const updateAddFavoritesServer = (restaurant) => {
+  let stringRest = JSON.stringify(restaurant)
+  debugger
   return fetch(`http://localhost:4000/add_favorites`, {
     method: 'post',
     headers: {
       Authorization: `${localStorage.jwt}`,
     },
-    body: `${restaurant.yelp_id}`
+    body: stringRest
   })
 }
 
