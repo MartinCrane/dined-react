@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Collapse, Well } from 'react-bootstrap';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { addToFavorites, removeFromFavorites } from '../../actions/favorites'
@@ -10,6 +10,9 @@ import { updateAddFavoritesServer, updateDeleteFavoritesServer } from '../../act
 export class RestaurantThumb extends Component {
   constructor(){
     super();
+    this.state = {
+      open: false
+    }
     this.handleClick = this.handleClick.bind(this)
   }
 
@@ -24,13 +27,31 @@ export class RestaurantThumb extends Component {
   }
 
   render(){
-    let details = <div><p>{this.props.restaurant.name} /
-                  {this.props.restaurant.price} /
-                  {this.props.restaurant.address} </p>
-                <Button bsStyle="primary" bsSize="xsmall" onClick={this.handleClick}>{this.props.action}</Button>
+    let title = <div><h1>{this.props.restaurant.name} /
+                {this.props.restaurant.price} /
+                {this.props.restaurant.address} </h1>
+                </div>
+
+    let details = <div>
+                    <Button bsStyle="primary" bsSize="xsmall" onClick={ ()=> this.setState({ open: !this.state.open })}>
+                      {this.state.open ? 'Less Details' : 'More Details'}
+                    </Button>
+                      <Collapse in={this.state.open}>
+                        <div>
+                          <h2>{this.props.restaurant.name}</h2>
+                          <h2>{this.props.restaurant.address}</h2>
+                          <h2>{this.props.restaurant.price}</h2>
+                          <h2>{this.props.restaurant.rating}</h2>
+                          <img src={this.props.restaurant.image_url} />
+                        </div>
+
+                      </Collapse>
                   </div>
+
     return(
       <div className="restaurantThumb" >
+          {title}
+          <Button bsStyle="primary" bsSize="xsmall" onClick={this.handleClick}>{this.props.action}</Button>
           {details}
       </div>
     )
