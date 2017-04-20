@@ -16,7 +16,7 @@ export class SimpleMap extends Component {
     return (
       <GoogleMapReact
           bootstrapURLKeys={{
-            key: 'AIzaSyCjef7cMcrZYQfvEqlTFvvn7VqKTBDoTvE',
+            key: 'GOOGLE_API_KEY_RIGHT_HERE',
             language: 'en'
           }}
         defaultCenter={this.props.center}
