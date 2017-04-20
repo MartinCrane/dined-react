@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { RestaurantCard } from './RestaurantCard'
+import { Button } from 'react-bootstrap';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { addToFavorites } from '../../actions/favorites'
@@ -18,10 +19,10 @@ export class RestaurantThumb extends Component {
   }
 
   render(){
-    let details = <div><h1>name: {this.props.restaurant.name}</h1>
-                  <h1>price: {this.props.restaurant.price} </h1>
-                  <h1>address: {this.props.restaurant.address} </h1>
-                  <button onClick={(event) => this.handleClick(event)}>Add to Favorites</button>
+    let details = <div><h2>name: {this.props.restaurant.name}</h2>
+                  <h2>price: {this.props.restaurant.price} </h2>
+                  <h2>address: {this.props.restaurant.address} </h2>
+                  <Button bsStyle="primary" onClick={(event) => this.handleClick(event)}>Add to Favorites</Button>
                   </div>
     return(
       <div className="restaurantThumb" >

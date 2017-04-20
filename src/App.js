@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import { Row, Col } from 'react-bootstrap';
 import { ConnectedLogin } from './components/account/Login'
 import { ConnectedRegister } from './components/account/Registration'
-import { ConnectedLogout } from './components/account/Logout'
 import { Search } from './components/search/Search'
+import { Main } from './components/panels/Main'
+import { ConnectedNavigation } from './components/panels/Navigation'
 import logo from './logo.svg';
 
 import './App.css';
@@ -12,15 +14,18 @@ import './App.css';
 class App extends Component {
 
   render() {
-    let login = <div> <ConnectedLogout /> <Search /></div>
-    let logout = <div> <ConnectedLogin /></div>
+
+    let logout = <div> <ConnectedLogin /><ConnectedRegister /></div>
 
     return (
-        <div>
-          {/* {this.props.login ? login : logout} */}
-          {login}
-          {logout}
-        </div>
+      <div>
+        <Row className="container" fluid="true">
+          <ConnectedNavigation/>
+        </Row>
+        <Row className="container" fluid="true">
+          {this.props.login ? <Main /> : logout}
+        </Row>
+      </div>
     );
   }
 }

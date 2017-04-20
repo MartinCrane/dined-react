@@ -1,73 +1,23 @@
+div {
+  font-family: 'Bitter', serif;
+  font-family: 'Arvo', serif;
+}
+
 h1 {
-font-size: 1.2em;
-font-weight: 500;
-margin-top: .2em;
-margin-bottom: .2em;
-margin-left: .2em;
+  font-size: 2em
+}
+h2 {
+  font-size: 3em
 }
 
-.container-fluid {
-  background-color: rgb(245, 248, 250);
-  margin: 0;
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-}
-
-.header {
-  background-color: rgb(29,161,242);
-  color: white;
-  padding-left: 1em;
-  padding-bottom: 1em;
-  border-radius: 0px 0px 7px 7px;
-}
-
-.form {
-  max-width: 30em;
-  margin-left: 3em;
-  margin-top: 1em;
+.grey {
+  padding: 2em;
   border-width: 4px;
-  border-style: solid;
+  border-style: dotted;
   border-color: black 3em;
-  background-color: #faffeb;
   opacity: 0.9;
+  background-color: #eee;
 }
-.resultsContainer {
-
-  margin: 3em;
-
-
-}
-
-.header-text {
-  margin-top: 0em;
-  margin-bottom: .2em;
-  padding-top: .5em;
-}
-
-.content-wrapper {
-  /*margin-left: 1em;*/
-  padding-left: 0em;
-}
-
-/*.bordered {
-  margin-top: 1.5em;
-  margin-left: 1em;
-  margin-right: 1em;
-  padding-left: 1em;
-  padding-top: 1em;
-  border: thin solid black;
-  border-radius: 4px;
-  height: 7em;
-  max-width: 40em;
-  background-color: white;
-  height: 100%;
-  min-height: 4.8em;
-}*/
-
-.prompt {
-  margin-left: 1em;
-  margin-top: 1em;
-}
-
 .restaurantCard {
   max-width: 30em;
   height: 15em;
@@ -79,132 +29,21 @@ margin-left: .2em;
   background-color: #faffeb;
   opacity: 0.9;
 }
+.logged {
+  max-width: 30em;
+  padding: 2em;
+  height: 10em;
+  display: inline;
+}
 
 .restaurantThumb {
-  max-width: 30em;
-  height: 7em;
-  margin-left: 3em;
-  margin-top: 1em;
-  border-width: 1px;
+  max-width: 100%;
+  padding: 2em;
+  font-size: .4em;
+  display: block;
+  border-width: 2px;
   border-style: solid;
   border-color: black 3em;
   background-color: #faffeb;
   opacity: 0.9;
 }
-
-.output {
-  /*background-color: #fff;*/
-  margin-left: 1em;
-  margin-top: 1em;
-}
-
-.working-status {
-  color: #fff;
-  position: absolute;
-  right: 1.5em;
-  top: 0;
-}
-
-.ready-status {
-  color: #90EE90;
-}
-
-.failed-status {
-  color: red;
-}
-
-/* --------READ SPECIFIC --------------*/
-
-  .Tweet-URL-text {
-    width: 100%;
-    max-width: 23em;
-  }
-
-  .essay-text {
-    background-color: #fff;
-    max-width: 35.7em;
-    margin-right: 1em;
-    padding-left: 1em;
-    padding-top: 1em;
-    padding-right: 1em;
-    padding-bottom: 1em;
-    margin-bottom: .2em;
-    border-radius: 4px 4px 0px 0px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: rgb(225,232,237);
-  }
-
-  .essay-buttons {
-    color: #fff;
-    background-color: rgb(29,161,242);
-    border-style: none;
-    border-radius: 6px;
-    margin-left: 3em;
-    margin-bottom: 1em;
-  }
-
-  .essay-text span:hover {
-    background-color: rgb(232,245,253);
-  }
-
-  .essaySubtitle{
-    font-size: 24px;
-    font-weight: 500;
-  }
-
-  .read-paragraph{
-    margin-left: 1em;
-  }
-
-/* ------- WRITE SPECIFIC ----------- */
-
-.essay-tweets-display {
-  padding-bottom: 1em;
-}
-
-.essay-tweets-display p {
-  margin-left: 1em;
-  background-color: #fff;
-  max-width: 40em;
-  margin-right: 1em;
-  padding-left: 1em;
-  padding-top: 1em;
-  padding-right: 1em;
-  padding-bottom: 1em;
-  margin-bottom: .2em;
-  margin-top: .25em;
-  /*border-radius: 10px 10px 0px 0px;*/
-}
-
-h3.tweetSubtitle{
-  margin-left: 1em;
-}
-
-#tweet-1 {
-  border-radius: 10px 10px 0px 0px;
-}
-
-.write-essay-text {
-  width: 100%;
-  max-width: 40em;
-  margin-right: 2em;
-  min-height: 15em;
-  margin-bottom: 1em;
-}
-
-.essay-text-form {
-  padding-right: 1em;
-}
-
-.prompt p {
-  font-weight: bold;
-}
-
-
-
-/*.on { display: none; user-select: none; cursor: hand;}*/
-.bordered:hover {
-  background-color: rgb(232,245,253);
-}
-.hover:hover .on { display: inline; user-select: none; cursor: hand;}

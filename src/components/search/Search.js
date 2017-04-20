@@ -51,7 +51,6 @@ export class Search extends Component {
         </form>
           <Results results={this.state.results} />
         </div>
-
     )
   }
 }
