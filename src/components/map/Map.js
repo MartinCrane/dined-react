@@ -2,25 +2,43 @@ import { Component } from 'react'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import GoogleMapReact from 'google-map-react';
-
+import {Geolocation} from './geolocation'
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 export class SimpleMap extends Component {
-  static defaultProps = {
-    center: {lat: 59.95, lng: 30.33},
-    zoom: 11
-  };
+  constructor(){
+    super()
+    this.state = {
+      center: {lat: 45.747048, lng: -73.988052},
+      zoom: 15
+    }
+  }
+
+
+  componentDidMount() {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          var geoCenter = {center: {lat: position.coords.latitude, lng: position.coords.longitude}};
+          this.setState(geoCenter)
+          var self = this
+        },
+        (error) => alert(JSON.stringify(error)),
+        {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+      );
+    }
+
+
 
   render() {
     return (
       <GoogleMapReact
           bootstrapURLKeys={{
-            key: 'GOOGLE_API_KEY_RIGHT_HERE',
+            key: 'API_KEY',
             language: 'en'
           }}
-        defaultCenter={this.props.center}
-        defaultZoom={this.props.zoom}
+        defaultCenter={this.state.center}
+        defaultZoom={this.state.zoom}
       >
         <AnyReactComponent
           lat={59.955413}
@@ -31,61 +49,3 @@ export class SimpleMap extends Component {
     );
   }
 }
-
-
-//
-//
-// export class Map extends Component {
-//   // constructor() {
-//   //   super()
-//   //   this.state = {
-//   //     lat: null,
-//   //     long:null,
-//   //     zoom: 16,
-//   //     wifis: []
-//   //   }
-//   // }
-//   // componentWillMount(){
-//   //   navigator.geolocation.getCurrentPosition((position) => {
-//   //     this.setState({
-//   //       lat: position.coords.latitude,
-//   //       long: position.coords.longitude
-//   //     })
-//   //   })
-//   // }
-//
-//   componentDidMount(){
-//     this.loadMap()
-//   }
-//
-//   loadMap() {
-//     debugger
-//     if (this.props && this.props.google) {
-//       const {google} = this.props;
-//       const maps = google.maps;
-//       const mapRef = this.refs.map;
-//       const node = ReactDOM.findDOMNode(mapRef);
-//
-//       let zoom = 14;
-//       let lat = 37.774929;
-//       let lng = -122.419416;
-//       const center = new maps.LatLng(lat, lng);
-//       const mapConfig = Object.assign({}, {
-//         center: center,
-//         zoom: zoom
-//       })
-//       this.map = new maps.Map(node, mapConfig)
-//     }
-//
-//   }
-//
-//     render() {
-//       return(
-//           <div ref='map'>
-//             Loading map . . .
-//           </div>
-//       )
-//     }
-//
-//
-// }
