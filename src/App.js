@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Grid } from 'react-bootstrap';
+import { Main } from './components/panels/Main'
 import { ConnectedLogin } from './components/account/Login'
 import { ConnectedRegister } from './components/account/Registration'
-import { Main } from './components/panels/Main'
 import { ConnectedNavigation } from './components/panels/Navigation'
 import logo from './logo.svg';
 
@@ -17,14 +17,14 @@ class App extends Component {
     let logout = <div> <ConnectedLogin /><ConnectedRegister /></div>
 
     return (
-      <div>
+      <Grid>
         <Row className="container" >
           <ConnectedNavigation/>
         </Row>
         <Row className="container">
           {this.props.login ? <Main /> : logout}
         </Row>
-      </div>
+      </Grid>
     );
   }
 }
