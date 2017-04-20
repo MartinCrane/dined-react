@@ -64,5 +64,11 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch)
 }
 
+const mapStateToProps = (state)=>{
+  return{
+    login: state.account.login
+  }
+}
+
 
 export const ConnectedRestaurantThumb = connect(null,mapDispatchToProps)(RestaurantThumb)
