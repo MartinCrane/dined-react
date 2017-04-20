@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Row, Col } from 'react-bootstrap';
 import { ConnectedLogin } from './components/account/Login'
+<<<<<<< HEAD
+=======
+import { ConnectedSearch } from './components/search/Search'
+>>>>>>> deleted logout component
 import { ConnectedRegister } from './components/account/Registration'
 import { Main } from './components/panels/Main'
 import { ConnectedNavigation } from './components/panels/Navigation'
