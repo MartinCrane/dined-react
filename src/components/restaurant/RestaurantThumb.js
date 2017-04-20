@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { RestaurantCard } from './RestaurantCard'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { addToFavorites } from '../../actions/favorites'

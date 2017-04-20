@@ -28,12 +28,12 @@ export class Search extends Component {
       headers: {
         Authorization: `${localStorage.jwt}`,
       }
-    }).then(res => res.json()).
-      then(res => {
-        this.setState({
-          results: res
+    }).then(res => res.json())
+        .then(res => {
+          this.setState({
+            results: res
+          })
         })
-      })
   }
 
   render(){
