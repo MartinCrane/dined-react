@@ -6,8 +6,6 @@ import { ConnectedRegister } from './components/account/Registration'
 import { Main } from './components/panels/Main'
 import { ConnectedNavigation } from './components/panels/Navigation'
 import logo from './logo.svg';
-
-
 import './App.css';
 
 class App extends Component {
