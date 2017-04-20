@@ -7,7 +7,6 @@ import { ConnectedSearch } from './components/search/Search'
 import { ConnectedRegister } from './components/account/Registration'
 import { ConnectedNavigation } from './components/panels/Navigation'
 import logo from './logo.svg';
-import GoogleMap from './components/map/google-map'
 import './App.css';
 
 class App extends Component {
@@ -26,7 +25,6 @@ class App extends Component {
           {this.props.login ? <ConnectedMain /> : logout}
         </Row>
       </Grid>
-      <GoogleMap />
       </div>
     );
   }

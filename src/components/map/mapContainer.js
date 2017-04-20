@@ -14,7 +14,7 @@ export class Container extends Component {
     }
 
     return (
-        <div style={style}>
+        <div className="map" ref='map' style={style}>
           <Map google={this.props.google}/>
         </div>
     )

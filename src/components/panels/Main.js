@@ -3,7 +3,7 @@ import { Row, Col } from 'react-bootstrap';
 import { connect } from 'react-redux'
 import { ConnectedSearch } from '../../components/search/Search'
 import { ConnectedFavorites } from '../../components/favorites/Favorites'
-// import { Map } from '../../components/map/Map'
+import { SimpleMap } from '../map/Map'
 
 
 export class Main extends Component {
@@ -11,7 +11,7 @@ export class Main extends Component {
   render() {
     let search = <Col sm={6} md={6} ><ConnectedSearch/></Col>
     let favorites = <Col ><ConnectedFavorites/></Col>
-    // let map = <Col sm={6} md={6} className="grey"><Map/></Col>
+    let map = <SimpleMap />
 
   return (
       <Row className="container">
@@ -21,6 +21,9 @@ export class Main extends Component {
         <Row className="container-flex">
           {this.props.navigation === "search" ? search : null}
           {this.props.navigation === "favorites" ? favorites : null}
+        </Row>
+        <Row className="map">
+          {this.props.navigation === "map" ? map : null}
         </Row>
       </Row>
     )

@@ -50,3 +50,8 @@ p {
   background-color: #faffeb;
   opacity: 0.9;
 }
+
+.map {
+    width: 750px;
+    height: 500px;
+}
