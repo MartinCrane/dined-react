@@ -18,12 +18,10 @@ export class Map extends Component {
   //   }
 
   loadMap() {
-    debugger
     if (this.props && this.props.google) {
       // google is available
       const {google} = this.props;
       const maps = google.maps;
-      debugger
       const mapRef = this.refs.map;
       const node = ReactDOM.findDOMNode(mapRef);
 

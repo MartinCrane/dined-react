@@ -41,6 +41,7 @@ export class Search extends Component {
             results: new_array
           })
         })
+
   }
 
   render(){
@@ -53,7 +54,7 @@ export class Search extends Component {
                   <InputGroup>
                       <FormControl  type="text"
                                     value={this.state.field}
-                                    placeholder="Field"
+                                    placeholder="Search by ZipCode"
                                     onChange={this.handleChange.bind(null, "field")}
                                     />
                       <InputGroup.Button>
@@ -70,7 +71,7 @@ export class Search extends Component {
                       </div>
                     </Collapse>
                   <Button type="submit">
-                      Submit! 
+                      Submit!
                   </Button>
               </FormGroup>
         </form>
