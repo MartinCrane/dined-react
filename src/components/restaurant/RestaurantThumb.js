@@ -63,15 +63,12 @@ const mapDispatchToProps = (dispatch) => {
     removeFromFavorites: removeFromFavorites
   }, dispatch)
 }
-<<<<<<< HEAD
-=======
 
 const mapStateToProps = (state)=>{
   return{
     login: state.account.login
   }
 }
->>>>>>> added filter so search results do not show restaurants already in favorites need to hook up and refresh the component
 
 
 export const ConnectedRestaurantThumb = connect(null,mapDispatchToProps)(RestaurantThumb)
