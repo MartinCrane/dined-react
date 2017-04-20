@@ -17,6 +17,7 @@ class App extends Component {
     let logout = <div> <ConnectedLogin /></div>
 
     return (
+      <div>
       <Grid>
         <Row className="container" >
           <ConnectedNavigation/>
@@ -24,10 +25,8 @@ class App extends Component {
         <Row className="container">
           {this.props.login ? <ConnectedMain /> : logout}
         </Row>
-
       </Grid>
-
-
+      </div>
     );
   }
 }
