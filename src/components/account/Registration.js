@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import {connect} from 'react-redux'
-import axios from 'axios'
+
 import { setLogin } from '../../actions/setLogin'
 import { accountRegister } from '../../actions/account'
 
@@ -41,7 +41,7 @@ export class Registration extends Component {
 
   render() {
     return(<div>
-      <form onSubmit={(event) => this.handleSubmit(event)} className="form">
+      <form onSubmit={(event) => this.handleSubmit(event)} className="grey">
             <h1>Registration</h1>
             <p>
               <input

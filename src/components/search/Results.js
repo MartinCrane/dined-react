@@ -10,14 +10,14 @@ export class Results extends Component {
   }
 
   render(){
-    let restaurantThumbList=this.props.results.map((restaurant, index) =>
-            <ConnectedRestaurantThumb key={index} restaurant={restaurant} />)
+    let restaurantThumbList = this.props.results.map((restaurant, index) =>
+            <ConnectedRestaurantThumb key={index} restaurant={restaurant} action={"Add to Favorites"}/>)
+
 
     return(
         <div className="resultsContainer">
           {restaurantThumbList}
         </div>
-
     )
   }
 }
