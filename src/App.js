@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Row, Col } from 'react-bootstrap';
 import { ConnectedLogin } from './components/account/Login'
-import { ConnectedLogout } from './components/account/Logout'
 import { ConnectedSearch } from './components/search/Search'
 import { ConnectedRegister } from './components/account/Registration'
 import { Main } from './components/panels/Main'
@@ -15,7 +14,7 @@ import './App.css';
 class App extends Component {
 
   render() {
-    let login = <div> <ConnectedLogout /> <ConnectedSearch /></div>
+    let login = <div> <ConnectedSearch /></div>
     let logout = <div> <ConnectedLogin /></div>
 
     return (
