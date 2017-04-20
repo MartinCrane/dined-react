@@ -5,8 +5,6 @@ import { connect } from 'react-redux'
 import { addToFavorites, removeFromFavorites } from '../../actions/favorites'
 import { updateAddFavoritesServer, updateDeleteFavoritesServer } from '../../actions/favorites'
 
-
-
 export class RestaurantThumb extends Component {
   constructor(){
     super();
@@ -24,29 +22,23 @@ export class RestaurantThumb extends Component {
       updateDeleteFavoritesServer(this.props.restaurant)
       this.props.removeFromFavorites(this.props.restaurant)
     }
-  }
 
+  }
   price_function(price){
     switch (price) {
       case price = "":
         return "N/A"
-        break;
       case price = 1:
         return "$"
-        break;
       case price = 2:
         return "$$"
-        break;
       case price = 3:
         return "$$$"
-        break;
       case price = 4:
         return "$$$$"
-        break;
       default:
           return "N/A"
     }
-
   }
 
   render(){
@@ -59,15 +51,13 @@ export class RestaurantThumb extends Component {
 
     let details = <div>
                     <Button bsStyle="primary" bsSize="xsmall" onClick={ ()=> this.setState({ open: !this.state.open })}>
-                      {this.state.open ? 'Less Details' : 'More Details'}
+                        {this.state.open ? 'Less Details' : 'More Details'}
                     </Button>
                       <Collapse in={this.state.open}>
                         <div>
-                          <h2>{this.props.restaurant.name}</h2>
-                          <h2>{this.props.restaurant.address}</h2>
-                          <h2>{this.props.restaurant.price}</h2>
-                          <h2>{this.props.restaurant.rating}</h2>
-                          <Image src={this.props.restaurant.image_url} responsive />
+                            <br></br>
+                            <Image src={this.props.restaurant.image_url} responsive />
+                            <h1>MAPCOMPONENT</h1>
                         </div>
                       </Collapse>
                   </div>

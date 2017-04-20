@@ -19,11 +19,9 @@ export class MaybeMap extends Component {
   //   }
 
   loadMap() {
-    debugger
     if (this.props && this.props.google) {
       const {google} = this.props;
       const maps = google.maps;
-      debugger
       const mapRef = this.refs.map;
       const node = ReactDOM.findDOMNode(mapRef);
 
