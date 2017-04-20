@@ -34,6 +34,7 @@ const mapDispatchToProps = (dispatch) => {
     addToFavorites: addToFavorites
   }, dispatch)
 }
+
 const mapStateToProps = (state)=>{
   return{
     login: state.account.login

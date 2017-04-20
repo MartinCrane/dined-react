@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Results } from './Results'
+import { connect } from 'react-redux'
 
 
 export class Search extends Component {
-
   constructor(){
     super()
     this.state = {
@@ -15,6 +15,7 @@ export class Search extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
+
   handleChange(field, evt) {
     this.setState({
       [field]: evt.target.value
@@ -23,17 +24,23 @@ export class Search extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    return fetch(`http://localhost:4000/zip_view/${this.state.field}`, {
+    fetch(`http://localhost:4000/zip_view/${this.state.field}`,
+      {
       method: 'post',
       headers: {
         Authorization: `${localStorage.jwt}`,
       }
     }).then(res => res.json())
         .then(res => {
+          var self = this
+          let favorites_id = self.props.favorites.map((fav)=> {return fav.id})
+
+          let new_array = res.filter((r)=> !favorites_id.includes(r.id))
           this.setState({
-            results: res
+            results: new_array
           })
         })
+
   }
 
   render(){
@@ -51,7 +58,14 @@ export class Search extends Component {
         </form>
           <Results results={this.state.results} />
         </div>
-
     )
   }
 }
+
+const mapStateToProps = (state)=>{
+  return{
+    favorites: state.favorites.restaurants
+  }
+}
+
+export const ConnectedSearch = connect(mapStateToProps)(Search)
