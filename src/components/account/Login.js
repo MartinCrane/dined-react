@@ -32,11 +32,9 @@ export class Login extends Component {
     })
   }
 
-
-
   render(){
     return(<div>
-      <form onSubmit={(event) => this.handleSubmit(event)} className="form" >
+      <form onSubmit={(event) => this.handleSubmit(event)} className="grey" >
         <h1>Login</h1>
         <p>
           <input
@@ -60,17 +58,17 @@ export class Login extends Component {
   }
 }
 
-    const mapDispatchToProps = (dispatch) => {
-      return bindActionCreators({
-        setLogin: setLogin,
-        setFavorites: setFavorites
-      }, dispatch)
-    }
+  const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({
+      setLogin: setLogin,
+      setFavorites: setFavorites
+    }, dispatch)
+  }
 
-    const mapStateToProps = (state)=>{
-      return{
-        login: state.account.login,
-      }
-}
+  const mapStateToProps = (state)=>{
+    return{
+      login: state.account.login,
+    }
+  }
 
 export const ConnectedLogin = connect(mapStateToProps,mapDispatchToProps)(Login)

@@ -1,4 +1,4 @@
-<script type='text/javascript' src='config.js'></script>
+
 <script type='text/javascript' src='script.js></script>'
 
 var googleapi = config.GOOGLE_API;

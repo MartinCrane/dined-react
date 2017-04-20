@@ -1,16 +1,24 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
+import { Row, Col } from 'react-bootstrap';
+import { Search } from '../../components/search/Search'
+import { ConnectedFavorites } from '../../components/favorites/Favorites'
 
-import { Search } from './components/search/Search'
 
-class Main extends Component {
-
+export class Main extends Component {
   render() {
 
     return (
+      <div>
+        <Row className="container">
+          <Col sm={6} md={6} className="grey">
+            <Search/>
+          </Col>
+          <Col sm={6} md={6} className="grey">
+            <ConnectedFavorites/>
+          </Col>
 
+        </Row>
+      </div>
     )
   }
-
 }

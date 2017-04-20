@@ -1,23 +1,30 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { Row, Col } from 'react-bootstrap';
 import { ConnectedLogin } from './components/account/Login'
-import { ConnectedLogout } from './components/account/Logout'
-import { Search } from './components/search/Search'
+import { ConnectedRegister } from './components/account/Registration'
+import { Main } from './components/panels/Main'
+import { ConnectedNavigation } from './components/panels/Navigation'
+import logo from './logo.svg';
+
 
 import './App.css';
 
 class App extends Component {
 
   render() {
-    let login = <div> <ConnectedLogout /> <Search /></div>
-    let logout = <div> <ConnectedLogin /></div>
+
+    let logout = <div> <ConnectedLogin /><ConnectedRegister /></div>
 
     return (
-        <div>
-          {/* {this.props.login ? login : logout} */}
-          {login}
-          {logout}
-        </div>
+      <div>
+        <Row className="container" >
+          <ConnectedNavigation/>
+        </Row>
+        <Row className="container">
+          {this.props.login ? <Main /> : logout}
+        </Row>
+      </div>
     );
   }
 }
