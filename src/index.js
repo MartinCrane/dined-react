@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import thunk from 'redux-thunk'
-import axios from 'axios'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import { ConnectedApp } from './App';

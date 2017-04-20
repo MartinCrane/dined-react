@@ -44,13 +44,8 @@ export const restoreAccount = (store) =>{
       headers: {
         Authorization: `${localStorage.jwt}`,
         }
-      }).
-      then(res => res.json()).
-      then(res => {
-        let log = false
-        if (res.logged_in === "true") {
-          log = true
-        }
+      }).then(res => res.json())
+      .then(res => {
         store.dispatch({type: 'ADD_TO_FAVORITES', payload: res.favorites})
         store.dispatch({type: 'SET_LOGIN', payload: {login: true, email: res.email}})
       }).catch(function(err) {
