@@ -9,7 +9,9 @@ h1 {
 h2 {
   font-size: 3em
 }
-
+p {
+  font-size: 2em
+}
 .grey {
   padding: 2em;
   border-width: 4px;

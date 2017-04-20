@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { MenuItem, NavDropdown, Nav, NavItem, Navbar, Row, Col, Button } from 'react-bootstrap';
-import axios from 'axios'
+import { MenuItem, NavDropdown, Nav, NavItem, Navbar } from 'react-bootstrap';
+
 import { setLogin } from '../../actions/setLogin'
 import { clearFavorites } from '../../actions/favorites'
 
@@ -33,9 +33,9 @@ export class Navigation extends Component {
           <Nav>
             {this.props.login ? logout : null}
             <NavDropdown eventKey={3} title="x" id="basic-nav-dropdown">
-              <MenuItem eventKey={3.1}>Action</MenuItem>
-              <MenuItem eventKey={3.2}>Another action</MenuItem>
-              <MenuItem eventKey={3.3}>Something else here</MenuItem>
+              <MenuItem eventKey={3.1}>Favorites</MenuItem>
+              <MenuItem eventKey={3.2}>Location</MenuItem>
+              <MenuItem eventKey={3.3}>Add Rest</MenuItem>
               <MenuItem divider />
               <MenuItem eventKey={3.4}>Separated link</MenuItem>
             </NavDropdown>

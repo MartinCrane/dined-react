@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux'
+
 import { connect } from 'react-redux'
 import { Row, Col } from 'react-bootstrap';
 import { ConnectedLogin } from './components/account/Login'
 import { ConnectedRegister } from './components/account/Registration'
-import { Search } from './components/search/Search'
+
 import { Main } from './components/panels/Main'
 import { ConnectedNavigation } from './components/panels/Navigation'
 import logo from './logo.svg';
@@ -19,10 +19,10 @@ class App extends Component {
 
     return (
       <div>
-        <Row className="container" fluid="true">
+        <Row className="container" >
           <ConnectedNavigation/>
         </Row>
-        <Row className="container" fluid="true">
+        <Row className="container">
           {this.props.login ? <Main /> : logout}
         </Row>
       </div>

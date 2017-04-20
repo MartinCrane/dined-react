@@ -1,20 +1,25 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux'
+import { ConnectedRestaurantThumb } from '../restaurant/RestaurantThumb'
 
 export class Favorites extends Component {
 
-  constructor(){
-    super()
-    this.state = {
-    };
-  }
-
   render(){
-
+    let restaurantThumbList = this.props.favorites.map((restaurant, index) =>
+            <ConnectedRestaurantThumb key={index} restaurant={restaurant} />)
     return(
-        <div className="resultsContainer">
+        <div >
           <h1>Favorites</h1>
+          {restaurantThumbList}
         </div>
     )
   }
 }
+
+const mapStateToProps = (state) =>{
+  return{
+    favorites: state.favorites.restaurants
+  }
+}
+
+export const ConnectedFavorites = connect(mapStateToProps)(Favorites)

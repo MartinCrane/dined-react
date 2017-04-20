@@ -19,10 +19,9 @@ export class RestaurantThumb extends Component {
   }
 
   render(){
-    let details = <div><h2>name: {this.props.restaurant.name}</h2>
-                  <h2>price: {this.props.restaurant.price} </h2>
-                  <h2>address: {this.props.restaurant.address} </h2>
-                  <Button bsStyle="primary" onClick={(event) => this.handleClick(event)}>Add to Favorites</Button>
+    let details = <div><p>{this.props.restaurant.name} /
+                  {this.props.restaurant.price} /
+                  {this.props.restaurant.address} </p>
                   </div>
     return(
       <div className="restaurantThumb" >

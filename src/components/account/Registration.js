@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import {connect} from 'react-redux'
-import axios from 'axios'
+
 import { setLogin } from '../../actions/setLogin'
 import { accountRegister } from '../../actions/account'
 
