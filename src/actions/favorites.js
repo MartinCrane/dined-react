@@ -31,7 +31,7 @@ export const updateAddFavoritesServer = (restaurant) => {
 }
 
 export const updateDeleteFavoritesServer = (restaurant) => {
-  return fetch(`http://localhost:4000/add_favorites`, {
+  return fetch(`http://localhost:4000/delete_favorites`, {
     method: 'post',
     headers: {
       Authorization: `${localStorage.jwt}`,
