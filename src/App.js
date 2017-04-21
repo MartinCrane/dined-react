@@ -6,6 +6,7 @@ import { ConnectedLogin } from './components/account/Login'
 import { ConnectedSearch } from './components/search/Search'
 import { ConnectedRegister } from './components/account/Registration'
 import { ConnectedNavigation } from './components/panels/Navigation'
+import { ConnectedFilter } from './components/favorites/Filter'
 import logo from './logo.svg';
 
 import './App.css';
@@ -24,6 +25,7 @@ class App extends Component {
         </Row>
         <Row className="container">
           {this.props.login ? <ConnectedMain /> : logout}
+          <ConnectedFilter/>
         </Row>
       </Grid>
       </div>
