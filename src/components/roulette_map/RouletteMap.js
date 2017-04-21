@@ -20,11 +20,11 @@ export class RouletteMap extends Component {
     super()
     this.state = {
       center: {lat: null, lng: null},
-      zoom: 13
+      zoom: 13,
+      button: 'stop'
     }
-
-
     this.spin = this.spin.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
 
@@ -32,27 +32,44 @@ export class RouletteMap extends Component {
     $(".roller ul").css('animation', 'scroll-numbers 1s linear infinite');
     $(".stop").text("Stop").off().on("click", stop);
   }
-  
+
   pickRandomIndex(){
     return Math.floor(Math.random() * ($(".roller li").length - 1 + 1));
   }
 
-  // geocodeAddress(addr)
-  //
-  //
-  // stop(){
-  //   var randomIndex = this.pickRandomIndex();
-  //   var city = $($(".roller li").get(randomIndex)).text();
-  //   var top = (randomIndex * -2);
-  //   $(".roller ul").css({  "top": top+"em", "animation": "none"  });
-  //   geocodeAddress(city);
-  //   $(".stop").text("Respin").off().on("click", this.spin);
-  // }
+  stop(){
+    if (this.state.button === 'stop'){
+      var randomIndex = this.pickRandomIndex();
+      var city = $($(".roller li").get(randomIndex)).text();
+      var top = (randomIndex * -2);
+      $(".roller ul").css({  "top": top+"em", "animation": "none"  });
+      $(".stop").text("Respin").off().on("click", this.spin)
 
-componentDidMount(){
-  this.spin()
-}
+      let randrestaurant = this.props.favorites.filter((res)=> res.name === city)
 
+      let lat = randrestaurant[0].latitude
+      let lng = randrestaurant[0].longitude
+
+      this.setState({
+        button: 'respin',
+        center: {lat: lat, lng: lng}
+      })
+    }else{
+      this.setState({
+        button: 'stop'
+      })
+      this.spin()
+    }
+  }
+
+  componentDidMount(){
+    this.spin()
+  }
+
+  handleClick(event){
+    event.preventDefault()
+    this.stop()
+  }
 
   render() {
     const results = this.props.favorites.map((restaurant)=>{
@@ -67,7 +84,7 @@ componentDidMount(){
         		</ul>
         	</div>
         	<footer>
-        		<button className="stop">Stop</button>
+        		<button className="stop" onClick={(event)=> this.handleClick(event)} >Stop</button>
         	</footer>
         </section>
       )
