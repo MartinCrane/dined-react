@@ -9,6 +9,7 @@ import { ConnectedRoulette } from '../roulette_map/RouletteMap'
 export class Main extends Component {
 
   render() {
+
     let search = <Col sm={6} md={6} ><ConnectedSearch/></Col>
     let favorites = <Col ><ConnectedFavorites/></Col>
     let map = <ConnectedMap />

@@ -41,7 +41,6 @@ export class Yelp extends Component {
             results: new_array
           })
         })
-
   }
 
   render(){

@@ -3,6 +3,7 @@ import { Button, Collapse, Well, Image } from 'react-bootstrap';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { addToFavorites, removeFromFavorites } from '../../actions/favorites'
+import { price_function } from '../../actions/restaurant'
 import { updateAddFavoritesServer, updateDeleteFavoritesServer } from '../../actions/favorites'
 
 
@@ -26,35 +27,13 @@ export class RestaurantThumb extends Component {
       this.props.removeFromFavorites(this.props.restaurant)
     }
     this.props.removeFromDisplay(this.props.restaurant.yelp_id)
-  }
 
-
-  price_function(price){
-    switch (price) {
-      case price = "":
-        return "N/A"
-        break;
-      case price = 1:
-        return "$"
-        break;
-      case price = 2:
-        return "$$"
-        break;
-      case price = 3:
-        return "$$$"
-        break;
-      case price = 4:
-        return "$$$$"
-        break;
-      default:
-          return "N/A"
-    }
   }
 
   render(){
     let title = <div>
                   <h1>{this.props.restaurant.name}</h1>
-                  <h1>Price Range: {this.price_function(this.props.restaurant.price)}</h1>
+                  <h1>Price Range: {price_function(this.props.restaurant.price)}</h1>
                   <h1>{this.props.restaurant.address} </h1>
                   <h1>Rating: {this.props.restaurant.rating}</h1>
                 </div>
@@ -74,10 +53,19 @@ export class RestaurantThumb extends Component {
                       </Collapse>
                   </div>
 
+    let action = <Button bsStyle="primary" bsSize="xsmall" onClick={this.handleClick}>{this.props.action}</Button>
+
     return(
       <div className="restaurantThumb" >
           {title}
-          <Button bsStyle="primary" bsSize="xsmall" onClick={this.handleClick}>{this.props.action}</Button>
+          <br></br>
+          <ButtonToolbar>
+            {action}
+            <Button bsStyle="primary" bsSize="xsmall" onClick={ () => this.setState({ open: !this.state.open })}>
+              {this.state.open ? 'Less Details' : 'More Details'}
+            </Button>
+
+          </ButtonToolbar>
           {details}
       </div>
     )
