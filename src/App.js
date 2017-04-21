@@ -11,7 +11,7 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-
+  
   render() {
     let login = <div> <ConnectedSearch /></div>
     let logout = <div> <ConnectedLogin /></div>
