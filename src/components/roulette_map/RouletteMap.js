@@ -29,7 +29,7 @@ export class RouletteMap extends Component {
 
 
   spin(){
-    $(".roller ul").css('animation', 'scroll-numbers 1s linear infinite');
+    $(".roller ul").css('animation', 'scroll-numbers 0.5s linear infinite');
     $(".stop").text("Stop").off().on("click", stop);
   }
 
