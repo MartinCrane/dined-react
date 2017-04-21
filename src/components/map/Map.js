@@ -45,13 +45,13 @@ export class SimpleMap extends Component {
 
       if(!!(this.state.center.lat && this.state.center.lng)){
         geoLocationReady = <GoogleMapReact
-                                    bootstrapURLKeys={{
-                                      key: 'AIzaSyCjef7cMcrZYQfvEqlTFvvn7VqKTBDoTvE',
-                                      language: 'en'
-                                    }}
+                            bootstrapURLKeys={{
+                              key: 'AIzaSyCjef7cMcrZYQfvEqlTFvvn7VqKTBDoTvE',
+                              language: 'en'
+                            }}
                             defaultCenter={this.state.center}
                             defaultZoom={this.state.zoom}
-                          >
+                            >
                             {markers}
                           </GoogleMapReact>
       }else{

@@ -1,6 +1,10 @@
+
+
 export const filterFavorites = (state, favorites) =>{
+
   let price = []
   let category =['food']
+  let coordinates = {}
 
     if (!!state.price1) {
       price.push(1)
@@ -17,19 +21,19 @@ export const filterFavorites = (state, favorites) =>{
     if (!!state.price4) {
       price.push(4)
     }
-    if (!!state.userCategoryA) {
-    }
-    if (!!state.userCategoryB) {
-    }
-    if (!!state.userCategoryC) {
-    }
-    if (!!state.userCategoryD) {
+
+    function locationTest(lat, lng) {
+      return lat < state.nLat && lat > state.sLat && lng > state.wLng && lng < state.eLng
     }
 
-    if (price.length === 0) {
+    if (price.length === 0 && !state.mapUse) {
       return favorites
-    } else {
+    } else if (price.length !== 0 && !state.mapUse) {
       return favorites.filter((rest) => price.indexOf(rest.price) !== -1)
+    } else if (price.length === 0 && state.mapUse) {
+      return favorites.filter((rest) => locationTest(rest.latitude, rest.longitude))
+    } else {
+      let favByPrice = favorites.filter((rest) => price.indexOf(rest.price) !== -1)
+      return favByPrice.filter((rest) => locationTest(rest.latitude, rest.longitude))
     }
-
 }
