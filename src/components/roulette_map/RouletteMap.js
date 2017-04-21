@@ -32,10 +32,10 @@ export class RouletteMap extends Component {
     $(".roller ul").css('animation', 'scroll-numbers 1s linear infinite');
     $(".stop").text("Stop").off().on("click", stop);
   }
-  //
-  // pickRandomIndex(){
-  //   return Math.floor(Math.random() * ($(".roller li").length - 1 + 1));
-  // }
+  
+  pickRandomIndex(){
+    return Math.floor(Math.random() * ($(".roller li").length - 1 + 1));
+  }
 
   // geocodeAddress(addr)
   //
