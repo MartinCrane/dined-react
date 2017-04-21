@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Collapse, Well, Image } from 'react-bootstrap';
+import { Button, Collapse, Well, Image, ButtonToolbar } from 'react-bootstrap';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { addToFavorites, removeFromFavorites } from '../../actions/favorites'
@@ -39,15 +39,8 @@ export class RestaurantThumb extends Component {
                 </div>
 
     let details = <div>
-                    <Button bsStyle="primary" bsSize="xsmall" onClick={ ()=> this.setState({ open: !this.state.open })}>
-                      {this.state.open ? 'Less Details' : 'More Details'}
-                    </Button>
                       <Collapse in={this.state.open}>
                         <div>
-                          <h2>{this.props.restaurant.name}</h2>
-                          <h2>{this.props.restaurant.address}</h2>
-                          <h2>{this.props.restaurant.price}</h2>
-                          <h2>{this.props.restaurant.rating}</h2>
                           <Image src={this.props.restaurant.image_url} responsive />
                         </div>
                       </Collapse>
@@ -66,6 +59,7 @@ export class RestaurantThumb extends Component {
             </Button>
 
           </ButtonToolbar>
+          <br></br>
           {details}
       </div>
     )
