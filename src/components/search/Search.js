@@ -3,7 +3,6 @@ import { Results } from './Results'
 import { connect } from 'react-redux'
 import { FormGroup, ControlLabel, FormControl, HelpBlock, Button, Radio, Collapse, InputGroup, Row, Col } from 'react-bootstrap';
 import { formatResults, formatApiCallString } from '../../actions/yelpApiFormat'
-import { RangeSlider } from 'reactrangeslider';
 
 export class Search extends Component {
   constructor(){

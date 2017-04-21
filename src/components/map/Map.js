@@ -2,90 +2,83 @@ import { Component } from 'react'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import GoogleMapReact from 'google-map-react';
+import { setLocation } from '../../actions/setLocation'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
-
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+const MarkerComponent = ({ text }) => <div style={{
+    position: 'relative', color: 'white', background: 'red',
+    height: 40, width: 60, top: -20, left: -30,
+  }}>
+    {text}
+  </div>
 
 export class SimpleMap extends Component {
-  static defaultProps = {
-    center: {lat: 59.95, lng: 30.33},
-    zoom: 11
-  };
+  constructor(){
+    super()
+    this.state = {
+      center: {lat: null, lng: null},
+      zoom: 13
+    }
+  }
+
+  componentWillMount() {
+      navigator.geolocation.getCurrentPosition((position) => {
+          var geoCenter = {center: {lat: position.coords.latitude, lng: position.coords.longitude}};
+          this.props.setLocation(geoCenter)
+          this.setState(geoCenter)
+        },
+        (error) => alert(JSON.stringify(error)),
+        {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+    )}
+
 
   render() {
+
+    let markers = []
+
+    this.props.favorites.forEach((rest, index) => {
+      markers.push(<MarkerComponent key={index} lat={rest.latitude} lng={rest.longitude} /> )
+    });
+
+    let geoLocationReady
+
+      if(!!(this.state.center.lat && this.state.center.lng)){
+        geoLocationReady = <GoogleMapReact
+                                    bootstrapURLKeys={{
+                                      key: 'AIzaSyCjef7cMcrZYQfvEqlTFvvn7VqKTBDoTvE',
+                                      language: 'en'
+                                    }}
+                            defaultCenter={this.state.center}
+                            defaultZoom={this.state.zoom}
+                          >
+                            {markers}
+                          </GoogleMapReact>
+      }else{
+        geoLocationReady = <h1>`Loading Map...`</h1>
+      }
+
     return (
-      <GoogleMapReact
-          bootstrapURLKeys={{
-            key: 'GOOGLE_API_KEY_RIGHT_HERE',
-            language: 'en'
-          }}
-        defaultCenter={this.props.center}
-        defaultZoom={this.props.zoom}
-      >
-        <AnyReactComponent
-          lat={59.955413}
-          lng={30.337844}
-          text={'Kreyser Avrora'}
-        />
-      </GoogleMapReact>
-    );
+      <div className="map">
+      {geoLocationReady}
+      </div>
+    )
   }
+
 }
 
 
-//
-//
-// export class Map extends Component {
-//   // constructor() {
-//   //   super()
-//   //   this.state = {
-//   //     lat: null,
-//   //     long:null,
-//   //     zoom: 16,
-//   //     wifis: []
-//   //   }
-//   // }
-//   // componentWillMount(){
-//   //   navigator.geolocation.getCurrentPosition((position) => {
-//   //     this.setState({
-//   //       lat: position.coords.latitude,
-//   //       long: position.coords.longitude
-//   //     })
-//   //   })
-//   // }
-//
-//   componentDidMount(){
-//     this.loadMap()
-//   }
-//
-//   loadMap() {
-//     debugger
-//     if (this.props && this.props.google) {
-//       const {google} = this.props;
-//       const maps = google.maps;
-//       const mapRef = this.refs.map;
-//       const node = ReactDOM.findDOMNode(mapRef);
-//
-//       let zoom = 14;
-//       let lat = 37.774929;
-//       let lng = -122.419416;
-//       const center = new maps.LatLng(lat, lng);
-//       const mapConfig = Object.assign({}, {
-//         center: center,
-//         zoom: zoom
-//       })
-//       this.map = new maps.Map(node, mapConfig)
-//     }
-//
-//   }
-//
-//     render() {
-//       return(
-//           <div ref='map'>
-//             Loading map . . .
-//           </div>
-//       )
-//     }
-//
-//
-// }
+  const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({
+      setLocation: setLocation
+    }, dispatch)
+  }
+
+  const mapStateToProps = (state) =>{
+    return{
+      center: state.map.center,
+      favorites: state.favorites.restaurants
+    }
+  }
+
+  export const ConnectedMap = connect(mapStateToProps,mapDispatchToProps)(SimpleMap)

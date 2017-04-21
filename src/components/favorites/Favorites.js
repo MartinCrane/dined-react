@@ -10,7 +10,6 @@ export class Favorites extends Component {
         return
     }
   render(){
-
     let restaurantThumbList = this.props.favorites.map((restaurant, index) =>
           <Col sm={4} md={4}><ConnectedRestaurantThumb key={index}
                                                        restaurant={restaurant}
@@ -31,7 +30,8 @@ export class Favorites extends Component {
 
 const mapStateToProps = (state) =>{
   return{
-    favorites: state.favorites.restaurants
+    favorites: state.favorites.restaurants,
+    center: state.map.center,
   }
 }
 

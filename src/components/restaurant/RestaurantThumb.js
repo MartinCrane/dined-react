@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import { Button, Collapse, Well, Image } from 'react-bootstrap';
+import { Button, Collapse, Well, Image, ButtonToolbar } from 'react-bootstrap';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { addToFavorites, removeFromFavorites } from '../../actions/favorites'
 import { price_function } from '../../actions/restaurant'
 import { updateAddFavoritesServer, updateDeleteFavoritesServer } from '../../actions/favorites'
-
-
 
 export class RestaurantThumb extends Component {
   constructor(){
@@ -25,8 +23,6 @@ export class RestaurantThumb extends Component {
       updateDeleteFavoritesServer(this.props.restaurant)
       this.props.removeFromFavorites(this.props.restaurant)
     }
-    this.props.removeFromDisplay(this.props.restaurant.yelp_id)
-  }
 
   render(){
     let title = <div>
@@ -37,25 +33,30 @@ export class RestaurantThumb extends Component {
                 </div>
 
     let details = <div>
-                    <Button bsStyle="primary" bsSize="xsmall" onClick={ ()=> this.setState({ open: !this.state.open })}>
-                      {this.state.open ? 'Less Details' : 'More Details'}
-                    </Button>
+                    <br></br>
                       <Collapse in={this.state.open}>
                         <div>
-                          <h2>{this.props.restaurant.name}</h2>
-                          <h2>{this.props.restaurant.address}</h2>
-                          <h2>{this.props.restaurant.price}</h2>
-                          <h2>{this.props.restaurant.rating}</h2>
-                          <Image src={this.props.restaurant.image_url} responsive />
+                            <br></br>
+                            <Image src={this.props.restaurant.image_url} responsive />
+                            <h1>MAP COMPONENT</h1>
                         </div>
                       </Collapse>
                   </div>
+    
     let action = <Button bsStyle="primary" bsSize="xsmall" onClick={this.handleClick}>{this.props.action}</Button>
 
     return(
       <div className="restaurantThumb" >
           {title}
-          {action}
+
+          <br></br>
+          <ButtonToolbar>
+            {action}
+            <Button bsStyle="primary" bsSize="xsmall" onClick={ () => this.setState({ open: !this.state.open })}>
+              {this.state.open ? 'Less Details' : 'More Details'}
+            </Button>
+
+          </ButtonToolbar>
           {details}
       </div>
     )
@@ -73,5 +74,6 @@ const mapStateToProps = (state)=>{
     login: state.account.login
   }
 }
+
 
 export const ConnectedRestaurantThumb = connect(null,mapDispatchToProps)(RestaurantThumb)
