@@ -29,7 +29,7 @@ export class RouletteMap extends Component {
 
 
   spin(){
-    $(".roller ul").css('animation', 'scroll-numbers 0.5s linear infinite');
+    $(".roller ul").css('animation', 'scroll-numbers 1s linear infinite');
     $(".stop").text("Stop").off().on("click", stop);
   }
 
@@ -38,7 +38,6 @@ export class RouletteMap extends Component {
   }
 
   stop(){
-    debugger
     if (this.state.button === 'stop'){
       var randomIndex = this.pickRandomIndex();
       var city = $($(".roller li").get(randomIndex)).text();
@@ -56,7 +55,6 @@ export class RouletteMap extends Component {
         center: {lat: lat, lng: lng}
       })
 
-      debugger
     }else{
       this.setState({
         button: 'stop'
@@ -76,9 +74,7 @@ export class RouletteMap extends Component {
 
 
   render() {
-    debugger
     const location = this.state.center.lat===null? this.props.center : this.state.center
-    debugger
     const results = this.props.favorites.map((restaurant)=>{
       return <li>{restaurant.name}</li>
     })
