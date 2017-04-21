@@ -73,11 +73,11 @@ p {
   top: 0;
   right: 0;
   width: 15vw;
-  height: 100%;
+  height: 2em;
 }
 .spinner footer .stop {
   width: 100%;
-  height: 100%;
+  height: 2em;
 }
 .spinner .stop {
   display: block;
@@ -118,6 +118,7 @@ p {
 .roller ul li {
   display: block;
   text-align: center;
+  height: 2em;
 }
 
 @import url(http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
@@ -126,7 +127,7 @@ p {
     top: 0;
   }
   to {
-    top: -28em;
+    top: -10em;
   }
 }
 @-webkit-keyframes scroll-numbers {
@@ -134,7 +135,7 @@ p {
     top: 0;
   }
   to {
-    top: -28em;
+    top: -10em;
   }
 }
 @keyframes scroll-numbers {
@@ -142,6 +143,6 @@ p {
     top: 0;
   }
   to {
-    top: -28em;
+    top: -10em;
   }
 }
