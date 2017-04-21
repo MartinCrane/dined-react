@@ -25,7 +25,7 @@ export class Navigation extends Component {
   }
 
   render(){
-    let logout = <NavItem eventKey={1} href="#"onClick={(event) => this.logout(event)} >Logout</NavItem>
+    let logout = <NavItem eventKey={1} href="#" onClick={(event) => this.logout(event)} >Logout</NavItem>
     return(
       <div className="logged">
         <Navbar>
@@ -40,6 +40,7 @@ export class Navigation extends Component {
               <MenuItem eventKey={"favorites"} >Favorites</MenuItem>
               <MenuItem eventKey={"map"}>Map</MenuItem>
               <MenuItem eventKey={"search"}>Search</MenuItem>
+              <MenuItem eventKey={"roulette"}>Roulette</MenuItem>
               <MenuItem divider />
               <MenuItem eventKey={3.4}>Separated link</MenuItem>
             </NavDropdown>
