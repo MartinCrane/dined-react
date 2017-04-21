@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Results } from './Results'
 import { connect } from 'react-redux'
-import { FormGroup, ControlLabel, FormControl, HelpBlock, Button, Radio, Collapse, InputGroup } from 'react-bootstrap';
+import { FormGroup, ControlLabel, FormControl, HelpBlock, Button, Radio, Collapse, InputGroup, Row, Col } from 'react-bootstrap';
 import { formatResults, formatApiCallString } from '../../actions/yelpApiFormat'
 import { RangeSlider } from 'reactrangeslider';
 
@@ -31,7 +31,6 @@ export class Search extends Component {
    }
 
    removeFromDisplay(id) {
-
      this.setState({
        results: this.state.results.filter((r) => r.yelp_id != id)
      })
@@ -52,7 +51,7 @@ export class Search extends Component {
         let resultsFormatted = formatResults(res)
         var self = this
         let favorites_id = self.props.favorites.map((fav)=> {return fav.yelp_id})
-        let new_array = resultsFormatted.filter((r)=> !favorites_id.includes(r.id))
+        let new_array = resultsFormatted.filter((r)=> !favorites_id.includes(r.yelp_id))
         this.setState({
           results: new_array
         })
@@ -63,41 +62,40 @@ export class Search extends Component {
       let options = <Button onClick={ ()=> this.setState({ open: !this.state.open })}>See More Options</Button>
 
     return(
-        <div className="form">
+      <Row>
+        <Col xs={10} xsOffset={1}>
           <form onSubmit={event => this.handleSubmit(event)}>
-            <h1>Search</h1>
-              <FormGroup controlId="formBasicText">
-                  <ControlLabel>see controls for details</ControlLabel>
-                  <InputGroup>
+              <FormGroup >
+                  <Col sm={2}>
+                    Name
+                  </Col>
+                  <Col componentClass={ControlLabel} sm={10}>
                       <FormControl  type="text"
                                     value={this.state.field}
                                     placeholder="Search by Name"
                                     onChange={this.handleChange.bind(null, "term")}
                                     />
-                                  <FormControl  type="text"
-                                    value={this.state.field}
-                                    placeholder="Add a Location"
-                                    onChange={this.handleChange.bind(null, "location")}
-                                    />
-                    <InputGroup.Button>
-                       {this.state.open ? null : options}
-                     </InputGroup.Button>
-                  </InputGroup>
-                  <FormControl.Feedback />
-                  <HelpBlock></HelpBlock>
-
-                    <Collapse in={this.state.open}>
-                      <div>
-                        <h1>option3</h1>
-                      </div>
-                    </Collapse>
-                  <Button type="submit">
-                      Submit!
-                  </Button>
+                  </Col>
               </FormGroup>
-        </form>
+              <FormGroup >
+                  <Col sm={2}>
+                    Location
+                  </Col>
+                  <Col componentClass={ControlLabel} sm={10}>
+                    <FormControl  type="text"
+                      value={this.state.field}
+                      placeholder="Add a Location"
+                      onChange={this.handleChange.bind(null, "location")}
+                      />
+                  </Col>
+              </FormGroup>
+              <Button type="submit">
+                Submit!
+              </Button>
+            </form>
           <Results results={this.state.results} removeFromDisplay={this.removeFromDisplay}/>
-        </div>
+        </Col>
+      </Row>
     )
   }
 }

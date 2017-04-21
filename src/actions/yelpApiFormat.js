@@ -1,10 +1,14 @@
 export const formatResults = (array) => {
   let results = []
   array.businesses.forEach((object) => {
+    let price = null
+    if (!!object.price) {
+      price = object.price.length
+    }
     let newRest = {
       name: object.name,
       rating: object.rating,
-      price: object.price,
+      price: price,
       yelp_id: object.id,
       latitude: object.coordinates.latitude,
       longitude: object.coordinates.longitude,

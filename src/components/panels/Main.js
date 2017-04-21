@@ -9,8 +9,8 @@ import { SimpleMap } from '../map/Map'
 export class Main extends Component {
 
   render() {
-    let search = <Col sm={6} md={6} ><ConnectedSearch/></Col>
-    let favorites = <Col ><ConnectedFavorites/></Col>
+    let search = <Col><ConnectedSearch/></Col>
+    let favorites = <Col><ConnectedFavorites/></Col>
     let map = <SimpleMap />
 
   return (

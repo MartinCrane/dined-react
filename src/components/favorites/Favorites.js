@@ -18,7 +18,6 @@ export class Favorites extends Component {
 
     return(
         <div>
-          <h1>Favorites</h1>
           {restaurantThumbList}
         </div>
     )
