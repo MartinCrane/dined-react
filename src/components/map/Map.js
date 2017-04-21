@@ -17,7 +17,7 @@ export class SimpleMap extends Component {
   constructor(){
     super()
     this.state = {
-      center: {lat: 40.762366, lng: -73.983886},
+      center: {lat: null, lng: null},
       zoom: 13
     }
   }
@@ -41,19 +41,29 @@ export class SimpleMap extends Component {
       markers.push(<MarkerComponent key={index} lat={rest.latitude} lng={rest.longitude} /> )
     });
 
+    let geoLocationReady
+
+      if(!!(this.state.center.lat && this.state.center.lng)){
+        geoLocationReady = <GoogleMapReact
+                                    bootstrapURLKeys={{
+                                      key: 'AIzaSyCjef7cMcrZYQfvEqlTFvvn7VqKTBDoTvE',
+                                      language: 'en'
+                                    }}
+                            defaultCenter={this.state.center}
+                            defaultZoom={this.state.zoom}
+                          >
+                            {markers}
+                          </GoogleMapReact>
+      }else{
+        geoLocationReady = <h1>`Loading Map...`</h1>
+      }
+
     return (
-      <GoogleMapReact
-          bootstrapURLKeys={{
-            key: 'AIzaSyCjef7cMcrZYQfvEqlTFvvn7VqKTBDoTvE',
-            language: 'en'
-          }}
-        defaultCenter={this.state.center}
-        defaultZoom={this.state.zoom}
-      >
-      {markers}
-      </GoogleMapReact>
+      <div className="map">
+      {geoLocationReady}
+      </div>
     )
-  };
+  }
 
 }
 
