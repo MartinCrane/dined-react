@@ -23,6 +23,8 @@ export class RestaurantThumb extends Component {
       updateDeleteFavoritesServer(this.props.restaurant)
       this.props.removeFromFavorites(this.props.restaurant)
     }
+    this.props.removeFromDisplay(this.props.restaurant.yelp_id)
+  }
 
   render(){
     let title = <div>
@@ -42,7 +44,7 @@ export class RestaurantThumb extends Component {
                         </div>
                       </Collapse>
                   </div>
-    
+
     let action = <Button bsStyle="primary" bsSize="xsmall" onClick={this.handleClick}>{this.props.action}</Button>
 
     return(
