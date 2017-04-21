@@ -48,6 +48,9 @@ export class RouletteMap extends Component {
         button: 'respin'
       })
     }else{
+      this.setState({
+        button: 'stop'
+      })
       this.spin()
     }
   }
