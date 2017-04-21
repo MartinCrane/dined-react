@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { ConnectedRestaurantThumb } from '../restaurant/RestaurantThumb'
 import { Col } from 'react-bootstrap';
 import { ButtonToolbar } from 'react-bootstrap';
+import { ConnectedFilter } from './Filter'
 
 export class Favorites extends Component {
     removeFromDisplay() {
@@ -14,11 +15,15 @@ export class Favorites extends Component {
           <Col sm={4} md={4}><ConnectedRestaurantThumb key={index}
                                                        restaurant={restaurant}
                                                        action={"Remove from Favorites"}
-                                                       removeFromDisplay = {this.removeFromDisplay}/></Col>)
+                                                       removeFromDisplay = {this.removeFromDisplay}/>
+                                                       </Col>)
 
     return(
         <div>
+          <ConnectedFilter/>
+          <div>
           {restaurantThumbList}
+          </div>
         </div>
     )
   }
