@@ -124,15 +124,15 @@ p {
 @import url(http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
 @-moz-keyframes scroll-numbers {
   from {
-    top: 0;
+    top: -10em;
   }
   to {
-    top: -10em;
+    top: -8em;
   }
 }
 @-webkit-keyframes scroll-numbers {
   from {
-    top: 0;
+    top: -10em;
   }
   to {
     top: -10em;
@@ -140,9 +140,9 @@ p {
 }
 @keyframes scroll-numbers {
   from {
-    top: 0;
+    top: auto;
   }
   to {
-    top: -10em;
+    top: -4em;
   }
 }
