@@ -44,8 +44,15 @@ export class RouletteMap extends Component {
       var top = (randomIndex * -2);
       $(".roller ul").css({  "top": top+"em", "animation": "none"  });
       $(".stop").text("Respin").off().on("click", this.spin)
+
+      let randrestaurant = this.props.favorites.filter((res)=> res.name === city)
+
+      let lat = randrestaurant[0].latitude
+      let lng = randrestaurant[0].longitude
+
       this.setState({
-        button: 'respin'
+        button: 'respin',
+        center: {lat: lat, lng: lng}
       })
     }else{
       this.setState({
