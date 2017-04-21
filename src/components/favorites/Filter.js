@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { ConnectedRestaurantThumb } from '../restaurant/RestaurantThumb'
-import { ButtonToolbar, ButtonGroup, Button, DropdownButton, MenuItem, Col, Row, Collapse } from 'react-bootstrap';
+import { ButtonToolbar, ButtonGroup, Button, Col, Row, Popover } from 'react-bootstrap';
 import { Favorites } from './Favorites'
+import MapTick  from '../map/MapTick'
 import { filterFavorites } from '../../actions/filter'
 import  GoogleMapReact  from 'google-map-react';
 
@@ -44,10 +45,6 @@ export class Filter extends Component {
       wLng: event.bounds.sw.lng,
       eLng: event.bounds.se.lng,
     })
-    console.log(this.state.nLat)
-    console.log(this.state.sLat)
-    console.log(this.state.wLng)
-    console.log(this.state.eLng)
   }
 
   openMapTray(event){
@@ -80,6 +77,11 @@ export class Filter extends Component {
                              <Col sm={2} md={2}></Col>
                             </Row>
 
+  const restComponents = filterFavorites(this.state, this.props.favorites).map((fav, index) => {<MapTick name={fav.name}
+                                                                                                          lat={fav.latitude}
+                                                                                                          lng={fav.longitude}
+                                                                                                          key={index}/>})
+
   const googleMapTray =  <Row>
                            <Col sm={2} md={2}></Col>
                            <Col sm={8} md={8}>
@@ -92,11 +94,17 @@ export class Filter extends Component {
                                  key: 'AIzaSyCjef7cMcrZYQfvEqlTFvvn7VqKTBDoTvE',
                                  language: 'en'
                                }}>
+                               {filterFavorites(this.state, this.props.favorites).map((fav, index) => <MapTick name={fav.name}
+                               lat={fav.latitude}
+                               lng={fav.longitude}
+                               key={index}/>)}
+
                              </GoogleMapReact>
                              </div>
                            </Col>
                            <Col sm={2} md={2}></Col>
                          </Row>
+
 
     return(
       <div>
