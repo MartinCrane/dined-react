@@ -55,65 +55,78 @@ export class Filter extends Component {
   }
 
   render(){
-    const filterInterface = <Row>
-                              <Col sm={2} md={2}></Col>
-                              <Col sm={8} md={8}><ButtonGroup justified>
-                                 <Button bsStyle={this.state.price1 ? 'primary' : null}
-                                         href="#"
-                                         onClick={this.handleClick.bind(null, "price1")}>$</Button>
-                                 <Button bsStyle={this.state.price2 ? 'primary' : null}
-                                         href="#"
-                                         onClick={this.handleClick.bind(null, "price2")}>$$</Button>
-                                 <Button bsStyle={this.state.price3 ? 'primary' : null}
-                                         href="#"
-                                         onClick={this.handleClick.bind(null, "price3")}>$$$</Button>
-                                 <Button bsStyle={this.state.price4 ? 'primary' : null}
-                                         href="#"
-                                         onClick={this.handleClick.bind(null, "price4")}>$$$$</Button>
-                                 <Button bsStyle={this.state.mapUse ? 'primary' : null}
-                                         href="#"
-                                         onClick={this.openMapTray}>Map Filter</Button>
-                                 </ButtonGroup></Col>
-                             <Col sm={2} md={2}></Col>
-                            </Row>
+
+  const hoverStyle = {
+                  position: 'fixed',
+
+                }
 
   const restComponents = filterFavorites(this.state, this.props.favorites).map((fav, index) => {<MapTick name={fav.name}
                                                                                                           lat={fav.latitude}
                                                                                                           lng={fav.longitude}
                                                                                                           key={index}/>})
 
-  const googleMapTray =  <Row>
-                           <Col sm={2} md={2}></Col>
-                           <Col sm={8} md={8}>
-                             <div className="map">
-                             <GoogleMapReact
-                               defaultCenter={this.state.center}
-                               onChange={event => this.mapBounds(event)}
-                               defaultZoom={this.state.zoom}
-                               bootstrapURLKeys={{
-                                 key: 'AIzaSyCjef7cMcrZYQfvEqlTFvvn7VqKTBDoTvE',
-                                 language: 'en'
-                               }}>
-                               {filterFavorites(this.state, this.props.favorites).map((fav, index) => <MapTick name={fav.name}
-                               lat={fav.latitude}
-                               lng={fav.longitude}
-                               key={index}/>)}
+  const googleMapTray =  <div>
+                            <Row>
+                             <Col sm={2} md={2}></Col>
+                             <Col sm={8} md={8}>
+                               <div className="filterMap">
+                               <GoogleMapReact
+                                 defaultCenter={this.state.center}
+                                 onChange={event => this.mapBounds(event)}
+                                 defaultZoom={this.state.zoom}
+                                 bootstrapURLKeys={{
+                                   key: 'AIzaSyCjef7cMcrZYQfvEqlTFvvn7VqKTBDoTvE',
+                                   language: 'en'
+                                 }}>
+                                 {filterFavorites(this.state, this.props.favorites).map((fav, index) => <MapTick name={fav.name}
+                                 lat={fav.latitude}
+                                 lng={fav.longitude}
+                                 key={index}/>)}
+                               </GoogleMapReact>
+                               </div>
+                             </Col>
+                             <Col sm={2} md={2}></Col>
+                           </Row>
+                           <Row>
+                           </Row>
+                          </div>
 
-                             </GoogleMapReact>
-                             </div>
-                           </Col>
-                           <Col sm={2} md={2}></Col>
-                         </Row>
 
 
     return(
       <div>
         <div>
-        {filterInterface}
+          <Row className="filterBarStyle">
+            <Col sm={2} md={2}></Col>
+            <Col sm={8} md={8}><ButtonGroup justified>
+               <Button bsStyle={this.state.price1 ? 'primary' : null}
+                       href="#"
+                       onClick={this.handleClick.bind(null, "price1")}>$</Button>
+               <Button bsStyle={this.state.price2 ? 'primary' : null}
+                       href="#"
+                       onClick={this.handleClick.bind(null, "price2")}>$$</Button>
+               <Button bsStyle={this.state.price3 ? 'primary' : null}
+                       href="#"
+                       onClick={this.handleClick.bind(null, "price3")}>$$$</Button>
+               <Button bsStyle={this.state.price4 ? 'primary' : null}
+                       href="#"
+                       onClick={this.handleClick.bind(null, "price4")}>$$$$</Button>
+               <Button bsStyle={this.state.mapUse ? 'primary' : null}
+                       href="#"
+                       onClick={this.openMapTray}>Map Filter</Button>
+               </ButtonGroup></Col>
+           <Col sm={2} md={2}></Col>
+           {this.state.mapUse ? googleMapTray : null }
+          </Row>
+          <Row style={hoverStyle}>
+            {this.state.mapUse ? <Favorites favorites={filterFavorites(this.state, this.props.favorites)}/> : null }
+
+          </Row>
         </div>
-        {this.state.mapUse ? googleMapTray : null }
+
         <div>
-          <Favorites favorites={filterFavorites(this.state, this.props.favorites)}/>
+          {this.state.mapUse ? null : <Favorites favorites={filterFavorites(this.state, this.props.favorites)}/> }
         </div>
       </div>
     )
