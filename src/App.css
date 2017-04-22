@@ -59,7 +59,7 @@ p {
 .spinner {
   margin: 0;
   font-size: 1.5em;
-  position: absolute;
+  position: relative;
   bottom: 2vh;
   left: auto;
   width: 750px;
