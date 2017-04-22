@@ -8,6 +8,7 @@ import { bindActionCreators } from 'redux'
 import { SimpleMap } from '../map/Map'
 import $ from 'jquery'
 import { ButtonToolbar, ButtonGroup, Button, Col, Row, Popover } from 'react-bootstrap';
+import MapTick  from '../map/MapTick'
 
 
 export class RouletteMap extends Component {
@@ -15,8 +16,9 @@ export class RouletteMap extends Component {
     super()
     this.state = {
       center: {lat: null, lng: null},
-      zoom: 13,
-      button: 'stop'
+      zoom: 15,
+      button: 'stop',
+      randrestaurant: null
     }
     this.spin = this.spin.bind(this)
     this.handleClick = this.handleClick.bind(this)
@@ -45,10 +47,10 @@ export class RouletteMap extends Component {
 
       let lat = randrestaurant[0].latitude
       let lng = randrestaurant[0].longitude
-      self = this
       this.setState({
         button: 'respin',
-        center: {lat: lat, lng: lng}
+        center: {lat: lat, lng: lng},
+        randrestaurant: randrestaurant
       })
     }else{
       this.setState({
@@ -69,11 +71,22 @@ export class RouletteMap extends Component {
   }
 
 
+
   render() {
     const location = this.state.center.lat===null? this.props.center : this.state.center
+
     const results = this.props.favorites.map((restaurant)=>{
       return <li>{restaurant.name}</li>
-    })
+    });
+
+    let randRestaurant = []
+      if(this.state.randRestaurant){
+        randRestaurant.push(<MapTick name={this.state.randRestaurant[0].name}
+          lat={this.state.randRestaurant[0].latitude}
+          lng={this.state.randRestaurant[0].longitude}
+          />)
+      }
+
    let maps =
           <Row>
             <Col sm={2} md={2}></Col>
@@ -86,8 +99,10 @@ export class RouletteMap extends Component {
                 }}
                 defaultCenter={this.props.center}
                 center={location}
-                defaultZoom={20}
+                defaultZoom={15}
+                zoom={this.state.zoom}
                >
+               {randRestaurant}
               </GoogleMapReact>
               </div>
               </Col>
