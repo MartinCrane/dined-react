@@ -20,6 +20,7 @@ export class RouletteMap extends Component {
     }
     this.spin = this.spin.bind(this)
     this.handleClick = this.handleClick.bind(this)
+    this.stop = this.stop.bind(this)
   }
 
 
@@ -44,16 +45,16 @@ export class RouletteMap extends Component {
 
       let lat = randrestaurant[0].latitude
       let lng = randrestaurant[0].longitude
-
+      self = this
       this.setState({
         button: 'respin',
         center: {lat: lat, lng: lng}
       })
-
     }else{
       this.setState({
         button: 'stop'
       })
+      self = this
       this.spin()
     }
   }
@@ -73,7 +74,6 @@ export class RouletteMap extends Component {
     const results = this.props.favorites.map((restaurant)=>{
       return <li>{restaurant.name}</li>
     })
-
    let maps =
           <Row>
             <Col sm={2} md={2}></Col>
@@ -84,7 +84,8 @@ export class RouletteMap extends Component {
                 key: 'AIzaSyCjef7cMcrZYQfvEqlTFvvn7VqKTBDoTvE',
                 language: 'en'
                 }}
-                defaultCenter={location}
+                defaultCenter={this.props.center}
+                center={location}
                 defaultZoom={20}
                >
               </GoogleMapReact>
@@ -122,8 +123,6 @@ export class RouletteMap extends Component {
           </div>
       )
   }
-
-
 
 
 }
