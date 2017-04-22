@@ -7,13 +7,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { SimpleMap } from '../map/Map'
 import $ from 'jquery'
+import { ButtonToolbar, ButtonGroup, Button, Col, Row, Popover } from 'react-bootstrap';
 
-const MarkerComponent = ({ text }) => <div style={{
-    position: 'relative', color: 'white', background: 'red',
-    height: 40, width: 60, top: -20, left: -30,
-  }}>
-    {text}
-  </div>
 
 export class RouletteMap extends Component {
   constructor(){
@@ -42,7 +37,7 @@ export class RouletteMap extends Component {
       var randomIndex = this.pickRandomIndex();
       var city = $($(".roller li").get(randomIndex)).text();
       var top = (randomIndex * -2);
-      $(".roller ul").css({  "top": top, "animation": "none"  });
+      $(".roller ul").css({  "top": top+"em", "animation": "none"  });
       $(".stop").text("Respin").off().on("click", this.spin)
 
       let randrestaurant = this.props.favorites.filter((res)=> res.name === city)
@@ -79,33 +74,52 @@ export class RouletteMap extends Component {
       return <li>{restaurant.name}</li>
     })
 
- let maps = <div className="map">
+   let maps =
+          <Row>
+            <Col sm={2} md={2}></Col>
+            <Col sm={8} md={8}>
+              <div className="map">
               <GoogleMapReact
-                    bootstrapURLKeys={{
-                               key: 'AIzaSyCjef7cMcrZYQfvEqlTFvvn7VqKTBDoTvE',
-                               language: 'en'
-                             }}
-                     defaultCenter={location}
-                     defaultZoom={20}
-                   ></GoogleMapReact>
-            </div>
+                bootstrapURLKeys={{
+                key: 'AIzaSyCjef7cMcrZYQfvEqlTFvvn7VqKTBDoTvE',
+                language: 'en'
+                }}
+                defaultCenter={location}
+                defaultZoom={20}
+               >
+              </GoogleMapReact>
+              </div>
+              </Col>
+            <Col sm={2} md={2}></Col>
+          </Row>
 
-let roller = <section className="spinner">
-                  <div className="roller">
-                    <ul>
-                      {results}
-                    </ul>
-                  </div>
-                  <footer>
-                    <button className="stop" onClick={(event)=> this.handleClick(event)} >Stop</button>
-                  </footer>
-              </section>
+    let roller =
+        <Row>
+          <Col sm={2} md={2}></Col>
+          <Col sm={8} md={8}>
+            <section className="spinner">
+            <div className="roller">
+              <ul>
+                {results}
+              </ul>
+            </div>
+            <footer>
+              <button className="stop" onClick={(event)=> this.handleClick(event)} >Stop</button>
+            </footer>
+            </section>
+          </Col>
+          <Col sm={2} md={2}></Col>
+        </Row>
 
       return (
-        <div>
-          <div class="map">{maps}</div>
-          <div>{roller}</div>
-        </div>
+          <div>
+            <div>
+              {maps}
+            </div>
+            <div>
+              {roller}
+            </div>
+          </div>
       )
   }
 

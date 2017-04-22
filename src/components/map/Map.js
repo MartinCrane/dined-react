@@ -5,6 +5,8 @@ import GoogleMapReact from 'google-map-react';
 import { setLocation } from '../../actions/setLocation'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { ButtonToolbar, ButtonGroup, Button, Col, Row, Popover } from 'react-bootstrap';
+
 
 const MarkerComponent = ({ text }) => <div style={{
     position: 'relative', color: 'white', background: 'red',
@@ -44,7 +46,12 @@ export class SimpleMap extends Component {
     let geoLocationReady
 
       if(!!(this.state.center.lat && this.state.center.lng)){
-        geoLocationReady = <GoogleMapReact
+        geoLocationReady =
+        <Row>
+                     <Col sm={2} md={2}></Col>
+                     <Col sm={8} md={8}>
+                       <div className="map">
+                          <GoogleMapReact
                             bootstrapURLKeys={{
                               key: 'AIzaSyCjef7cMcrZYQfvEqlTFvvn7VqKTBDoTvE',
                               language: 'en'
@@ -54,13 +61,18 @@ export class SimpleMap extends Component {
                             >
                             {markers}
                           </GoogleMapReact>
+                          </div>
+                        </Col>
+                        <Col sm={2} md={2}></Col>
+                      </Row>
+
       }else{
         geoLocationReady = <h1>`Loading Map...`</h1>
       }
 
     return (
-      <div className="map">
-      {geoLocationReady}
+      <div>
+        {geoLocationReady}
       </div>
     )
   }

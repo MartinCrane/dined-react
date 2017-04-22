@@ -23,11 +23,7 @@ export class Main extends Component {
         <Row className="container-flex" >
           {this.props.navigation === "search" ? search : null}
           {this.props.navigation === "favorites" ? favorites : null}
-        </Row>
-        <Row className="map">
           {this.props.navigation === "map" ? map : null}
-        </Row>
-        <Row className="roulette">
           {this.props.navigation === "roulette" ? roulette : null}
         </Row>
       </Row>
