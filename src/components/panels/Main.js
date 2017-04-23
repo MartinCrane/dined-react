@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Grid } from 'react-bootstrap';
 import { connect } from 'react-redux'
 import { ConnectedSearch } from '../../components/search/Search'
 import { ConnectedFilter } from '../../components/favorites/Filter'
+import { ConnectedNavigation } from '../../components/panels/Navigation'
 import { ConnectedMap } from '../map/Map'
 import { ConnectedRoulette } from '../roulette_map/RouletteMap'
+import { StickyContainer, Sticky } from 'react-sticky';
 
 export class Main extends Component {
 
@@ -16,19 +18,25 @@ export class Main extends Component {
     let roulette = <ConnectedRoulette />
 
   return (
-      <Row className="container">
-        <Row className="container">
-          <h1 className="text-center">{this.props.navigation}</h1>
-        </Row>
-        <Row className="container-flex">
-          {this.props.navigation === "search" ? search : null}
-          {this.props.navigation === "roulette" ? roulette : null}
-          {this.props.navigation === "favorites" ? favorites : null}
-        </Row>
-        <Row className="map">
-          {this.props.navigation === "map" ? map : null}
-        </Row>
-      </Row>
+  <div>
+    <div className='menuSide'>
+      <ConnectedNavigation />
+    </div>
+    <div className='mainWindow'>
+      <StickyContainer>
+          <Grid>
+            <Row className="container">
+
+                {this.props.navigation === "search" ? search : null}
+                {this.props.navigation === "roulette" ? roulette : null}
+                {this.props.navigation === "favorites" ? favorites : null}
+                {this.props.navigation === "map" ? map : null}
+
+            </Row>
+          </Grid>
+        </StickyContainer>
+      </div>
+    </div>
     )
   }
 }

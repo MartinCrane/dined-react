@@ -54,12 +54,12 @@ export class SimpleMap extends Component {
                             >
                             {markers}
                           </GoogleMapReact>
-      }else{
+      } else {
         geoLocationReady = <h1>`Loading Map...`</h1>
       }
 
     return (
-      <div className="map">
+      <div className="map resultsContainer">
       {geoLocationReady}
       </div>
     )

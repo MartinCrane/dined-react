@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { MenuItem, NavDropdown, Nav, NavItem, Navbar, FormControl, FormGroup, Button } from 'react-bootstrap';
+import { Button, Grid, ButtonToolbar, DropdownButton, ButtonGroup, Col, MenuItem, NavDropdown, Nav, NavItem, Navbar, FormControl, FormGroup, Row } from 'react-bootstrap';
 import { setLogin } from '../../actions/setLogin'
 import { clearFavorites } from '../../actions/favorites'
 import { selectNavigation } from '../../actions/navigation'
+import { StickyContainer, Sticky } from 'react-sticky';
 
 
 export class Navigation extends Component {
@@ -12,6 +13,7 @@ export class Navigation extends Component {
   constructor(props){
     super();
     this.logout = this.logout.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   logout() {
@@ -24,36 +26,62 @@ export class Navigation extends Component {
     this.props.selectNavigation(event)
   }
 
+  handleClick(field, event) {
+    this.props.selectNavigation(field)
+  }
+
 
 
   render(){
-    let logout = <NavItem eventKey={1} href="#" onClick={(event) => this.logout(event)} >Logout</NavItem>
+    let logout = <NavItem eventKey={1} onClick={(event) => this.logout(event)} >Logout</NavItem>
     // let navForm = <FormGroup><FormControl type="text" placeholder="Search" /></FormGroup>{' '}<Button type="submit">Submit</Button></Navbar.Form>
 
+    const buttons = <ButtonToolbar>
+                      <Button
+                        onClick={this.handleClick.bind(null, "favorites")}>Favories</Button>
+                      <Button
+                        onClick={this.handleClick.bind(null, "map")}>Map</Button>
+                      <Button
+                        onClick={this.handleClick.bind(null, "search")}>Search</Button>
+                      {this.props.login ? <Button onClick={(event) => this.logout(event)}>Logout</Button> : null}
+                    </ButtonToolbar>
+
+  const sideBar = (
+                      <ButtonGroup vertical block>
+                          <Button className="verticalNavButton">
+                            <Row>
+                              <Col xs ={3} sm={3} md={3}>Menu</Col><Col xs={7} sm={7} md={7}></Col><Col xs={1} sm={1} md={1}><img style={{align: 'right', height: '25'}} src={require('../../images/maps.png')}></img></Col>
+                            </Row>
+                          </Button>
+                          <Button className="verticalNavButton"
+                                  onClick={this.handleClick.bind(null, "map")}>
+                            <Row>
+                              <Col xs={3} sm={3} md={3}>Maps</Col><Col xs={7} sm={7} md={7}></Col><Col xs={1} sm={1} md={1}><img style={{align: 'right', height: '25'}}src={require('../../images/maps.png')}></img></Col>
+                            </Row>
+                          </Button>
+                          <Button className="verticalNavButton"
+                                  onClick={this.handleClick.bind(null, "search")}>
+                            <Row>
+                              <Col xs={3} sm={3} md={3}>Search</Col><Col xs={7} sm={7} md={7}></Col><Col xs={1} sm={1} md={1}><img style={{align: 'right', height: '25'}}src={require('../../images/search.png')}></img></Col>
+                            </Row>
+                          </Button>
+                          <Button className="verticalNavButton"
+                                  onClick={this.handleClick.bind(null, "favorites")}>
+                            <Row>
+                              <Col xs={3} sm={3} md={3}>Favorites</Col><Col xs={7} sm={7} md={7}></Col><Col xs={1} sm={1} md={1}><img style={{align: 'right', height: '25'}}src={require('../../images/fav.png')}></img></Col>
+                            </Row>
+                          </Button>
+                          <Button className="verticalNavButton"
+                                  onClick={this.handleClick.bind(null, "favorites")}>
+                            <Row>
+                              <Col xs={3} sm={3} md={3}>Roulette</Col><Col xs={7} sm={7} md={7}></Col><Col xs={1} sm={1} md={1}><img style={{align: 'right', height: '25'}}src={require('../../images/fav.png')}></img></Col>
+                            </Row>
+                          </Button>
+                    </ButtonGroup>
+                    );
   return(
-      <div className="menuBar">
-        <Navbar>
-          <Navbar.Header>
-            <Navbar.Brand>
-              <a href="#">Diner ---- </a>
-            </Navbar.Brand>
-          </Navbar.Header>
-          <Nav>
-            <NavDropdown eventKey={3} onSelect={(event) => {this.changeNavigation(event)}} title="where to?" id="basic-nav-dropdown">
-              <MenuItem eventKey={"favorites"} >Favorites</MenuItem>
-              <MenuItem eventKey={"map"}>Map</MenuItem>
-              <MenuItem eventKey={"search"}>Search</MenuItem>
-              <MenuItem eventKey={"roulette"}>Roulette</MenuItem>
-              <MenuItem eventKey={3.4}>Separated link</MenuItem>
-            </NavDropdown>
-          </Nav>
-          <Nav>
-          <NavItem >{this.props.email}</NavItem>
-          </Nav>
-          <Nav pullRight>
-          <NavItem >{this.props.login ? logout : null}</NavItem>
-          </Nav>
-        </Navbar>
+      <div style={{width: 300}}>
+        {sideBar}
       </div>
     )
   }

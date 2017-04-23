@@ -61,7 +61,7 @@ export class Search extends Component {
       let options = <Button onClick={ ()=> this.setState({ open: !this.state.open })}>See More Options</Button>
 
     return(
-      <Row>
+      <Row className="resultsContainer">
         <Col xs={10} xsOffset={1}>
           <form onSubmit={event => this.handleSubmit(event)}>
               <FormGroup >
