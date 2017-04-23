@@ -7,7 +7,6 @@ import { price_function } from '../../actions/restaurant'
 import { updateAddFavoritesServer, updateDeleteFavoritesServer } from '../../actions/favorites'
 
 
-
 export class RestaurantThumb extends Component {
   constructor(){
     super();
@@ -32,29 +31,30 @@ export class RestaurantThumb extends Component {
 
   render(){
     let title = <div>
-                  <h1>{this.props.restaurant.name}</h1>
-                  <h1>Price Range: {price_function(this.props.restaurant.price)}</h1>
-                  <h1>{this.props.restaurant.address} </h1>
-                  <h1>Rating: {this.props.restaurant.rating}</h1>
+                  <h1><b>{this.props.restaurant.name}</b></h1>
+                  <h2>Price Range: {price_function(this.props.restaurant.price)}</h2>
+                  <h3>{this.props.restaurant.address} </h3>
+                  <h3>Rating: {this.props.restaurant.rating}</h3>
                 </div>
 
     let details = <div>
-                      <Collapse in={this.state.open}>
-                        <div>
-                          <Image src={this.props.restaurant.image_url} responsive />
-                        </div>
-                      </Collapse>
+                    <Collapse in={this.state.open}>
+                      <div>
+                        <Button className="buttonMain" bsStyle="primary" bsSize="xsmall" onClick={this.handleClick}>{this.props.action}</Button>
+                        <Image src={this.props.restaurant.image_url} responsive />
+                      </div>
+                    </Collapse>
                   </div>
 
-    let action = <Button bsStyle="primary" bsSize="xsmall" onClick={this.handleClick}>{this.props.action}</Button>
+    let action = <Button className="buttonMain" bsStyle="primary" bsSize="xsmall" onClick={this.handleClick}>{this.props.action}</Button>
 
     return(
       <div className="restaurantThumb" >
           {title}
           <br></br>
           <ButtonToolbar>
-            {action}
-            <Button bsStyle="primary" bsSize="xsmall" onClick={ () => this.setState({ open: !this.state.open })}>
+    
+            <Button className="buttonMain" bsStyle="primary" bsSize="xsmall" onClick={ () => this.setState({ open: !this.state.open })}>
               {this.state.open ? 'Less Details' : 'More Details'}
             </Button>
 
