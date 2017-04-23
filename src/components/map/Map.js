@@ -28,9 +28,11 @@ export class SimpleMap extends Component {
       navigator.geolocation.getCurrentPosition((position) => {
           var geoCenter = {center: {lat: position.coords.latitude, lng: position.coords.longitude}};
           this.props.setLocation(geoCenter)
-          this.setState(geoCenter)
+          // this.setState(geoCenter)
+
+          //Uncomment above to move from loading screen
         },
-        (error) => alert(JSON.stringify(error)),
+        (error) => console.log(JSON.stringify(error)),
         {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
     )}
 
@@ -40,8 +42,9 @@ export class SimpleMap extends Component {
     let loadingComponent =
                       <Row>
                         <Col sm={2} md={2}></Col>
-                        <Col sm={8} md={8}>
-                          <img src="../src/loading-bars.svg" alt="Loading icon" />
+                        <Col sm={8} md={8} smOffset={4}>
+                          <h1> Fetching Cool Stuff </h1>
+                          <LoadScreen />
                         </Col>
                         <Col sm={2} md={2}></Col>
                       </Row>
@@ -57,11 +60,10 @@ export class SimpleMap extends Component {
     let geoLocationReady
 
       if(!!(this.state.center.lat && this.state.center.lng)){
-        debugger
         geoLocationReady =
                     <Row>
                      <Col sm={2} md={2}></Col>
-                     <Col sm={8} md={8}>
+                     <Col sm={8} md={8} offset={3}>
                        <div className="map">
                           <GoogleMapReact
                             bootstrapURLKeys={{
@@ -90,7 +92,6 @@ export class SimpleMap extends Component {
   }
 
 }
-
 
   const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
