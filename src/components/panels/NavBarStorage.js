@@ -22,12 +22,22 @@ const horizontal = <div>
                     </Navbar>
                   </div>
 
-                  const buttons = <ButtonToolbar>
-                                    <Button
-                                      onClick={this.handleClick.bind(null, "favorites")}>Favories</Button>
-                                    <Button
-                                      onClick={this.handleClick.bind(null, "map")}>Map</Button>
-                                    <Button
-                                      onClick={this.handleClick.bind(null, "search")}>Search</Button>
-                                    {this.props.login ? <Button onClick={(event) => this.logout(event)}>Logout</Button> : null}
-                                  </ButtonToolbar>
+  const buttons = <ButtonToolbar>
+                    <Button
+                      onClick={this.handleClick.bind(null, "favorites")}>Favories</Button>
+                    <Button
+                      onClick={this.handleClick.bind(null, "map")}>Map</Button>
+                    <Button
+                      onClick={this.handleClick.bind(null, "search")}>Search</Button>
+                    {this.props.login ? <Button onClick={(event) => this.logout(event)}>Logout</Button> : null}
+                  </ButtonToolbar>
+
+  const buttons = <ButtonToolbar >
+                    <Button
+                      onClick={this.handleClick.bind(null, "favorites")}>Favories</Button>
+                    <Button
+                      onClick={this.handleClick.bind(null, "map")}>Map</Button>
+                    <Button
+                      onClick={this.handleClick.bind(null, "search")}>Search</Button>
+                    {this.props.login ? <Button onClick={(event) => this.logout(event)}>Logout</Button> : null}
+                  </ButtonToolbar>

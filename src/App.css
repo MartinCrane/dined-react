@@ -27,13 +27,13 @@ button {
 
 /*MAIN WINDOWS*/
 .menuSide {
-  background-color: red;
   position: fixed;
   left: -260px;
+  z-index: 4;
 }
+
 .mainWindow {
   left: 40px;
-  background-color: blue;
   position: fixed;
 }
 
@@ -58,8 +58,9 @@ button {
 
 .filterBar {
   z-Index: 1000;
-  height: 5em;
+  height: 4em;
   opacity: .85;
+  border-radius: 0px;
 }
 .filterBarSticky {
   z-Index: 1000;
@@ -72,6 +73,7 @@ button {
   font-size: 1.3em;
   color: black;
   border: 1px solid black;
+  border-radius: 0px;
   background: repeating-linear-gradient(
     99deg,
     #eee,
@@ -87,6 +89,7 @@ button {
   font-size: 1.8em;
   color: black;
   border: 1px solid black;
+  border-radius: 0px;
   background: repeating-linear-gradient(
     90deg,
     #eee 3px,
@@ -94,7 +97,16 @@ button {
     #fff 10px,
     #fff 5px
   );
-  opacity: .9
+}
+.verticalNavButton {
+  font-size: 1.8em;
+  color: black;
+  border: 1px solid black;
+  border-radius: 0px;
+  height: 2.2em;
+}
+.verticalNavButton h1 {
+  display: inline;
 }
 
 .navText {
@@ -103,17 +115,8 @@ button {
   opacity: 1
 }
 
-.verticalNavButton {
-  font-size: 1.8em;
-  color: black;
-  border: 1px solid black;
-  opacity: .9
-}
-.verticalNavButton h1 {
-  display: inline;
-}
 .resultsContainer{
-  padding-top: 5em;
+  padding-top: 1em;
 }
 
 .menuBar {

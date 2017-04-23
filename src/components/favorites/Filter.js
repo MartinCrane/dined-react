@@ -57,10 +57,8 @@ export class Filter extends Component {
 
   render(){
 
-
   const hoverStyle = {
                   position: 'fixed',
-
                 }
 
   const restComponents = filterFavorites(this.state, this.props.favorites).map((fav, index) => {<MapTick name={fav.name}
