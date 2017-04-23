@@ -11,12 +11,20 @@ import { ButtonToolbar, ButtonGroup, Button, Col, Row, Popover } from 'react-boo
 import MapTick  from '../map/MapTick'
 
 
+const MarkerComponent = ({ text }) => <div style={{
+    position: 'relative', color: 'white', background: 'red',
+    height: 40, width: 60, top: -20, left: -30,
+  }}>
+    {text}
+  </div>
+
+
 export class RouletteMap extends Component {
   constructor(){
     super()
     this.state = {
       center: {lat: null, lng: null},
-      zoom: 15,
+      zoom: 13,
       button: 'stop',
       randrestaurant: null
     }
@@ -50,8 +58,10 @@ export class RouletteMap extends Component {
       this.setState({
         button: 'respin',
         center: {lat: lat, lng: lng},
-        randrestaurant: randrestaurant
+        randrestaurant: randrestaurant,
+        zoom: 15
       })
+
     }else{
       this.setState({
         button: 'stop'
@@ -73,6 +83,7 @@ export class RouletteMap extends Component {
 
 
   render() {
+    debugger
     const location = this.state.center.lat===null? this.props.center : this.state.center
 
     const results = this.props.favorites.map((restaurant)=>{
@@ -80,10 +91,11 @@ export class RouletteMap extends Component {
     });
 
     let randRestaurant = []
-      if(this.state.randRestaurant){
-        randRestaurant.push(<MapTick name={this.state.randRestaurant[0].name}
-          lat={this.state.randRestaurant[0].latitude}
-          lng={this.state.randRestaurant[0].longitude}
+      if(this.state.randrestaurant!==null){
+        debugger
+        randRestaurant.push(<MarkerComponent name={this.state.randrestaurant[0].name}
+          lat={this.state.randrestaurant[0].latitude}
+          lng={this.state.randrestaurant[0].longitude}
           />)
       }
 
@@ -99,7 +111,7 @@ export class RouletteMap extends Component {
                 }}
                 defaultCenter={this.props.center}
                 center={location}
-                defaultZoom={15}
+                defaultZoom={18}
                 zoom={this.state.zoom}
                >
                {randRestaurant}
