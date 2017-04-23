@@ -16,7 +16,7 @@ export class RouletteMap extends Component {
     super()
     this.state = {
       center: {lat: null, lng: null},
-      zoom: 15,
+      zoom: 13,
       button: 'stop',
       randrestaurant: null
     }
@@ -50,8 +50,10 @@ export class RouletteMap extends Component {
       this.setState({
         button: 'respin',
         center: {lat: lat, lng: lng},
-        randrestaurant: randrestaurant
+        randrestaurant: randrestaurant,
+        zoom: 15
       })
+
     }else{
       this.setState({
         button: 'stop'
@@ -80,11 +82,20 @@ export class RouletteMap extends Component {
     });
 
     let randRestaurant = []
-      if(this.state.randRestaurant){
-        randRestaurant.push(<MapTick name={this.state.randRestaurant[0].name}
-          lat={this.state.randRestaurant[0].latitude}
-          lng={this.state.randRestaurant[0].longitude}
+      if(this.state.randrestaurant){
+        randRestaurant.push(<MapTick index={0} name={this.state.randrestaurant[0].name}
+          lat={this.state.randrestaurant[0].latitude}
+          lng={this.state.randrestaurant[0].longitude}
           />)
+      }else{
+        this.props.favorites.map((res, index)=>{
+          randRestaurant.push(<MapTick  name={res.name}
+                    lat={res.latitude}
+                    lng={res.longitude}
+                    key={index}
+                    />
+                  )
+        })
       }
 
    let maps =
@@ -99,7 +110,7 @@ export class RouletteMap extends Component {
                 }}
                 defaultCenter={this.props.center}
                 center={location}
-                defaultZoom={15}
+                defaultZoom={this.state.zoom}
                 zoom={this.state.zoom}
                >
                {randRestaurant}

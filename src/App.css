@@ -108,13 +108,12 @@ button {
     height: 500px;
 }
 
+
+/*--Spinner CSS ---*/
 .filterMap {
 
     height: 30em;
 }
-
-
-/*Roulette CSS*/
 
 .spinner {
   margin: 0;
@@ -213,3 +212,5 @@ button {
     top: -20em;
   }
 }
+
+/*End of Spinner CSS*/
