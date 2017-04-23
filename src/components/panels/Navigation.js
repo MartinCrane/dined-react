@@ -24,10 +24,14 @@ export class Navigation extends Component {
     this.props.selectNavigation(event)
   }
 
+
+
   render(){
     let logout = <NavItem eventKey={1} href="#" onClick={(event) => this.logout(event)} >Logout</NavItem>
-    return(
-      <div className="logged">
+    // let navForm = <FormGroup><FormControl type="text" placeholder="Search" /></FormGroup>{' '}<Button type="submit">Submit</Button></Navbar.Form>
+
+  return(
+      <div className="menuBar">
         <Navbar>
           <Navbar.Header>
             <Navbar.Brand>
@@ -35,23 +39,19 @@ export class Navigation extends Component {
             </Navbar.Brand>
           </Navbar.Header>
           <Nav>
-            {this.props.login ? logout : null}
             <NavDropdown eventKey={3} onSelect={(event) => {this.changeNavigation(event)}} title="where to?" id="basic-nav-dropdown">
               <MenuItem eventKey={"favorites"} >Favorites</MenuItem>
               <MenuItem eventKey={"map"}>Map</MenuItem>
               <MenuItem eventKey={"search"}>Search</MenuItem>
               <MenuItem eventKey={"roulette"}>Roulette</MenuItem>
-              <MenuItem divider />
               <MenuItem eventKey={3.4}>Separated link</MenuItem>
             </NavDropdown>
-            <NavItem >{this.props.email}</NavItem>
-              <Navbar.Form pullLeft>
-              <FormGroup>
-                <FormControl type="text" placeholder="Search" />
-                </FormGroup>
-              {' '}
-              <Button type="submit">Submit</Button>
-            </Navbar.Form>
+          </Nav>
+          <Nav>
+          <NavItem >{this.props.email}</NavItem>
+          </Nav>
+          <Nav pullRight>
+          <NavItem >{this.props.login ? logout : null}</NavItem>
           </Nav>
         </Navbar>
       </div>
