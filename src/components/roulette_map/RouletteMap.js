@@ -11,14 +11,6 @@ import { ButtonToolbar, ButtonGroup, Button, Col, Row, Popover } from 'react-boo
 import MapTick  from '../map/MapTick'
 
 
-const MarkerComponent = ({ text }) => <div style={{
-    position: 'relative', color: 'white', background: 'red',
-    height: 40, width: 60, top: -20, left: -30,
-  }}>
-    {text}
-  </div>
-
-
 export class RouletteMap extends Component {
   constructor(){
     super()
@@ -83,7 +75,6 @@ export class RouletteMap extends Component {
 
 
   render() {
-    debugger
     const location = this.state.center.lat===null? this.props.center : this.state.center
 
     const results = this.props.favorites.map((restaurant)=>{
@@ -91,12 +82,20 @@ export class RouletteMap extends Component {
     });
 
     let randRestaurant = []
-      if(this.state.randrestaurant!==null){
-        debugger
-        randRestaurant.push(<MarkerComponent name={this.state.randrestaurant[0].name}
+      if(this.state.randrestaurant){
+        randRestaurant.push(<MapTick index={0} name={this.state.randrestaurant[0].name}
           lat={this.state.randrestaurant[0].latitude}
           lng={this.state.randrestaurant[0].longitude}
           />)
+      }else{
+        this.props.favorites.map((res, index)=>{
+          randRestaurant.push(<MapTick  name={res.name}
+                    lat={res.latitude}
+                    lng={res.longitude}
+                    key={index}
+                    />
+                  )
+        })
       }
 
    let maps =
@@ -111,7 +110,7 @@ export class RouletteMap extends Component {
                 }}
                 defaultCenter={this.props.center}
                 center={location}
-                defaultZoom={18}
+                defaultZoom={this.state.zoom}
                 zoom={this.state.zoom}
                >
                {randRestaurant}
