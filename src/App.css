@@ -20,6 +20,7 @@ p {
   font-family: 'Poppins', sans-serif;
   font-family: 'Anton', sans-serif;
 }
+
 button {
   font-family: 'Poppins', sans-serif;
   background-color: #faffeb;
@@ -52,6 +53,13 @@ button {
 
 .red {
   background-color: #e73b38;
+
+/*.grey {
+  transform: matrix3d(1,0,0.00,.0001,0.00,1,0.05,.0001,0,-0.05,1,0,0,,03,1);
+  -webkit-transform: matrix3d(1,0,0.00,.0001,0.00,1,0.05,.0001,0,-0.05,1,0,0,,03,1);
+  padding: 2em;
+  border-color: black 3em;
+
   opacity: 0.9;
 }
 
@@ -111,10 +119,10 @@ button {
 .spinner {
   margin: 0;
   font-size: 1.5em;
-  position: absolute;
+  position: relative;
   bottom: 2vh;
-  left: 25vw;
-  width: 50vw;
+  left: auto;
+  width: 750px;
   z-index: 100;
   -moz-box-shadow: 0px 0px 10px 0px black;
   -webkit-box-shadow: 0px 0px 10px 0px black;
@@ -125,11 +133,11 @@ button {
   top: 0;
   right: 0;
   width: 15vw;
-  height: 100%;
+  height: 2em;
 }
 .spinner footer .stop {
   width: 100%;
-  height: 100%;
+  height: 2em;
 }
 .spinner .stop {
   display: block;
@@ -152,7 +160,8 @@ button {
   color: white;
   text-shadow: 0 0 0.25em black;
   font-weight: bold;
-  width: 35vw;
+  text-align: center;
+  width: 600px;
   height: 2em;
   position: relative;
   overflow: hidden;
@@ -170,30 +179,37 @@ button {
 .roller ul li {
   display: block;
   text-align: center;
+  height: 2em;
+}
+
+@include keyframes(scroll-numbers){
+	from { top: 0;  }
+	to {  top: -28em;  }
 }
 
 @import url(http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
+
 @-moz-keyframes scroll-numbers {
   from {
     top: 0;
   }
   to {
-    top: -28em;
+    top: -20em;
   }
 }
 @-webkit-keyframes scroll-numbers {
   from {
-    top: 0;
+    top: 0em;
   }
   to {
-    top: -28em;
+    top: -20em;
   }
 }
 @keyframes scroll-numbers {
   from {
-    top: 0;
+    top: 0em;
   }
   to {
-    top: -28em;
+    top: -20em;
   }
 }
