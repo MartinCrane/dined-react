@@ -37,7 +37,7 @@ export class Navigation extends Component {
 
   expandMenu() {
     let offset = '0px'
-    if (this.state.menu) {
+    if (!this.state.menu) {
       offset = '260px'
     }
     this.setState({
@@ -55,7 +55,7 @@ export class Navigation extends Component {
     // let navForm = <FormGroup><FormControl type="text" placeholder="Search" /></FormGroup>{' '}<Button type="submit">Submit</Button></Navbar.Form>
 
   const sideBar = (
-                      <ButtonGroup vertical block style={{left: this.state.offset}}>
+                      <ButtonGroup vertical block style={{left: this.state.offset, borderRadius: '0px'}}>
                           <Button className="verticalNavButton"
                                   onClick={this.expandMenu}>
                             <Row>
@@ -89,7 +89,7 @@ export class Navigation extends Component {
                     </ButtonGroup>
                     );
   return(
-      <div style={{width: 300}}>
+      <div style={{width: 300, borderRadius: '0px'}}>
         {sideBar}
       </div>
     )

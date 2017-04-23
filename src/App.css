@@ -19,6 +19,9 @@ button {
   background-color: #faffeb;
   border-radius: 25px;
 }
+div {
+  border-radius: 0px;
+}
 
 .mapTick {
   background-color: #e73b38;
@@ -30,6 +33,7 @@ button {
   position: fixed;
   left: -260px;
   z-index: 4;
+  border-radius: 0px;
 }
 
 .mainWindow {
@@ -66,10 +70,9 @@ button {
   z-Index: 1000;
   height: 5em;
 }
+
 .bFilter {
   height:3em;
-  background:  #e73b38;
-  background:  #e73b38;
   font-size: 1.3em;
   color: black;
   border: 1px solid black;
