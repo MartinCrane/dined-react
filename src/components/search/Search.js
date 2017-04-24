@@ -3,6 +3,7 @@ import { Results } from './Results'
 import { connect } from 'react-redux'
 import { FormGroup, ControlLabel, FormControl, HelpBlock, Button, Radio, Collapse, InputGroup, Row, Col } from 'react-bootstrap';
 import { formatResults, formatApiCallString } from '../../actions/yelpApiFormat'
+import { StickyContainer, Sticky } from 'react-sticky';
 
 export class Search extends Component {
   constructor(){
@@ -60,41 +61,44 @@ export class Search extends Component {
   render(){
       let options = <Button onClick={ ()=> this.setState({ open: !this.state.open })}>See More Options</Button>
 
+      let searchBar = <Row className="resultsContainer" style={{justifyContent: 'center'}}>
+                          <form style={{justifyContent: 'center'}} onSubmit={event => this.handleSubmit(event)}>
+                              <FormGroup >
+                                  <Col sm={2}>
+                                    Name
+                                  </Col>
+                                  <Col componentClass={ControlLabel} sm={10}>
+                                      <FormControl  type="text"
+                                                    value={this.state.field}
+                                                    placeholder="Search by Name"
+                                                    onChange={this.handleChange.bind(null, "term")}
+                                                    />
+                                  </Col>
+                              </FormGroup>
+                              <FormGroup >
+                                  <Col sm={2}>
+                                    Location
+                                  </Col>
+                                  <Col componentClass={ControlLabel} sm={10}>
+                                    <FormControl  type="text"
+                                      value={this.state.field}
+                                      placeholder="Add a Location"
+                                      onChange={this.handleChange.bind(null, "location")}
+                                      />
+                                  </Col>
+                              </FormGroup>
+                              <Button type="submit">
+                                Search
+                              </Button>
+                            </form>
+                      </Row>
     return(
-      <Row>
-        <Col xs={10} xsOffset={1}>
-          <form onSubmit={event => this.handleSubmit(event)}>
-              <FormGroup >
-                  <Col sm={2}>
-                    Name
-                  </Col>
-                  <Col componentClass={ControlLabel} sm={10}>
-                      <FormControl  type="text"
-                                    value={this.state.field}
-                                    placeholder="Search by Name"
-                                    onChange={this.handleChange.bind(null, "term")}
-                                    />
-                  </Col>
-              </FormGroup>
-              <FormGroup >
-                  <Col sm={2}>
-                    Location
-                  </Col>
-                  <Col componentClass={ControlLabel} sm={10}>
-                    <FormControl  type="text"
-                      value={this.state.field}
-                      placeholder="Add a Location"
-                      onChange={this.handleChange.bind(null, "location")}
-                      />
-                  </Col>
-              </FormGroup>
-              <Button type="submit">
-                Submit!
-              </Button>
-            </form>
+      <div >
+        <Sticky>
+          {searchBar}
+        </Sticky>
           <Results results={this.state.results} removeFromDisplay={this.removeFromDisplay}/>
-        </Col>
-      </Row>
+      </div>
     )
   }
 }

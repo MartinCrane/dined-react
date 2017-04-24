@@ -26,17 +26,18 @@ export const formatResults = (array) => {
 }
 
 export const search = (submission, favorites) =>{
-fetch(`http://localhost:4000/yelpApiSearch/${submission}`,
-  {
-  method: 'get',
-  headers: {
-    Authorization: `${localStorage.jwt}`
-  },
-  data: "gold"
-}).then(res => res.json())
-  .then(res => {
-    let resultsFormatted = formatResults(res)
-    let favorites_id = favorites.map((fav)=> {return fav.yelp_id})
-    return resultsFormatted.filter((r)=> !favorites_id.includes(r.id))
-  })
-}
+  fetch(`http://localhost:4000/yelpApiSearch/${submission}`,
+    {
+    method: 'get',
+    headers: {
+      Authorization: `${localStorage.jwt}`
+    },
+    data: "gold"
+  }).then(res => res.json())
+    .then(res => {
+      let resultsFormatted = formatResults(res)
+      let favorites_id = favorites.map((fav)=> {return fav.yelp_id})
+      let new_array = resultsFormatted.filter((r)=> !favorites_id.includes(r.yelp_id))
+      return new_array
+    })
+  }

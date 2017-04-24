@@ -6,6 +6,7 @@ import { Favorites } from './Favorites'
 import MapTick  from '../map/MapTick'
 import { filterFavorites } from '../../actions/filter'
 import  GoogleMapReact  from 'google-map-react';
+import { StickyContainer, Sticky } from 'react-sticky';
 
 export class Filter extends Component {
   constructor(props) {
@@ -58,7 +59,6 @@ export class Filter extends Component {
 
   const hoverStyle = {
                   position: 'fixed',
-
                 }
 
   const restComponents = filterFavorites(this.state, this.props.favorites).map((fav, index) => {<MapTick name={fav.name}
@@ -68,27 +68,23 @@ export class Filter extends Component {
 
   const googleMapTray =  <div>
                             <Row>
-                             <Col sm={2} md={2}></Col>
-                             <Col sm={8} md={8}>
+                             <Col sm={6} md={6}>
                                <div className="filterMap">
-                               <GoogleMapReact
-                                 defaultCenter={this.state.center}
-                                 onChange={event => this.mapBounds(event)}
-                                 defaultZoom={this.state.zoom}
-                                 bootstrapURLKeys={{
-                                   key: 'AIzaSyCjef7cMcrZYQfvEqlTFvvn7VqKTBDoTvE',
-                                   language: 'en'
-                                 }}>
-                                 {filterFavorites(this.state, this.props.favorites).map((fav, index) => <MapTick name={fav.name}
-                                 lat={fav.latitude}
-                                 lng={fav.longitude}
-                                 key={index}/>)}
-                               </GoogleMapReact>
+                                 <GoogleMapReact
+                                   defaultCenter={this.state.center}
+                                   onChange={event => this.mapBounds(event)}
+                                   defaultZoom={this.state.zoom}
+                                   bootstrapURLKeys={{
+                                     key: 'AIzaSyCjef7cMcrZYQfvEqlTFvvn7VqKTBDoTvE',
+                                     language: 'en'
+                                   }}>
+                                   {filterFavorites(this.state, this.props.favorites).map((fav, index) => <MapTick name={fav.name}
+                                   lat={fav.latitude}
+                                   lng={fav.longitude}
+                                   key={index}/>)}
+                                 </GoogleMapReact>
                                </div>
                              </Col>
-                             <Col sm={2} md={2}></Col>
-                           </Row>
-                           <Row>
                            </Row>
                           </div>
 
@@ -96,36 +92,39 @@ export class Filter extends Component {
 
     return(
       <div>
-        <div>
-          <Row className="filterBarStyle">
+        <Sticky className="filterBarStyle" stickyClassName={'filterBarSticky'}>
+          <Row >
             <Col sm={2} md={2}></Col>
-            <Col sm={8} md={8}><ButtonGroup justified>
-               <Button bsStyle={this.state.price1 ? 'primary' : null}
-                       href="#"
-                       onClick={this.handleClick.bind(null, "price1")}>$</Button>
-               <Button bsStyle={this.state.price2 ? 'primary' : null}
-                       href="#"
-                       onClick={this.handleClick.bind(null, "price2")}>$$</Button>
-               <Button bsStyle={this.state.price3 ? 'primary' : null}
-                       href="#"
-                       onClick={this.handleClick.bind(null, "price3")}>$$$</Button>
-               <Button bsStyle={this.state.price4 ? 'primary' : null}
-                       href="#"
-                       onClick={this.handleClick.bind(null, "price4")}>$$$$</Button>
-               <Button bsStyle={this.state.mapUse ? 'primary' : null}
-                       href="#"
-                       onClick={this.openMapTray}>Map Filter</Button>
-               </ButtonGroup></Col>
-           <Col sm={2} md={2}></Col>
-           {this.state.mapUse ? googleMapTray : null }
+            <Col sm={8} md={8}>
+              <ButtonGroup justified >
+                <Button className='bFilter' style={this.state.price1 ? {background:'#69B7EF'} : null}
+                  href="#"
+                  onClick={this.handleClick.bind(null, "price1")}>$</Button>
+                <Button className='bFilter' style={this.state.price2 ? {background:'#69B7EF'} : null}
+                  href="#"
+                  onClick={this.handleClick.bind(null, "price2")}>$$</Button>
+                <Button className='bFilter' style={this.state.price3 ? {background:'#69B7EF'} : null}
+                  href="#"
+                  onClick={this.handleClick.bind(null, "price3")}>$$$</Button>
+                <Button className='bFilter' style={this.state.price4 ? {background:'#69B7EF'} : null}
+                  href="#"
+                  onClick={this.handleClick.bind(null, "price4")}>$$$$</Button>
+                <Button className='bFilter' style={this.state.mapUse ? {background:'#69B7EF'} : null}
+                  href="#"
+                  onClick={this.openMapTray}>Map Filter</Button>
+              </ButtonGroup>
+            </Col>
+            <Col sm={2} md={2}></Col>
           </Row>
-          <Row style={hoverStyle}>
+        </Sticky>
+        <div>
+            {this.state.mapUse ? googleMapTray : null }
+          <Row>
             {this.state.mapUse ? <Favorites favorites={filterFavorites(this.state, this.props.favorites)}/> : null }
-
           </Row>
         </div>
 
-        <div>
+        <div style={{zIndex:'1'}}>
           {this.state.mapUse ? null : <Favorites favorites={filterFavorites(this.state, this.props.favorites)}/> }
         </div>
       </div>
