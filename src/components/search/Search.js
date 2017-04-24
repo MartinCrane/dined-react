@@ -60,6 +60,8 @@ export class Search extends Component {
 
   render(){
       let options = <Button onClick={ ()=> this.setState({ open: !this.state.open })}>See More Options</Button>
+      // above can be removed
+
 
       let searchBar = <Row className="resultsContainer" style={{justifyContent: 'center'}}>
                           <form style={{justifyContent: 'center'}} onSubmit={event => this.handleSubmit(event)}>
@@ -87,13 +89,14 @@ export class Search extends Component {
                                       />
                                   </Col>
                               </FormGroup>
+
                               <Button type="submit">
                                 Search
                               </Button>
                             </form>
                       </Row>
     return(
-      <div >
+      <div>
         <Sticky>
           {searchBar}
         </Sticky>

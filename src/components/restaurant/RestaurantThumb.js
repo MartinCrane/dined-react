@@ -41,6 +41,8 @@ export class RestaurantThumb extends Component {
                     <Collapse in={this.state.open}>
                       <div>
                         <Button className="buttonMain" bsStyle="primary" bsSize="xsmall" onClick={this.handleClick}>{this.props.action}</Button>
+                        <br></br>
+                        <br></br>
                         <Image src={this.props.restaurant.image_url} responsive />
                       </div>
                     </Collapse>
@@ -52,13 +54,14 @@ export class RestaurantThumb extends Component {
       <div className="restaurantThumb" >
           {title}
           <br></br>
-          <ButtonToolbar>
 
-            <Button className="buttonMain" bsStyle="primary" bsSize="xsmall" onClick={ () => this.setState({ open: !this.state.open })}>
-              {this.state.open ? 'Less Details' : 'More Details'}
-            </Button>
+            <div className="text-center">
+              <Button className="buttonMain" bsStyle="primary" bsSize="xsmall" onClick={ () => this.setState({ open: !this.state.open })}>
+                {this.state.open ? 'Less Details' : 'More Details'}
+              </Button>
+            </div>
 
-          </ButtonToolbar>
+
           <br></br>
           {details}
       </div>

@@ -17,7 +17,6 @@ export class SearchRestaurantThumb extends Component {
   }
 
   handleClick(event) {
-
     if (this.props.action === "Add to Favorites") {
       updateAddFavoritesServer(this.props.restaurant)
       this.props.addToFavorites(this.props.restaurant)
@@ -25,6 +24,7 @@ export class SearchRestaurantThumb extends Component {
       updateDeleteFavoritesServer(this.props.restaurant)
       this.props.removeFromFavorites(this.props.restaurant)
     }
+
     this.props.removeFromDisplay(this.props.restaurant.yelp_id)
 
   }
@@ -51,14 +51,17 @@ export class SearchRestaurantThumb extends Component {
       <div className="restaurantThumb" >
           {title}
           <br></br>
-          <ButtonToolbar>
 
-            <Button className="buttonMain" bsStyle="primary" bsSize="xsmall" onClick={this.handleClick}>{this.props.action}</Button>
-            <Button className="buttonMain" bsStyle="primary" bsSize="xsmall" onClick={ () => this.setState({ open: !this.state.open })}>
-              {this.state.open ? 'Less Details' : 'More Details'}
-            </Button>
 
-          </ButtonToolbar>
+              <div className="text-center">
+              <Button className="buttonMain" bsStyle="primary" bsSize="xsmall" onClick={this.handleClick}>{this.props.action}</Button>
+              {' '}
+              <Button className="buttonMain" bsStyle="primary" bsSize="xsmall" onClick={ () => this.setState({ open: !this.state.open })}>
+                {this.state.open ? 'Less Details' : 'More Details'}
+              </Button>
+            </div>
+
+
           <br></br>
           {details}
       </div>
