@@ -6,6 +6,7 @@ import { ConnectedLogin } from './components/account/Login'
 import { ConnectedSearch } from './components/search/Search'
 import { ConnectedRegister } from './components/account/Registration'
 import { StickyContainer, Sticky } from 'react-sticky';
+import { Footer } from './components/panels/Footer'
 
 import './App.css';
 
@@ -18,6 +19,7 @@ class App extends Component {
     return (
       <div>
         {this.props.login ? <ConnectedMain /> : logout}
+        <Footer/>
       </div>
 
     );

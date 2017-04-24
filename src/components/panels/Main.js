@@ -28,7 +28,6 @@ export class Main extends Component {
         <Row>
           <ConnectedDisplay/>
         </Row>
-
         <StickyContainer>
           <Grid>
           {this.props.navigation === "Search" ? search : null}
@@ -38,7 +37,6 @@ export class Main extends Component {
           </Grid>
         </StickyContainer>
       </div>
-  
     </div>
     )
   }
