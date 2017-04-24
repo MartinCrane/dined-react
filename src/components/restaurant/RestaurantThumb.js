@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Collapse, Well, Image, ButtonToolbar } from 'react-bootstrap';
+import { Button, Collapse, Well, Image } from 'react-bootstrap';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { addToFavorites, removeFromFavorites } from '../../actions/favorites'
@@ -26,8 +26,8 @@ export class RestaurantThumb extends Component {
       this.props.removeFromFavorites(this.props.restaurant)
     }
     this.props.removeFromDisplay(this.props.restaurant.yelp_id)
-
   }
+
 
   render(){
     let title = <div>
@@ -44,6 +44,7 @@ export class RestaurantThumb extends Component {
                         <br></br>
                         <br></br>
                         <Image src={this.props.restaurant.image_url} responsive />
+                        <a href={'https://www.yelp.com/biz/'+this.props.restaurant.yelp_id}>Link To Yelp Page</a>
                       </div>
                     </Collapse>
                   </div>
