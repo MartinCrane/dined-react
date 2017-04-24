@@ -22,6 +22,12 @@ button {
 div {
   border-radius: 0px;
 }
+body {
+  background-image: url('images/bg.png');
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-size: 60px 60px;
+}
 
 .mapTick {
   background-color: #e73b38;
@@ -55,8 +61,8 @@ div {
   width: 100%;
   padding-right: 4em;
   padding-bottom: 30px;
-  background-color: #FCFDF5
 }
+
 .centered {
   margin-left: auto;
   margin-right: auto;
@@ -88,6 +94,7 @@ div {
   /*FILTERBAR STYLE*/
 .searchForm {
   width: inherit;
+  background-color: inherit;
 }
 
 .filterBarStyle {
