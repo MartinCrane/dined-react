@@ -44,8 +44,6 @@ export class SearchRestaurantThumb extends Component {
                         <Image src={this.props.restaurant.image_url} responsive />
                         <a href={'https://www.yelp.com/biz/'+this.props.restaurant.yelp_id}>Link To Yelp Page</a>
                       </div>
-
-
                     </Collapse>
                   </div>
 

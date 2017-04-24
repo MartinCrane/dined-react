@@ -26,8 +26,8 @@ export class RestaurantThumb extends Component {
       this.props.removeFromFavorites(this.props.restaurant)
     }
     this.props.removeFromDisplay(this.props.restaurant.yelp_id)
-
   }
+
 
   render(){
     let title = <div>
@@ -44,6 +44,7 @@ export class RestaurantThumb extends Component {
                         <br></br>
                         <br></br>
                         <Image src={this.props.restaurant.image_url} responsive />
+                        <a href={'https://www.yelp.com/biz/'+this.props.restaurant.yelp_id}>Link To Yelp Page</a>
                       </div>
                     </Collapse>
                   </div>
