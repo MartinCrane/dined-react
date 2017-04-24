@@ -7,8 +7,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { SimpleMap } from '../map/Map'
 import $ from 'jquery'
-import { ButtonToolbar, ButtonGroup, Button, Col, Row, Popover } from 'react-bootstrap';
-import MapTick  from '../map/MapTick'
+import MapMarkers  from '../map/mapMarkers'
 
 
 export class RouletteMap extends Component {
@@ -83,16 +82,19 @@ export class RouletteMap extends Component {
 
     let randRestaurant = []
       if(this.state.randrestaurant){
-        randRestaurant.push(<MapTick index={0} name={this.state.randrestaurant[0].name}
+        randRestaurant.push(<MapMarkers index={0}
+          text={this.state.randrestaurant[0].name}
           lat={this.state.randrestaurant[0].latitude}
           lng={this.state.randrestaurant[0].longitude}
+          img={require('../map/web/assets/icons/map_icons/map_icon_std_orange.svg')}
           />)
       }else{
         this.props.favorites.map((res, index)=>{
-          randRestaurant.push(<MapTick  name={res.name}
+          randRestaurant.push(<MapMarkers text={res.name}
                     lat={res.latitude}
                     lng={res.longitude}
                     key={index}
+                    img={require('../map/web/assets/icons/map_icons/map_icon_std_orange.svg')}
                     />
                   )
         })
