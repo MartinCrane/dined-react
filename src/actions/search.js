@@ -55,7 +55,7 @@ export const searchYelp = (submission, favorites) =>{
     .then(res => {
       let resultsFormatted = formatResults(res)
       var self = this
-      let favorites_id = self.props.favorites.map((fav)=> {return fav.yelp_id})
+      let favorites_id = favorites.map((fav)=> {return fav.yelp_id})
       let new_array = resultsFormatted.filter((r)=> !favorites_id.includes(r.yelp_id))
       return {
         type: 'ADD_RESULTS',

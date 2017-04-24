@@ -7,7 +7,7 @@ import { price_function } from '../../actions/restaurant'
 import { updateAddFavoritesServer, updateDeleteFavoritesServer } from '../../actions/favorites'
 
 
-export class RestaurantThumb extends Component {
+export class SearchRestaurantThumb extends Component {
   constructor(){
     super();
     this.state = {
@@ -40,7 +40,6 @@ export class RestaurantThumb extends Component {
     let details = <div>
                     <Collapse in={this.state.open}>
                       <div>
-                        <Button className="buttonMain" bsStyle="primary" bsSize="xsmall" onClick={this.handleClick}>{this.props.action}</Button>
                         <Image src={this.props.restaurant.image_url} responsive />
                       </div>
                     </Collapse>
@@ -54,6 +53,7 @@ export class RestaurantThumb extends Component {
           <br></br>
           <ButtonToolbar>
 
+            <Button className="buttonMain" bsStyle="primary" bsSize="xsmall" onClick={this.handleClick}>{this.props.action}</Button>
             <Button className="buttonMain" bsStyle="primary" bsSize="xsmall" onClick={ () => this.setState({ open: !this.state.open })}>
               {this.state.open ? 'Less Details' : 'More Details'}
             </Button>
@@ -65,6 +65,7 @@ export class RestaurantThumb extends Component {
     )
   }
 }
+
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     addToFavorites: addToFavorites,
@@ -73,4 +74,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-export const ConnectedRestaurantThumb = connect(null,mapDispatchToProps)(RestaurantThumb)
+export const ConnectedSearchRestaurantThumb = connect(null, mapDispatchToProps)(SearchRestaurantThumb)

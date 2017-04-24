@@ -3,7 +3,7 @@ import { ConnectedRestaurantThumb } from '../restaurant/RestaurantThumb'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { removeFromResults } from '../../actions/search'
-
+import { ConnectedSearchRestaurantThumb } from '../restaurant/SearchRestaurantThumb'
 
 export class Results extends Component {
   constructor(){
@@ -16,15 +16,18 @@ export class Results extends Component {
   }
 
   render(){
-    let restaurantThumbList = this.props.results.map((restaurant, index) =>
-            <ConnectedRestaurantThumb key={index}
-                                      restaurant={restaurant}
-                                      action={"Add to Favorites"}
-                                      removeFromDisplay={this.removeFromDisplay}/>)
+    let restaurantThumbList
+    if (this.props.search.length > 0 ) {
+        restaurantThumbList = this.props.search.map((restaurant, index) =>
+                            <ConnectedSearchRestaurantThumb key={index}
+                                                            restaurant={restaurant}
+                                                            action={"Add to Favorites"}
+                                                            removeFromDisplay={this.removeFromDisplay}/>)
+    }
 
     return(
         <div className="resultsContainer">
-          {restaurantThumbList}
+          {this.props.search.length > 1 ? restaurantThumbList : null}
         </div>
     )
   }
@@ -32,7 +35,7 @@ export class Results extends Component {
 
 const mapStateToProps = (state)=>{
   return{
-    results: state.favorites.results
+    search: state.search
   }
 }
 

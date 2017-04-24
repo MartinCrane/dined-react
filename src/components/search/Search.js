@@ -80,7 +80,7 @@ export class Search extends Component {
         <Sticky>
           {searchBar}
         </Sticky>
-        <ConnectedResults removeFromDisplay={this.removeFromDisplay}/>
+        <ConnectedResults/>
       </div>
     )
   }
@@ -94,8 +94,7 @@ const mapStateToProps = (state)=>{
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    searchYelp: searchYelp,
-    removeFromResults: removeFromResults
+    searchYelp: searchYelp
   }, dispatch)
 }
 
