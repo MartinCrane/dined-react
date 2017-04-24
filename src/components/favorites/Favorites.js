@@ -13,14 +13,14 @@ export class Favorites extends Component {
 
   render(){
     let restaurantThumbList = this.props.favorites.map((restaurant, index) =>
-          <Col sm={4} md={4}><ConnectedRestaurantThumb key={index}
+          <Col sm={6} md={6}><ConnectedRestaurantThumb key={index}
                                                        restaurant={restaurant}
                                                        action={"Remove from Favorites"}
                                                        removeFromDisplay = {this.removeFromDisplay}/>
                                                        </Col>)
 
     return(
-        <div>
+        <div className="resultsContainer">
           {restaurantThumbList}
         </div>
     )

@@ -13,7 +13,7 @@ class App extends Component {
 
   render() {
     let login = <div> <ConnectedSearch /></div>
-    let logout = <div> <ConnectedLogin /></div>
+    let logout = <div> <ConnectedLogin /><ConnectedRegister /></div>
 
     return (
       <div>
