@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Collapse, Well, Image, ButtonToolbar } from 'react-bootstrap';
+import { Button, Collapse, Well, Image } from 'react-bootstrap';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { addToFavorites, removeFromFavorites } from '../../actions/favorites'
@@ -17,6 +17,7 @@ export class SearchRestaurantThumb extends Component {
   }
 
   handleClick(event) {
+    debugger
     if (this.props.action === "Add to Favorites") {
       updateAddFavoritesServer(this.props.restaurant)
       this.props.addToFavorites(this.props.restaurant)
@@ -28,6 +29,7 @@ export class SearchRestaurantThumb extends Component {
     this.props.removeFromDisplay(this.props.restaurant.yelp_id)
 
   }
+
 
   render(){
     let title = <div>
@@ -41,6 +43,7 @@ export class SearchRestaurantThumb extends Component {
                     <Collapse in={this.state.open}>
                       <div>
                         <Image src={this.props.restaurant.image_url} responsive />
+                        <a href={'https://www.yelp.com/biz/'+this.props.restaurant.yelp_id}>Link To Yelp Page</a>
                       </div>
                     </Collapse>
                   </div>
