@@ -27,6 +27,7 @@ export class Main extends Component {
         <Row>
           <ConnectedDisplay />
         </Row>
+
         <StickyContainer>
           <Grid>
             <Row className="container">
