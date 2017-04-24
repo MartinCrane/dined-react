@@ -59,6 +59,13 @@ div {
   border: 3px solid #e37655;
 }
 
+/*--- ButtonToolBar Centering ---*/
+
+.btn-toolbar{
+  text-align: center;
+}​
+
+/*--- End ButtonToolBar Centering ---*/
   /*FILTERBAR STYLE*/
 
 
@@ -128,6 +135,7 @@ div {
 
 /*RestaurantThumb*/
 .restaurantThumb {
+  text-align: center;
   border-left: 1px;
   max-width: 100%;
   padding: 2em;
