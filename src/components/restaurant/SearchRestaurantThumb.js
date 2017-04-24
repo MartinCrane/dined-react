@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Collapse, Well, Image, ButtonToolbar } from 'react-bootstrap';
+import { Button, Collapse, Well, Image } from 'react-bootstrap';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { addToFavorites, removeFromFavorites } from '../../actions/favorites'
