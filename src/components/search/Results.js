@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ConnectedRestaurantThumb } from '../restaurant/RestaurantThumb'
+import { ConnectedSearchRestaurantThumb } from '../restaurant/SearchRestaurantThumb'
 
 export class Results extends Component {
 
@@ -8,13 +8,14 @@ export class Results extends Component {
     this.state = {
     };
   }
-
   render(){
+
     let restaurantThumbList = this.props.results.map((restaurant, index) =>
-            <ConnectedRestaurantThumb key={index}
+            <ConnectedSearchRestaurantThumb key={index}
                                       restaurant={restaurant}
                                       action={"Add to Favorites"}
-                                      removeFromDisplay={this.props.removeFromDisplay}/>)
+                                      removeFromDisplay={this.props.removeFromDisplay}/>
+                                    )
 
 
     return(
