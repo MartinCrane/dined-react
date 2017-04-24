@@ -38,7 +38,7 @@ div {
 
 .mainWindow {
   left: 40px;
-  position: fixed;
+  position: absolute;
 }
 
     /*GENERAL BUTTONS*/
@@ -60,7 +60,7 @@ div {
 
   /*FILTERBAR STYLE*/
 
-.filterBar {
+.filterBarStyle {
   z-Index: 1000;
   height: 4em;
   opacity: .85;
@@ -75,15 +75,9 @@ div {
   height:3em;
   font-size: 1.3em;
   color: black;
-  border: 1px solid black;
+  border: 0px solid black;
   border-radius: 0px;
-  background: repeating-linear-gradient(
-    99deg,
-    #eee,
-    #eee 1px,
-    #fff 1px,
-    #fff 21px
-  );
+  background: #FDFAF5;
 }
 
   /*NAVBAR STYLE*/
