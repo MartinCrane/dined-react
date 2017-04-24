@@ -5,6 +5,8 @@ import GoogleMapReact from 'google-map-react';
 import { setLocation } from '../../actions/setLocation'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { ButtonToolbar, ButtonGroup, Button, Col, Row, Popover } from 'react-bootstrap';
+import { LoadScreen } from '../panels/Loading'
 
 const MarkerComponent = ({ text }) => <div style={{
     position: 'relative', color: 'white', background: 'red',
@@ -35,6 +37,17 @@ export class SimpleMap extends Component {
 
   render() {
 
+    let loadingComponent =
+                      <Row>
+                        <Col sm={2} md={2}></Col>
+                        <Col sm={8} md={8}>
+                          <img src="../src/loading-bars.svg" alt="Loading icon" />
+                        </Col>
+                        <Col sm={2} md={2}></Col>
+                      </Row>
+
+
+
     let markers = []
 
     this.props.favorites.forEach((rest, index) => {
@@ -44,7 +57,13 @@ export class SimpleMap extends Component {
     let geoLocationReady
 
       if(!!(this.state.center.lat && this.state.center.lng)){
-        geoLocationReady = <GoogleMapReact
+        debugger
+        geoLocationReady =
+                    <Row>
+                     <Col sm={2} md={2}></Col>
+                     <Col sm={8} md={8}>
+                       <div className="map">
+                          <GoogleMapReact
                             bootstrapURLKeys={{
                               key: 'AIzaSyCjef7cMcrZYQfvEqlTFvvn7VqKTBDoTvE',
                               language: 'en'
@@ -54,13 +73,18 @@ export class SimpleMap extends Component {
                             >
                             {markers}
                           </GoogleMapReact>
-      } else {
-        geoLocationReady = <h1>`Loading Map...`</h1>
+                          </div>
+                        </Col>
+                        <Col sm={2} md={2}></Col>
+                      </Row>
+
+      }else{
+        geoLocationReady = loadingComponent
       }
 
     return (
-      <div className="map resultsContainer">
-      {geoLocationReady}
+      <div>
+        {geoLocationReady}
       </div>
     )
   }

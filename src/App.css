@@ -14,6 +14,7 @@ p {
   font-family: 'Poppins', sans-serif;
   font-family: 'Anton', sans-serif;
 }
+
 button {
   font-family: 'Poppins', sans-serif;
   background-color: #faffeb;
@@ -71,6 +72,7 @@ div {
   height: 5em;
 }
 
+
 .bFilter {
   height:3em;
   font-size: 1.3em;
@@ -79,7 +81,6 @@ div {
   border-radius: 0px;
   background: #FDFAF5;
 }
-
   /*NAVBAR STYLE*/
 
 .navStyle {
@@ -144,10 +145,13 @@ div {
     height: 500px;
 }
 
+
+/*--Spinner CSS ---*/
 .filterMap {
     height: 30em;
 }
 
+<<<<<<< HEAD
 .mainViewport {
   padding-top: 4em;
 }
@@ -155,13 +159,14 @@ div {
 
 /*Roulette CSS*/
 
+
 .spinner {
   margin: 0;
   font-size: 1.5em;
-  position: absolute;
+  position: relative;
   bottom: 2vh;
-  left: 25vw;
-  width: 50vw;
+  left: auto;
+  width: 750px;
   z-index: 100;
   -moz-box-shadow: 0px 0px 10px 0px black;
   -webkit-box-shadow: 0px 0px 10px 0px black;
@@ -172,11 +177,11 @@ div {
   top: 0;
   right: 0;
   width: 15vw;
-  height: 100%;
+  height: 2em;
 }
 .spinner footer .stop {
   width: 100%;
-  height: 100%;
+  height: 2em;
 }
 .spinner .stop {
   display: block;
@@ -199,7 +204,8 @@ div {
   color: white;
   text-shadow: 0 0 0.25em black;
   font-weight: bold;
-  width: 35vw;
+  text-align: center;
+  width: 600px;
   height: 2em;
   position: relative;
   overflow: hidden;
@@ -217,30 +223,39 @@ div {
 .roller ul li {
   display: block;
   text-align: center;
+  height: 2em;
+}
+
+@include keyframes(scroll-numbers){
+	from { top: 0;  }
+	to {  top: -28em;  }
 }
 
 @import url(http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
+
 @-moz-keyframes scroll-numbers {
   from {
     top: 0;
   }
   to {
-    top: -28em;
+    top: -20em;
   }
 }
 @-webkit-keyframes scroll-numbers {
   from {
-    top: 0;
+    top: 0em;
   }
   to {
-    top: -28em;
+    top: -20em;
   }
 }
 @keyframes scroll-numbers {
   from {
-    top: 0;
+    top: 0em;
   }
   to {
-    top: -28em;
+    top: -20em;
   }
 }
+
+/*End of Spinner CSS*/
