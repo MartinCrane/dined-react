@@ -63,7 +63,7 @@ export class Search extends Component {
       // above can be removed
 
 
-      let searchBar = <Row className="resultsContainer" style={{justifyContent: 'center'}}>
+      let searchBar = <Row className="resultsContainer" style={{justifyContent: 'center', zIndex: 2000}}>
                           <form style={{justifyContent: 'center'}} onSubmit={event => this.handleSubmit(event)}>
                               <FormGroup >
                                   <Col sm={2}>
@@ -97,11 +97,13 @@ export class Search extends Component {
                       </Row>
     return(
       <div>
-        <Sticky>
+        <Sticky style={{justifyContent: 'center', zIndex: 2000}}>
           {searchBar}
         </Sticky>
+        <Row>
           <Results results={this.state.results} removeFromDisplay={this.removeFromDisplay}/>
-      </div>
+        </Row>
+    </div>
     )
   }
 }

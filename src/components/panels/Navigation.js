@@ -84,7 +84,7 @@ export class Navigation extends Component {
                           <Button key={5} className="verticalNavButton"
                                   onClick={this.handleClick.bind(null, "Roulette")}>
                             <Row>
-                              <Col xs={3} sm={3} md={3}>Roulette</Col><Col xs={7} sm={7} md={7}></Col><Col xs={1} sm={1} md={1}><img style={{align: 'right', height: '25px'}}src={require('../../images/fav.png')}></img></Col>
+                              <Col xs={3} sm={3} md={3}>Roulette</Col><Col xs={7} sm={7} md={7}></Col><Col xs={1} sm={1} md={1}><img style={{align: 'right', height: '25px'}}src={require('../../images/roulette.png')}></img></Col>
                             </Row>
                           </Button>
                     </ButtonGroup>

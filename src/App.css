@@ -14,7 +14,6 @@ p {
   font-family: 'Poppins', sans-serif;
   font-family: 'Anton', sans-serif;
 }
-
 button {
   font-family: 'Poppins', sans-serif;
   background-color: #faffeb;
@@ -124,6 +123,7 @@ div {
 
 .resultsContainer{
   padding-top: 1em;
+  z-index: -3
 }
 
 .menuBar {
@@ -179,9 +179,6 @@ div {
   left: auto;
   width: 750px;
   z-index: 100;
-  -moz-box-shadow: 0px 0px 10px 0px black;
-  -webkit-box-shadow: 0px 0px 10px 0px black;
-  box-shadow: 0px 0px 10px 0px black;
 }
 .spinner footer {
   position: absolute;
@@ -203,17 +200,15 @@ div {
   -moz-appearance: none;
   -webkit-appearance: none;
   border: 0 none;
-  background: darkorange;
+  background: #e37674;
   color: white;
-  text-shadow: 0 0 0.5em black;
   text-transform: uppercase;
   outline: 0 none;
 }
 
 .roller {
-  background: teal;
+  background: #e73b38;
   color: white;
-  text-shadow: 0 0 0.25em black;
   font-weight: bold;
   text-align: center;
   width: 100%;
