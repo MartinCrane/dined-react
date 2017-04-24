@@ -7,13 +7,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { ButtonToolbar, ButtonGroup, Button, Col, Row, Popover } from 'react-bootstrap';
 import { LoadScreen } from '../panels/Loading'
+import MapTick from './MapTick'
 
-const MarkerComponent = ({ text }) => <div style={{
-    position: 'relative', color: 'white', background: 'red',
-    height: 40, width: 60, top: -20, left: -30,
-  }}>
-    {text}
-  </div>
 
 export class SimpleMap extends Component {
   constructor(){
@@ -28,7 +23,7 @@ export class SimpleMap extends Component {
       navigator.geolocation.getCurrentPosition((position) => {
           var geoCenter = {center: {lat: position.coords.latitude, lng: position.coords.longitude}};
           this.props.setLocation(geoCenter)
-          // this.setState(geoCenter)
+          this.setState(geoCenter)
 
           //Uncomment above to move from loading screen
         },
@@ -54,7 +49,7 @@ export class SimpleMap extends Component {
     let markers = []
 
     this.props.favorites.forEach((rest, index) => {
-      markers.push(<MarkerComponent key={index} lat={rest.latitude} lng={rest.longitude} /> )
+      markers.push(<MapTick key={rest.id} lat={rest.latitude} lng={rest.longitude} name={rest.name}/> )
     });
 
     let geoLocationReady
