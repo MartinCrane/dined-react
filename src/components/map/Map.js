@@ -37,14 +37,9 @@ export class SimpleMap extends Component {
   render() {
 
     let loadingComponent =
-                      <Row>
-                        <Col sm={2} md={2}></Col>
-                        <Col sm={8} md={8} smOffset={4}>
-                          <h1> Fetching Cool Stuff </h1>
+                      <div>
                           <LoadScreen />
-                        </Col>
-                        <Col sm={2} md={2}></Col>
-                      </Row>
+                      </div>
 
 
 

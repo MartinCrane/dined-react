@@ -15,11 +15,11 @@ export class Results extends Component {
                                       restaurant={restaurant}
                                       action={"Add to Favorites"}
                                       removeFromDisplay={this.props.removeFromDisplay}/>
-                                    )
+                                      )
 
 
     return(
-        <div className="resultsContainer">
+        <div>
           {restaurantThumbList}
         </div>
     )

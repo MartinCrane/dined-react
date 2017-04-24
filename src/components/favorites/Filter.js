@@ -68,7 +68,6 @@ export class Filter extends Component {
 
   const googleMapTray =  <div>
                             <Row>
-                             <Col sm={6} md={6}>
                                <div className="filterMap">
                                  <GoogleMapReact
                                    defaultCenter={this.state.center}
@@ -84,16 +83,13 @@ export class Filter extends Component {
                                    key={index}/>)}
                                  </GoogleMapReact>
                                </div>
-                             </Col>
                            </Row>
                           </div>
-
-
 
     return(
       <div>
         <Sticky className="filterBarStyle" stickyClassName={'filterBarSticky'}>
-          <Row >
+
             <Col sm={2} md={2}></Col>
             <Col sm={8} md={8}>
               <ButtonGroup justified >
@@ -115,7 +111,7 @@ export class Filter extends Component {
               </ButtonGroup>
             </Col>
             <Col sm={2} md={2}></Col>
-          </Row>
+
         </Sticky>
         <div>
             {this.state.mapUse ? googleMapTray : null }
