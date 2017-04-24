@@ -51,7 +51,7 @@ export class SimpleMap extends Component {
     let markers = []
 
     this.props.favorites.forEach((rest, index) => {
-      markers.push(<MapMarkers key={rest.id} lat={rest.latitude} lng={rest.longitude} text={rest.name}/> )
+      markers.push(<MapMarkers key={rest.id} lat={rest.latitude} lng={rest.longitude} text={rest.name} img={require('./web/assets/icons/map_icons/map_icon_std_orange.svg')}/> )
     });
 
     let geoLocationReady
@@ -72,7 +72,7 @@ export class SimpleMap extends Component {
                             hoverDistance={K_SIZE / 2}
                             >
                             {markers}
-                            <MapMarkers lat={this.state.center.lat} lng={this.state.center.lng} text={`You are here`} />
+                            <MapMarkers lat={this.state.center.lat} lng={this.state.center.lng} text={`You are here`} img={require('./web/assets/icons/map_icons/map_icon_flag_orange.svg')} />
                           </GoogleMapReact>
                           </div>
                         </Col>
