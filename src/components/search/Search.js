@@ -59,22 +59,19 @@ export class Search extends Component {
     }
 
   render(){
-      let options = <Button onClick={ ()=> this.setState({ open: !this.state.open })}>See More Options</Button>
-      // above can be removed
 
-
-      let searchBar = <Row className="resultsContainer" style={{justifyContent: 'center'}}>
-                          <form style={{justifyContent: 'center'}} onSubmit={event => this.handleSubmit(event)}>
+      let searchBar = <div>
+                          <form onSubmit={event => this.handleSubmit(event)} className="searchForm">
                               <FormGroup >
                                   <Col sm={2}>
                                     Name
                                   </Col>
                                   <Col componentClass={ControlLabel} sm={10}>
-                                      <FormControl  type="text"
-                                                    value={this.state.field}
-                                                    placeholder="Search by Name"
-                                                    onChange={this.handleChange.bind(null, "term")}
-                                                    />
+                                    <FormControl  type="text"
+                                                  value={this.state.field}
+                                                  placeholder="Search by Name"
+                                                  onChange={this.handleChange.bind(null, "term")}
+                                                  />
                                   </Col>
                               </FormGroup>
                               <FormGroup >
@@ -94,14 +91,16 @@ export class Search extends Component {
                                 Search
                               </Button>
                             </form>
-                      </Row>
+                      </div>
     return(
-      <div>
-        <Sticky>
+      <div className="centered" >
+        <Sticky style={{zIndex: 2000}}>
           {searchBar}
         </Sticky>
+        <Row>
           <Results results={this.state.results} removeFromDisplay={this.removeFromDisplay}/>
-      </div>
+        </Row>
+    </div>
     )
   }
 }

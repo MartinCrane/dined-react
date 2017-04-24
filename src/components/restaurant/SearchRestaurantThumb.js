@@ -51,20 +51,16 @@ export class SearchRestaurantThumb extends Component {
     let action = <Button className="buttonMain" bsStyle="primary" bsSize="xsmall" onClick={this.handleClick}>{this.props.action}</Button>
 
     return(
-      <div className="restaurantThumb" >
-          {title}
-          <br></br>
-
-
-              <div className="text-center">
-              <Button className="buttonMain" bsStyle="primary" bsSize="xsmall" onClick={this.handleClick}>{this.props.action}</Button>
-              {' '}
-              <Button className="buttonMain" bsStyle="primary" bsSize="xsmall" onClick={ () => this.setState({ open: !this.state.open })}>
-                {this.state.open ? 'Less Details' : 'More Details'}
-              </Button>
-            </div>
-
-
+          <div className="restaurantThumb" >
+            {title}
+            <br></br>
+            <div className="text-center">
+            <Button className="buttonMain" bsStyle="primary" bsSize="xsmall" onClick={this.handleClick}>{this.props.action}</Button>
+            {' '}
+            <Button className="buttonMain" bsStyle="primary" bsSize="xsmall" onClick={ () => this.setState({ open: !this.state.open })}>
+              {this.state.open ? 'Less Details' : 'More Details'}
+            </Button>
+          </div>
           <br></br>
           {details}
       </div>

@@ -14,7 +14,8 @@ export class Navigation extends Component {
     super();
     this.state= {
       menu: false,
-      offset: '0px'
+      offset: '0px',
+      style: ' '
     }
     this.logout = this.logout.bind(this)
     this.handleClick = this.handleClick.bind(this)
@@ -37,60 +38,86 @@ export class Navigation extends Component {
 
   expandMenu() {
     let offset = '0px'
+    let style = ''
     if (!this.state.menu) {
-      offset = '260px'
+      offset = '260px',
+      style = 'navigationTransOpen'
     }
     this.setState({
       menu: !this.state.menu,
-      offset: offset
+      offset: offset,
+      style: style
     })
     console.log(this.state.offset)
-
   }
 
 
 
   render(){
-    let logout = <NavItem eventKey={1} onClick={(event) => this.logout(event)} >Logout</NavItem>
-    // let navForm = <FormGroup><FormControl type="text" placeholder="Search" /></FormGroup>{' '}<Button type="submit">Submit</Button></Navbar.Form>
 
   const sideBar = (
                       <ButtonGroup vertical block style={{left: this.state.offset, borderRadius: '0px'}}>
                           <Button key={1} className="verticalNavButton"
-                                  style={{backgroundColor: 'red'}}
                                   onClick={this.expandMenu}>
                             <Row>
-                              <Col xs ={3} sm={3} md={3}>Menu</Col><Col xs={7} sm={7} md={7}></Col>
+                              <Col xs ={3} sm={3} md={3}>PICKY</Col>
+                              <Col xs={7} sm={7} md={7}></Col>
                             </Row>
                           </Button>
                           <Button key={2} className="verticalNavButton"
                                   onClick={this.handleClick.bind(null, "Map")}>
                             <Row>
-                              <Col xs={3} sm={3} md={3}>Maps</Col><Col xs={7} sm={7} md={7}></Col><Col xs={1} sm={1} md={1}><img style={{align: 'right', height: '25px'}}src={require('../../images/maps.png')}></img></Col>
+                              <Col xs={3} sm={3} md={3}>Maps</Col>
+                              <Col xs={7} sm={7} md={7}></Col>
+                              <Col xs={1} sm={1} md={1}>
+                                <img style={{align: 'right', height: '25px'}}src={require('../../images/maps.png')}></img>
+                              </Col>
                             </Row>
                           </Button>
                           <Button key={3} className="verticalNavButton"
                                   onClick={this.handleClick.bind(null, "Search")}>
                             <Row>
-                              <Col xs={3} sm={3} md={3}>Search</Col><Col xs={7} sm={7} md={7}></Col><Col xs={1} sm={1} md={1}><img style={{align: 'right', height: '25px'}}src={require('../../images/search.png')}></img></Col>
+                              <Col xs={3} sm={3} md={3}>Search</Col>
+                              <Col xs={7} sm={7} md={7}></Col>
+                              <Col xs={1} sm={1} md={1}>
+                                <img style={{align: 'right', height: '25px'}}src={require('../../images/search.png')}></img>
+                              </Col>
                             </Row>
                           </Button>
                           <Button key={4} className="verticalNavButton"
                                   onClick={this.handleClick.bind(null, "Favorites")}>
                             <Row>
-                              <Col xs={3} sm={3} md={3}>Favorites</Col><Col xs={7} sm={7} md={7}></Col><Col xs={1} sm={1} md={1}><img style={{align: 'right', height: '25px'}}src={require('../../images/fav.png')}></img></Col>
+                              <Col xs={3} sm={3} md={3}>Favorites</Col>
+                              <Col xs={7} sm={7} md={7}></Col>
+                              <Col xs={1} sm={1} md={1}>
+                                <img style={{align: 'right', height: '25px'}}src={require('../../images/fav.png')}></img>
+                              </Col>
                             </Row>
                           </Button>
                           <Button key={5} className="verticalNavButton"
                                   onClick={this.handleClick.bind(null, "Roulette")}>
                             <Row>
-                              <Col xs={3} sm={3} md={3}>Roulette</Col><Col xs={7} sm={7} md={7}></Col><Col xs={1} sm={1} md={1}><img style={{align: 'right', height: '25px'}}src={require('../../images/fav.png')}></img></Col>
+                              <Col xs={3} sm={3} md={3}>Roulette</Col>
+                              <Col xs={7} sm={7} md={7}></Col>
+                              <Col xs={1} sm={1} md={1}>
+                                <img style={{align: 'right', height: '25px'}}src={require('../../images/roulette.png')}></img>
+                              </Col>
+                            </Row>
+                          </Button>
+                          <Button key={6} className="verticalNavButton"
+                                  onClick={this.logout}>
+                            <Row>
+                              <Col xs={3} sm={3} md={3}>Lougout</Col>
+                              <Col xs={7} sm={7} md={7}></Col>
+                              <Col xs={1} sm={1} md={1}>
+                                <img style={{align: 'right', height: '25px'}}src={require('../../images/logout.png')}></img>
+                              </Col>
                             </Row>
                           </Button>
                     </ButtonGroup>
                     );
   return(
-      <div style={{width: 300, borderRadius: '0px'}}>
+      <div className={'navigationTrans ' + this.state.style}>
         {sideBar}
       </div>
     )

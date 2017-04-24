@@ -7,7 +7,7 @@ export class LoadScreen extends Component {
   render() {
 
     return (
-      <div className="loader" margin="auto">
+      <div className="loader text-center">
       </div>
     );
   }
