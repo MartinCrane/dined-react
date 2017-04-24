@@ -17,6 +17,7 @@ export class SearchRestaurantThumb extends Component {
   }
 
   handleClick(event) {
+    debugger
     if (this.props.action === "Add to Favorites") {
       updateAddFavoritesServer(this.props.restaurant)
       this.props.addToFavorites(this.props.restaurant)
@@ -41,7 +42,10 @@ export class SearchRestaurantThumb extends Component {
                     <Collapse in={this.state.open}>
                       <div>
                         <Image src={this.props.restaurant.image_url} responsive />
+                        <a href={'https://www.yelp.com/biz/'+this.props.restaurant.yelp_id}>Link To Yelp Page</a>
                       </div>
+
+
                     </Collapse>
                   </div>
 
