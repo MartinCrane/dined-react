@@ -25,7 +25,25 @@ export const formatResults = (array) => {
   return results
 }
 
-export const search = (submission, favorites) =>{
+export const formatApiCallString = (submission) => {
+  let apiSplit = '@$@$@'
+  let string = 'term' + apiSplit + submission.term + apiSplit + 'category' + apiSplit + submission.category
+  if (!!submission.location) {
+    string = string + apiSplit + 'location' + apiSplit + submission.location
+  }
+  if (!!submission.price) {
+    string = string + apiSplit + 'price' + apiSplit + submission.price
+  }
+  if (!!submission.latitude) {
+    string = string + apiSplit + 'latitude' + apiSplit + submission.latitude
+  }
+  if (!!submission.longitude) {
+    string = string + apiSplit + 'longitude' + apiSplit + submission.longitude
+  }
+  return string
+}
+
+export const searchYelp = (submission, favorites) =>{
   fetch(`http://localhost:4000/yelpApiSearch/${submission}`,
     {
     method: 'get',
@@ -36,8 +54,19 @@ export const search = (submission, favorites) =>{
   }).then(res => res.json())
     .then(res => {
       let resultsFormatted = formatResults(res)
-      let favorites_id = favorites.map((fav)=> {return fav.yelp_id})
+      var self = this
+      let favorites_id = self.props.favorites.map((fav)=> {return fav.yelp_id})
       let new_array = resultsFormatted.filter((r)=> !favorites_id.includes(r.yelp_id))
-      return new_array
+      return {
+        type: 'ADD_RESULTS',
+        payload: new_array
+      }
     })
+  }
+
+  export const removeFromResults = (id) => {
+    return {
+      type: 'ADD_RESULTS',
+      payload: id
+    }
   }

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Results } from './Results'
+import { ConnectedResults } from './Results'
 import { connect } from 'react-redux'
-import { FormGroup, ControlLabel, FormControl, HelpBlock, Button, Radio, Collapse, InputGroup, Row, Col } from 'react-bootstrap';
-import { formatResults, formatApiCallString } from '../../actions/yelpApiFormat'
+import { bindActionCreators } from 'redux'
+import { FormGroup, ControlLabel, FormControl, Button, Collapse, InputGroup, Row, Col } from 'react-bootstrap';
+import { searchYelp, removeFromResults, formatApiCallString } from '../../actions/search'
 import { StickyContainer, Sticky } from 'react-sticky';
 
 export class Search extends Component {
@@ -31,31 +32,13 @@ export class Search extends Component {
    }
 
    removeFromDisplay(id) {
-     this.setState({
-       results: this.state.results.filter((r) => r.yelp_id != id)
-     })
+     removeFromResults(id)
    }
 
   handleSubmit(event) {
     event.preventDefault()
     let submission = formatApiCallString(this.state)
-    fetch(`http://localhost:4000/yelpApiSearch/${submission}`,
-      {
-      method: 'get',
-      headers: {
-        Authorization: `${localStorage.jwt}`
-      },
-      data: "gold"
-    }).then(res => res.json())
-      .then(res => {
-        let resultsFormatted = formatResults(res)
-        var self = this
-        let favorites_id = self.props.favorites.map((fav)=> {return fav.yelp_id})
-        let new_array = resultsFormatted.filter((r)=> !favorites_id.includes(r.yelp_id))
-        this.setState({
-          results: new_array
-        })
-      })
+    return searchYelp(submission, this.props.favorites)
     }
 
   render(){
@@ -97,7 +80,7 @@ export class Search extends Component {
         <Sticky>
           {searchBar}
         </Sticky>
-          <Results results={this.state.results} removeFromDisplay={this.removeFromDisplay}/>
+        <ConnectedResults removeFromDisplay={this.removeFromDisplay}/>
       </div>
     )
   }
@@ -109,4 +92,11 @@ const mapStateToProps = (state)=>{
   }
 }
 
-export const ConnectedSearch = connect(mapStateToProps)(Search)
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    searchYelp: searchYelp,
+    removeFromResults: removeFromResults
+  }, dispatch)
+}
+
+export const ConnectedSearch = connect(mapStateToProps, mapDispatchToProps)(Search)

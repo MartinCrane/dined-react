@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import { ConnectedRestaurantThumb } from '../restaurant/RestaurantThumb'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { removeFromResults } from '../../actions/search'
+
 
 export class Results extends Component {
-
   constructor(){
     super()
-    this.state = {
-    };
+    this.removeFromDisplay = this.removeFromDisplay.bind(this)
+  }
+
+  removeFromDisplay(id) {
+    removeFromResults(id)
   }
 
   render(){
@@ -14,8 +20,7 @@ export class Results extends Component {
             <ConnectedRestaurantThumb key={index}
                                       restaurant={restaurant}
                                       action={"Add to Favorites"}
-                                      removeFromDisplay={this.props.removeFromDisplay}/>)
-
+                                      removeFromDisplay={this.removeFromDisplay}/>)
 
     return(
         <div className="resultsContainer">
@@ -24,3 +29,17 @@ export class Results extends Component {
     )
   }
 }
+
+const mapStateToProps = (state)=>{
+  return{
+    results: state.favorites.results
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    removeFromResults: removeFromResults
+  }, dispatch)
+}
+
+export const ConnectedResults = connect(mapStateToProps, mapDispatchToProps)(Results)
