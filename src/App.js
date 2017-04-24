@@ -6,7 +6,7 @@ import { ConnectedLogin } from './components/account/Login'
 import { ConnectedSearch } from './components/search/Search'
 import { ConnectedRegister } from './components/account/Registration'
 import { StickyContainer, Sticky } from 'react-sticky';
-import { Footer } from './components/panels/Footer'
+import { ConnectedFooter } from './components/panels/Footer'
 
 import './App.css';
 
@@ -14,12 +14,12 @@ class App extends Component {
 
   render() {
 
-    let logout = <div> <ConnectedLogin /><ConnectedRegister /></div>
+    let logout = <div><ConnectedLogin /><ConnectedRegister /></div>
 
     return (
       <div>
         {this.props.login ? <ConnectedMain /> : logout}
-        <Footer/>
+        <ConnectedFooter/>
       </div>
 
     );
