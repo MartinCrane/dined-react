@@ -41,12 +41,10 @@ export class SimpleMap extends Component {
                           <LoadScreen />
                       </div>
 
-
-
     let markers = []
 
     this.props.favorites.forEach((rest, index) => {
-      markers.push(<MapMarkers key={rest.id} lat={rest.latitude} lng={rest.longitude} text={rest.name} img={require('./web/assets/icons/map_icons/map_icon_std_orange.svg')}/> )
+      markers.push(<MapMarkers key={rest.id} lat={rest.latitude} lng={rest.longitude} price={rest.price} rating={rest.rating} address= {rest.address} text={rest.name} img={require('./web/assets/icons/map_icons/map_icon_std_orange.svg')}/> )
     });
 
     let geoLocationReady
