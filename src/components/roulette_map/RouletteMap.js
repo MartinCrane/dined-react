@@ -98,48 +98,38 @@ export class RouletteMap extends Component {
         })
       }
 
-   let maps =
-          <Row>
-            <Col sm={2} md={2}></Col>
-            <Col sm={8} md={8}>
-              <div className="map">
-              <GoogleMapReact
-                bootstrapURLKeys={{
-                key: 'AIzaSyCjef7cMcrZYQfvEqlTFvvn7VqKTBDoTvE',
-                language: 'en'
-                }}
-                defaultCenter={this.props.center}
-                center={location}
-                defaultZoom={this.state.zoom}
-                zoom={this.state.zoom}
-               >
-               {randRestaurant}
-              </GoogleMapReact>
-              </div>
-              </Col>
-            <Col sm={2} md={2}></Col>
-          </Row>
+   let maps = <div className="rouletteMap">
+                 <GoogleMapReact
+                   bootstrapURLKeys={{
+                   key: 'AIzaSyCjef7cMcrZYQfvEqlTFvvn7VqKTBDoTvE',
+                   language: 'en'
+                   }}
+                   defaultCenter={this.props.center}
+                   center={location}
+                   defaultZoom={this.state.zoom}
+                   zoom={this.state.zoom}
+                  >
+                  {randRestaurant}
+                 </GoogleMapReact>
+               </div>
 
-    let roller =
-        <Row>
-          <Col sm={2} md={2}></Col>
-          <Col sm={8} md={8}>
-            <section className="spinner">
-            <div className="roller">
-              <ul>
-                {results}
-              </ul>
-            </div>
-            <footer>
-              <button className="stop" onClick={(event)=> this.handleClick(event)} >Stop</button>
-            </footer>
-            </section>
-          </Col>
-          <Col sm={2} md={2}></Col>
-        </Row>
+
+
+    let roller =   <section className="spinner">
+                    <div className="roller">
+                      <ul>
+                        {results}
+                      </ul>
+                    </div>
+                    <footer>
+                      <button className="stop" onClick={(event)=> this.handleClick(event)} >Stop</button>
+                    </footer>
+                  </section>
+
+
 
       return (
-          <div>
+          <div stye={{paddingLeft: 3}}>
             <div>
               {maps}
             </div>
