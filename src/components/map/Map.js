@@ -8,6 +8,8 @@ import { bindActionCreators } from 'redux'
 import { ButtonToolbar, ButtonGroup, Button, Col, Row, Popover } from 'react-bootstrap';
 import { LoadScreen } from '../panels/Loading'
 import MapTick from './MapTick'
+import MapMarkers from './mapMarkers.js';
+import {K_SIZE} from './my_great_place_with_hover_styles';
 
 
 export class SimpleMap extends Component {
@@ -49,7 +51,7 @@ export class SimpleMap extends Component {
     let markers = []
 
     this.props.favorites.forEach((rest, index) => {
-      markers.push(<MapTick key={rest.id} lat={rest.latitude} lng={rest.longitude} name={rest.name}/> )
+      markers.push(<MapMarkers key={rest.id} lat={rest.latitude} lng={rest.longitude} text={rest.name}/> )
     });
 
     let geoLocationReady
@@ -67,8 +69,10 @@ export class SimpleMap extends Component {
                             }}
                             defaultCenter={this.state.center}
                             defaultZoom={this.state.zoom}
+                            hoverDistance={K_SIZE / 2}
                             >
                             {markers}
+                            <MapMarkers lat={this.state.center.lat} lng={this.state.center.lng} text={`You are here`} />
                           </GoogleMapReact>
                           </div>
                         </Col>
