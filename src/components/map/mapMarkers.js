@@ -8,12 +8,14 @@ export default class mapMarkers extends Component {
     this.$hover = this.props.$hover
     this.text = this.props.text
   }
+
   render(){
     const style=this.props.$hover ? greatPlaceStyleHover : greatPlaceStyle
 
     return (
       <div className="mapMarkers" style={style}>
-        <h3>{this.props.text}</h3>
+        <img src={this.props.img} alt={this.props.text}/>
+
       </div>
     )
   }
