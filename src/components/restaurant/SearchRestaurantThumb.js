@@ -30,6 +30,7 @@ export class SearchRestaurantThumb extends Component {
 
   }
 
+
   render(){
     let title = <div>
                   <h1><b>{this.props.restaurant.name}</b></h1>
