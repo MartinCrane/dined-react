@@ -86,6 +86,9 @@ export class RouletteMap extends Component {
           text={this.state.randrestaurant[0].name}
           lat={this.state.randrestaurant[0].latitude}
           lng={this.state.randrestaurant[0].longitude}
+          price={this.state.randrestaurant[0].price}
+          rating={this.state.randrestaurant[0].rating}
+          address={this.state.randrestaurant[0].address}
           img={require('../map/web/assets/icons/map_icons/map_icon_std_orange.svg')}
           />)
       }else{
@@ -94,6 +97,9 @@ export class RouletteMap extends Component {
                     lat={res.latitude}
                     lng={res.longitude}
                     key={index}
+                    price={res.price}
+                    rating={res.rating}
+                    address={res.address}
                     img={require('../map/web/assets/icons/map_icons/map_icon_std_orange.svg')}
                     />
                   )

@@ -18,7 +18,7 @@ export default class MapMarkers extends Component {
                     id="popover-basic"
                     placement="right"
                     positionLeft={0}
-                    positionTop={-50}
+                    positionTop={-95}
                     title={this.props.text}
                   >
                     <div>Price: {this.props.price}</div>
