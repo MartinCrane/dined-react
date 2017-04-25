@@ -33,36 +33,28 @@ export class Login extends Component {
     })
   }
 
-  FieldGroup({ id, label, help, ...props }) {
-    return (
-      <FormGroup controlId={id}>
-        <ControlLabel>{label}</ControlLabel>
-        <FormControl {...props} />
-        {help && <HelpBlock>{help}</HelpBlock>}
-      </FormGroup>
-    );
-  }
-
   render(){
-    return(<div>
-      <form onSubmit={(event) => this.handleSubmit(event)} className="grey" >
-        <h1>Login</h1>
-        <p>
-          <input
-            type="text"
-            onChange={this.handleChange.bind(null, "email")}
-            placeholder="e-mail"
-            value={this.state.email} />
-
-          <input
-            type="password"
-            onChange={this.handleChange.bind(null, "password")}
-            placeholder="password"
-            value={this.state.password} />
-        </p>
-        <input type="submit" />
-      </form>
-      <h2>{this.props.login}</h2>
+    return(
+      <div className="login">
+        <form onSubmit={(event) => this.handleSubmit(event)} className="grey" >
+          <h1>Login</h1>
+          <p>
+            <label>Email</label>
+            <input
+              type="text"
+              onChange={this.handleChange.bind(null, "email")}
+              placeholder="e-mail"
+              value={this.state.email} /><br></br>
+            <label>Password</label>
+            <input
+              type="password"
+              onChange={this.handleChange.bind(null, "password")}
+              placeholder="password"
+              value={this.state.password} />
+          </p>
+          <input type="submit" />
+        </form>
+        <h2>{this.props.login}</h2>
     </div>
     )
   }

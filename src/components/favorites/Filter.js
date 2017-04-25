@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { ConnectedRestaurantThumb } from '../restaurant/RestaurantThumb'
 import { ButtonToolbar, ButtonGroup, Button, Col, Row, Popover } from 'react-bootstrap';
 import { Favorites } from './Favorites'
-import MapTick  from '../map/MapTick'
+import MapMarkers  from '../map/mapMarkers'
 import { filterFavorites } from '../../actions/filter'
 import  GoogleMapReact  from 'google-map-react';
 import { StickyContainer, Sticky } from 'react-sticky';
@@ -61,11 +61,6 @@ export class Filter extends Component {
                   position: 'fixed',
                 }
 
-  const restComponents = filterFavorites(this.state, this.props.favorites).map((fav, index) => {<MapTick name={fav.name}
-                                                                                                          lat={fav.latitude}
-                                                                                                          lng={fav.longitude}
-                                                                                                          key={index}/>})
-
   const googleMapTray =  <div>
                             <Row>
                                <div className="filterMap">
@@ -77,10 +72,12 @@ export class Filter extends Component {
                                      key: 'AIzaSyCjef7cMcrZYQfvEqlTFvvn7VqKTBDoTvE',
                                      language: 'en'
                                    }}>
-                                   {filterFavorites(this.state, this.props.favorites).map((fav, index) => <MapTick name={fav.name}
-                                   lat={fav.latitude}
-                                   lng={fav.longitude}
-                                   key={index}/>)}
+                                   {filterFavorites(this.state, this.props.favorites).map((fav, index) => <MapMarkers
+                                                                         text={fav.name}
+                                                                         lat={fav.latitude}
+                                                                         lng={fav.longitude}
+                                                                         key={index}
+                                                                         img={require('../map/web/assets/icons/map_icons/map_icon_std_orange.svg')}/>)}
                                  </GoogleMapReact>
                                </div>
                            </Row>

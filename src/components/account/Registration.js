@@ -40,27 +40,28 @@ export class Registration extends Component {
 
 
   render() {
-    return(<div>
+    return(<div className="login">
       <form onSubmit={(event) => this.handleSubmit(event)} className="grey">
             <h1>Registration</h1>
             <p>
+              <label>Email</label>
               <input
                 type="text"
                 onChange={this.handleChange.bind(null, "email")}
                 placeholder="e-mail"
-                value={this.state.email} />
-
+                value={this.state.email} /><br></br>
+              <label>Password: </label>
               <input
                 type="text"
                 onChange={this.handleChange.bind(null, "password")}
                 placeholder="password"
-                value={this.state.password} />
-
+                value={this.state.password} /><br></br>
+              <label>Confirm Password</label>
               <input
                 type="text"
                 onChange={this.handleChange.bind(null, "passwordConfirm")}
                 placeholder="password"
-                value={this.state.passwordConfirm} />
+                value={this.state.passwordConfirm} /><br></br>
             </p>
           <input type="submit" />
         </form>

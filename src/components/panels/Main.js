@@ -21,19 +21,17 @@ export class Main extends Component {
 
   return (
   <div>
-    <div className='menuSide'>
-      <ConnectedNavigation />
-    </div>
+    <ConnectedNavigation />
       <div className='mainWindow'>
         <Row>
           <ConnectedDisplay/>
         </Row>
         <StickyContainer>
           <Grid>
-          {this.props.navigation === "Search" ? search : null}
-          {this.props.navigation === "Roulette" ? roulette : null}
-          {this.props.navigation === "Favorites" ? favorites : null}
-          {this.props.navigation === "Map" ? map : null}
+            {this.props.navigation === "Search" ? search : null}
+            {this.props.navigation === "Roulette" ? roulette : null}
+            {this.props.navigation === "Favorites" ? favorites : null}
+            {this.props.navigation === "Map" ? map : null}
           </Grid>
         </StickyContainer>
       </div>
