@@ -92,14 +92,6 @@ export class Filter extends Component {
                                                key={index}
                                                img={require('../map/web/assets/icons/map_icons/map_icon_std_orange.svg')}
                                                />)}
-
-                                   {filterFavorites(this.state, this.props.favorites).map((fav, index) => <MapMarkers
-                                                                         text={fav.name}
-                                                                         lat={fav.latitude}
-                                                                         lng={fav.longitude}
-                                                                         key={index}
-                                                                         img={require('../map/web/assets/icons/map_icons/map_icon_std_orange.svg')}/>)}
-
                                  </GoogleMapReact>
                                </div>
                            </Row>
