@@ -5,6 +5,7 @@ import { ConnectedMain } from './components/panels/Main'
 import { ConnectedLogin } from './components/account/Login'
 import { ConnectedSearch } from './components/search/Search'
 import { ConnectedRegister } from './components/account/Registration'
+import { Logo } from './components/account/Logo'
 import { StickyContainer, Sticky } from 'react-sticky';
 import { ConnectedFooter } from './components/panels/Footer'
 
@@ -14,7 +15,7 @@ class App extends Component {
 
   render() {
 
-    let logout = <div><ConnectedLogin /><ConnectedRegister /></div>
+    let logout = <div><Logo/><ConnectedLogin /><ConnectedRegister /></div>
 
     return (
       <div>

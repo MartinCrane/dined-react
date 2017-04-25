@@ -17,6 +17,7 @@
     "react-nouislider": "^2.0.0",
     "react-redux": "^5.0.4",
     "react-router": "^4.1.1",
+    "react-sticky": "^5.0.8",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
     "style-loader": "^0.16.1"
