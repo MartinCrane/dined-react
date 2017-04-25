@@ -39,7 +39,7 @@ export class Search extends Component {
   handleSubmit(event) {
     event.preventDefault()
     let submission = formatApiCallString(this.state)
-    fetch(`http://localhost:4000/yelpApiSearch/${submission}`,
+    fetch(`https://mysterious-meadow-52290.herokuapp.com/yelpApiSearch/${submission}`,
       {
       method: 'get',
       headers: {
