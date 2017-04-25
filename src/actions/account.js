@@ -1,9 +1,11 @@
 import axios from 'axios'
+const foreignApi = 'https://mysterious-meadow-52290.herokuapp.com/'
+const localApi = 'http://localhost:4000/'
 
 export const accountRegister = (email, password, reducer) =>{
   return axios({
       method: 'post',
-      url: 'http://localhost:4000/accounts',
+      url: foreignApi + 'accounts',
       data: {
         account: {
           email: `${email}`,
@@ -22,7 +24,7 @@ export const accountRegister = (email, password, reducer) =>{
 export const accountLogin = (email, password, reducerAccount, reducerFavorites) =>{
   return axios({
     method: 'post',
-    url: 'http://localhost:4000/sessions',
+    url: foreignApi + 'sessions',
     data: {
       email: `${email}`,
       password: `${password}`
@@ -39,7 +41,7 @@ export const accountLogin = (email, password, reducerAccount, reducerFavorites) 
 
 export const restoreAccount = (store) =>{
   if (localStorage.jwt) {
-    return fetch(`http://localhost:4000/restoreAccount`, {
+    return fetch(foreignApi + `restoreAccount`, {
       method: 'post',
       headers: {
         Authorization: `${localStorage.jwt}`,

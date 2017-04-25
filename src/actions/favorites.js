@@ -1,4 +1,6 @@
 
+const foreignApi = 'https://mysterious-meadow-52290.herokuapp.com/'
+const localApi = 'http://localhost:4000/'
 
 export const addToFavorites = (restaurant) =>{
   return {
@@ -22,7 +24,7 @@ export const clearFavorites = () =>{
 
 export const updateAddFavoritesServer = (restaurant) => {
   let stringRest = JSON.stringify(restaurant)
-  return fetch(`http://localhost:4000/add_favorites`, {
+  return fetch(foreignApi + `add_favorites`, {
     method: 'post',
     headers: {
       Authorization: `${localStorage.jwt}`,
@@ -32,7 +34,7 @@ export const updateAddFavoritesServer = (restaurant) => {
 }
 
 export const updateDeleteFavoritesServer = (restaurant) => {
-  return fetch(`http://localhost:4000/delete_favorites`, {
+  return fetch(foreignApi + `delete_favorites`, {
     method: 'post',
     headers: {
       Authorization: `${localStorage.jwt}`,

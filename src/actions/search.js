@@ -26,7 +26,7 @@ export const formatResults = (array) => {
 }
 
 export const search = (submission, favorites) =>{
-  fetch(`http://localhost:4000/yelpApiSearch/${submission}`,
+  fetch(`https://mysterious-meadow-52290.herokuapp.com/yelpApiSearch/${submission}`,
     {
     method: 'get',
     headers: {
