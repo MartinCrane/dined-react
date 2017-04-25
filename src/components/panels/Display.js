@@ -5,7 +5,12 @@ export class Display extends Component {
   render(){
     return(
         <div className="resultsContainer">
-          <h1 style={{display: 'flex', justifyContent: 'center', fontSize: '5em'}}><b>{this.props.navigation}</b></h1>
+
+          <h1 style={{display: 'flex', justifyContent: 'center', fontSize: '5em'}}>
+            <img style={{height: 60}}src={require('../../images/logoPic.png')}></img>
+            <b>  {this.props.navigation}</b>
+
+          </h1>
         </div>
     )
   }

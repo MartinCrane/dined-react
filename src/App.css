@@ -16,12 +16,27 @@ p {
 }
 button {
   font-family: 'Poppins', sans-serif;
-  background-color: #faffeb;
-  border-radius: 25px;
 }
-div {
-  border-radius: 0px;
+
+form {
+  font-family: 'Poppins', sans-serif;
 }
+
+input[type="text"] {
+    font-family: 'Poppins', sans-serif;
+    font-size:24px;
+    margin-left: 30px;
+}
+input[type="password"] {
+    font-family: 'Poppins', sans-serif;
+    font-size:24px;
+    margin-left: 30px;
+}
+label {
+  font-family: 'Poppins', sans-serif;
+  font-size:24px;
+}
+
 body {
   background-image: url('images/bg.png');
   background-repeat: repeat;
@@ -44,16 +59,13 @@ body {
   overflow:hidden;
   text-align: center;
   background-color: white
+}
 
+.footerContent {
+  position: relative;
+  top: -8px;
 }
 /*MAIN WINDOWS*/
-.menuSide {
-  position: fixed;
-  left: -260px;
-  z-index: 4;
-  border-radius: 0px;
-  background-color: #FCFDF5
-}
 
 .mainWindow {
   left: 40px;
@@ -66,6 +78,10 @@ body {
 .centered {
   margin-left: auto;
   margin-right: auto;
+}
+.login {
+  padding-left: 100px;
+  padding-top: 100px;
 }
     /*GENERAL BUTTONS*/
 
@@ -115,27 +131,15 @@ body {
   border: 0px solid black;
   border-radius: 0px;
   background: #FDFAF5;
+
 }
   /*NAVBAR STYLE*/
-
-.navStyle {
-  font-size: 1.8em;
-  color: black;
-  border: 1px solid black;
-  border-radius: 0px;
-  background: repeating-linear-gradient(
-    90deg,
-    #eee 3px,
-    #eee 10px,
-    #fff 10px,
-    #fff 5px
-  );
-}
-
-.navigationTrans {
-  left: 0px;
+.menuSide {
+  position: fixed;
   width: 300px;
-  border-radius: '0px';
+  left: -250px;
+  z-index: 3000;
+
   transition: all .5s;
  -webkit-transition: all .5s;
  -moz-transition: all .5s;
@@ -143,17 +147,33 @@ body {
  -ms-transition: all .5s;
 }
 
-.navigationTrans .open {
-  left: 260px;
+.menuSide.open {
+  left: 0;
+  width: 350px;
 }
 
 .verticalNavButton {
-  font-size: 1.8em;
+  font-size: 1.6em;
+  width: 100%;
   color: black;
-  border: 1px solid black;
-  border-radius: 0px;
+  background:  rgba(231,59,56,0.2);
   height: 2.2em;
+  display: block;
+  border: 0px solid;
+  text-align: left;
+  padding-left: 1em;
 }
+
+.verticalNavButton img {
+  position:absolute;
+  left:258px;
+  height:30px;
+  opacity: 1.5;
+}
+.verticalNavButton:hover {
+  background:  rgba(231,59,56,0.5);
+}
+
 .verticalNavButton h1 {
   display: inline;
 }
@@ -182,13 +202,7 @@ body {
   padding: 2em;
   border-color: #eee;
   opacity: 0.9;
-  background: repeating-linear-gradient(
-    67deg,
-    #eee,
-    #eee 1px,
-    #fff 1px,
-    #fff 21px
-  );
+
 }
 
 
@@ -331,4 +345,8 @@ body {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+.popover{
+    width: 250px; /* Max Width of the popover (depending on the container!) */
 }
