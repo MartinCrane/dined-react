@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
-import { FormGroup, ControlLabel, HelpBlock, FormControl,  } from 'react-bootstrap';
+import { FormGroup, ControlLabel, HelpBlock, FormControl, Row, Col } from 'react-bootstrap';
 import { connect } from 'react-redux'
 import { setLogin } from '../../actions/setLogin'
 import { setFavorites } from '../../actions/setFavorites'
@@ -37,21 +37,32 @@ export class Login extends Component {
     return(
       <div className="login">
         <form onSubmit={(event) => this.handleSubmit(event)} className="grey" >
-          <h1>Login</h1>
-          <p>
-            <label>Email</label>
-            <input
-              type="text"
-              onChange={this.handleChange.bind(null, "email")}
-              placeholder="e-mail"
-              value={this.state.email} /><br></br>
-            <label>Password</label>
-            <input
-              type="password"
-              onChange={this.handleChange.bind(null, "password")}
-              placeholder="password"
-              value={this.state.password} />
-          </p>
+        <Row >
+          <Col sm={4} >
+            <h1>Login</h1>
+          </Col>
+        </Row >
+          <Row >
+            <Col sm={3}>
+              <label>Email</label>
+            </Col >
+              <input
+                type="text"
+                onChange={this.handleChange.bind(null, "email")}
+                placeholder="e-mail"
+                value={this.state.email} /><br></br>
+          </Row >
+          <Row >
+            <Col sm={3} >
+              <label>Password</label>
+            </Col >
+              <input
+                type="password"
+                onChange={this.handleChange.bind(null, "password")}
+                placeholder="password"
+                value={this.state.password} />
+          </Row >
+
           <input type="submit" />
         </form>
         <h2>{this.props.login}</h2>
