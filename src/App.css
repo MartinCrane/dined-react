@@ -348,3 +348,7 @@ body {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+.popover{
+    width: 250px; /* Max Width of the popover (depending on the container!) */
+}

@@ -8,6 +8,7 @@ import { filterFavorites } from '../../actions/filter'
 import  GoogleMapReact  from 'google-map-react';
 import { StickyContainer, Sticky } from 'react-sticky';
 
+
 export class Filter extends Component {
   constructor(props) {
     super(props)
@@ -61,6 +62,14 @@ export class Filter extends Component {
                   position: 'fixed',
                 }
 
+  const restComponents = filterFavorites(this.state, this.props.favorites).map((fav, index) => {<MapMarkers name={fav.name}
+                                                                                                          lat={fav.latitude}
+                                                                                                          lng={fav.longitude}
+                                                                                                          key={index}
+                                                                                                          img={require('../map/web/assets/icons/map_icons/map_icon_std_orange.svg')}
+                                                                                                          />}
+                                                                                                          )
+
   const googleMapTray =  <div>
                             <Row>
                                <div className="filterMap">
@@ -72,12 +81,17 @@ export class Filter extends Component {
                                      key: 'AIzaSyCjef7cMcrZYQfvEqlTFvvn7VqKTBDoTvE',
                                      language: 'en'
                                    }}>
-                                   {filterFavorites(this.state, this.props.favorites).map((fav, index) => <MapMarkers
-                                                                         text={fav.name}
-                                                                         lat={fav.latitude}
-                                                                         lng={fav.longitude}
-                                                                         key={index}
-                                                                         img={require('../map/web/assets/icons/map_icons/map_icon_std_orange.svg')}/>)}
+
+                                   {filterFavorites(this.state, this.props.favorites).map((fav, index) =>
+                                     <MapMarkers  text={fav.name}
+                                               lat={fav.latitude}
+                                               lng={fav.longitude}
+                                               price={fav.price}
+                                               rating={fav.rating}
+                                               address={fav.address}
+                                               key={index}
+                                               img={require('../map/web/assets/icons/map_icons/map_icon_std_orange.svg')}
+                                               />)}
                                  </GoogleMapReact>
                                </div>
                            </Row>
