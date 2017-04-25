@@ -16,7 +16,25 @@ p {
 }
 button {
   font-family: 'Poppins', sans-serif;
+}
 
+form {
+  font-family: 'Poppins', sans-serif;
+}
+
+input[type="text"] {
+    font-family: 'Poppins', sans-serif;
+    font-size:24px;
+    margin-left: 30px;
+}
+input[type="password"] {
+    font-family: 'Poppins', sans-serif;
+    font-size:24px;
+    margin-left: 30px;
+}
+label {
+  font-family: 'Poppins', sans-serif;
+  font-size:24px;
 }
 
 body {
@@ -60,6 +78,10 @@ body {
 .centered {
   margin-left: auto;
   margin-right: auto;
+}
+.login {
+  padding-left: 100px;
+  padding-top: 100px;
 }
     /*GENERAL BUTTONS*/
 
@@ -147,7 +169,9 @@ body {
   left:258px;
   height:30px;
   opacity: 1.5;
-
+}
+.verticalNavButton:hover {
+  background:  rgba(231,59,56,0.5);
 }
 
 .verticalNavButton h1 {
