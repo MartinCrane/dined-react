@@ -20,7 +20,7 @@ button {
 }
 
 body {
-  background-image: url('images/bg3.png');
+  background-image: url('images/bg.png');
   background-repeat: repeat;
   background-attachment: fixed;
   background-size: 60px 60px;
@@ -41,7 +41,11 @@ body {
   overflow:hidden;
   text-align: center;
   background-color: white
+}
 
+.footerContent {
+  position: relative;
+  top: -8px;
 }
 /*MAIN WINDOWS*/
 

@@ -8,7 +8,9 @@ export class Footer extends Component {
 
   return (
     <div className="footerCentered">
-      <h2>PICKY {this.props.email}</h2>
+      <div className="footerContent">
+        <h2> <img style={{height: 30}}src={require('../../images/logoSmall.png')}></img> {this.props.email}</h2>
+      </div>
     </div>
     )
   }
