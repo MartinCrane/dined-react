@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {greatPlaceStyle, greatPlaceStyleHover} from './my_great_place_with_hover_styles.js';
 import { Popover } from 'react-bootstrap';
+import { price_function } from '../../actions/restaurant'
 //* import hover styes .css here
 
 export default class MapMarkers extends Component {
@@ -17,11 +18,11 @@ export default class MapMarkers extends Component {
                   <Popover
                     id="popover-basic"
                     placement="right"
-                    positionLeft={0}
-                    positionTop={-95}
+                    positionLeft={10}
+                    positionTop={-60}
                     title={this.props.text}
                   >
-                    <div>Price: {this.props.price}</div>
+                    <div>Price: {price_function(this.props.price)}</div>
                     <div>Rating: {this.props.rating}</div>
                     <div>Address: {this.props.address}</div>
                   </Popover>
