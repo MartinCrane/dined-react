@@ -16,12 +16,9 @@ p {
 }
 button {
   font-family: 'Poppins', sans-serif;
-  background-color: #faffeb;
-  border-radius: 25px;
+
 }
-div {
-  border-radius: 0px;
-}
+
 body {
   background-image: url('images/bg.png');
   background-repeat: repeat;
@@ -47,13 +44,6 @@ body {
 
 }
 /*MAIN WINDOWS*/
-.menuSide {
-  position: fixed;
-  left: -260px;
-  z-index: 4;
-  border-radius: 0px;
-  background-color: #FCFDF5
-}
 
 .mainWindow {
   left: 40px;
@@ -115,27 +105,15 @@ body {
   border: 0px solid black;
   border-radius: 0px;
   background: #FDFAF5;
+
 }
   /*NAVBAR STYLE*/
-
-.navStyle {
-  font-size: 1.8em;
-  color: black;
-  border: 1px solid black;
-  border-radius: 0px;
-  background: repeating-linear-gradient(
-    90deg,
-    #eee 3px,
-    #eee 10px,
-    #fff 10px,
-    #fff 5px
-  );
-}
-
-.navigationTrans {
-  left: 0px;
+.menuSide {
+  position: fixed;
   width: 300px;
-  border-radius: '0px';
+  left: -250px;
+  z-index: 4;
+
   transition: all .5s;
  -webkit-transition: all .5s;
  -moz-transition: all .5s;
@@ -143,18 +121,31 @@ body {
  -ms-transition: all .5s;
 }
 
-.navigationTrans .open {
-  left: 260px;
+.menuSide.open {
+  left: 0;
+  width: 350px;
 }
 
 .verticalNavButton {
-  font-size: 1.8em;
+  font-size: 1.6em;
+  width: 100%;
   color: black;
-  border: 1px solid black;
-  border-radius: 0px;
+  background:  rgba(231,59,56,0.6);
   height: 2.2em;
   display: block;
+  border: 0px solid;
+  text-align: left;
+  padding-left: 1em;
 }
+
+.verticalNavButton img {
+  position:absolute;
+  left:258px;
+  height:30px;
+  opacity: 1.5;
+
+}
+
 .verticalNavButton h1 {
   display: inline;
 }
@@ -183,13 +174,7 @@ body {
   padding: 2em;
   border-color: #eee;
   opacity: 0.9;
-  background: repeating-linear-gradient(
-    67deg,
-    #eee,
-    #eee 1px,
-    #fff 1px,
-    #fff 21px
-  );
+
 }
 
 

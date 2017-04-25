@@ -21,9 +21,7 @@ export class Main extends Component {
 
   return (
   <div>
-    <div className='menuSide'>
-      <ConnectedNavigation />
-    </div>
+    <ConnectedNavigation />
       <div className='mainWindow'>
         <Row>
           <ConnectedDisplay/>

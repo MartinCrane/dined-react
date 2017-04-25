@@ -56,20 +56,38 @@ export class Navigation extends Component {
   render(){
 
   const sideBar = <div>
-                  <button key={2} className="verticalNavButton"
-                          onClick={this.handleClick.bind(null, "Map")}>MAMasdfasdfasdfasdfP<img style={{align: 'right', height: '25px'}} src={require('../../images/search.png')}></img></button>
-                  <button key={3} className="verticalNavButton"
-                          onClick={this.handleClick.bind(null, "Search")}>MAMAMAMAMAMAMAMAMAP</button>
-                  <button key={4} className="verticalNavButton"
-                          onClick={this.handleClick.bind(null, "Favorites")}>MAMAMAMAMAMAMAMAMAP</button>
-                  <button key={5} className="verticalNavButton"
-                          onClick={this.handleClick.bind(null, "Roulette")}>MAMAMAMAMAMAMAMAMAP</button>
-                  <button key={6} className="verticalNavButton"
-                          onClick={this.logout}>MAMAMAMAMAMAMAMAMAP</button>
-
+                    <button key={1} className="verticalNavButton"
+                            onClick={this.expandMenu}>
+                            PICKY
+                            <img src={require('../../images/menu.png')}></img>
+                          </button>
+                    <button key={2} className="verticalNavButton"
+                            onClick={this.handleClick.bind(null, "Map")}>
+                            Map
+                            <img src={require('../../images/maps.png')}></img>
+                          </button>
+                    <button key={3} className="verticalNavButton"
+                            onClick={this.handleClick.bind(null, "Search")}>
+                            Search
+                            <img src={require('../../images/search.png')}></img>
+                            </button>
+                    <button key={4} className="verticalNavButton"
+                            onClick={this.handleClick.bind(null, "Favorites")}>
+                            Favorites
+                            <img src={require('../../images/fav.png')}></img>
+                          </button>
+                    <button key={5} className="verticalNavButton"
+                            onClick={this.handleClick.bind(null, "Roulette")}>
+                            Roulette
+                            <img src={require('../../images/roulette.png')}></img>
+                          </button>
+                    <button key={6} className="verticalNavButton"
+                            onClick={this.logout}>Logout
+                            <img src={require('../../images/logout.png')}></img>
+                          </button>
                   </div>
   return(
-      <div className={'navigationTrans ' + this.state.style}>
+      <div className={this.state.menu ? 'menuSide open' : 'menuSide'} >
         {sideBar}
       </div>
     )
