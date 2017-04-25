@@ -20,7 +20,7 @@ button {
 }
 
 body {
-  background-image: url('images/bg.png');
+  background-image: url('images/bg3.png');
   background-repeat: repeat;
   background-attachment: fixed;
   background-size: 60px 60px;
@@ -112,7 +112,7 @@ body {
   position: fixed;
   width: 300px;
   left: -250px;
-  z-index: 4;
+  z-index: 3000;
 
   transition: all .5s;
  -webkit-transition: all .5s;
@@ -130,7 +130,7 @@ body {
   font-size: 1.6em;
   width: 100%;
   color: black;
-  background:  rgba(231,59,56,0.6);
+  background:  rgba(231,59,56,0.2);
   height: 2.2em;
   display: block;
   border: 0px solid;
