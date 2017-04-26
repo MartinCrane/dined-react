@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
-import { FormGroup, ControlLabel, HelpBlock, FormControl, Row, Col } from 'react-bootstrap';
+import { FormGroup, Button, ControlLabel, HelpBlock, FormControl, Row, Col } from 'react-bootstrap';
 import { connect } from 'react-redux'
 import { setLogin } from '../../actions/setLogin'
 import { setFavorites } from '../../actions/setFavorites'
@@ -36,36 +36,24 @@ export class Login extends Component {
   render(){
     return(
       <div className="login">
+        <h1>Login</h1>
         <form onSubmit={(event) => this.handleSubmit(event)} className="grey" >
-        <Row >
-          <Col sm={4} >
-            <h1>Login</h1>
-          </Col>
-        </Row >
-          <Row >
-            <Col sm={3}>
               <label>Email</label>
-            </Col >
-              <input
+              <FormControl
                 type="text"
                 onChange={this.handleChange.bind(null, "email")}
                 placeholder="e-mail"
                 value={this.state.email} /><br></br>
-          </Row >
-          <Row >
-            <Col sm={3} >
               <label>Password</label>
-            </Col >
-              <input
+              <FormControl
                 type="password"
                 onChange={this.handleChange.bind(null, "password")}
                 placeholder="password"
-                value={this.state.password} />
-          </Row >
-
-          <input type="submit" />
+                value={this.state.password} /><br></br>
+                <Button type="submit">
+                  Submit
+                </Button>
         </form>
-        <h2>{this.props.login}</h2>
     </div>
     )
   }

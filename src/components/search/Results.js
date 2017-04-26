@@ -16,8 +16,6 @@ export class Results extends Component {
                                       action={"Add to Favorites"}
                                       removeFromDisplay={this.props.removeFromDisplay}/>
                                       )
-
-
     return(
         <div>
           {restaurantThumbList}

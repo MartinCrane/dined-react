@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import {connect} from 'react-redux'
-import { FormGroup, ControlLabel, HelpBlock, FormControl, Row, Col } from 'react-bootstrap';
+import { FormGroup, Button, ControlLabel, HelpBlock, FormControl, Row, Col } from 'react-bootstrap';
 import { setLogin } from '../../actions/setLogin'
 import { accountRegister } from '../../actions/account'
 
@@ -41,45 +41,29 @@ export class Registration extends Component {
 
   render() {
     return(<div className="login">
+      <h1>Registration</h1>
       <form onSubmit={(event) => this.handleSubmit(event)} className="grey">
-          <Row >
-            <h1>Registration</h1>
-          </Row >
-
-          <Row >
-            <Col sm={3}>
-              <label>Email</label>
-            </Col >
-            <input
+            <label>Email</label>
+            <FormControl
               type="text"
               onChange={this.handleChange.bind(null, "email")}
               placeholder="e-mail"
               value={this.state.email} /><br></br>
-          </Row >
-
-          <Row >
-            <Col sm={3}>
-              <label>Password: </label>
-            </Col >
-            <input
-              type="text"
+            <label>Password</label>
+            <FormControl
+              type="password"
               onChange={this.handleChange.bind(null, "password")}
               placeholder="password"
               value={this.state.password} /><br></br>
-          </Row >
-
-          <Row >
-            <Col sm={3}>
-              <label>Confirm Password</label>
-            </Col >
-            <input
-              type="text"
+            <label>Password Confirm</label>
+            <FormControl
+              type="password"
               onChange={this.handleChange.bind(null, "passwordConfirm")}
               placeholder="confirm password"
               value={this.state.passwordConfirm} /><br></br>
-          </Row >
-
-          <input type="submit" />
+            <Button type="submit">
+              Submit
+            </Button>
         </form>
       </div>
       )

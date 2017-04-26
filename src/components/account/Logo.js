@@ -7,7 +7,7 @@ export class Logo extends Component {
 
   render() {
     return(<div  className="login">
-    <img stle={{height: '50px', marginLeft: 'auto', marginRight: 'auto'}} src={require('../../images/logoSmall.png')}></img>
+      <img style={{height: 60}} src={require('../../images/logo.png')}></img>
       </div>
       )
     }
