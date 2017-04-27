@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { About } from './About'
 import { Button, Modal, Row } from 'react-bootstrap';
 
 export class Footer extends Component {

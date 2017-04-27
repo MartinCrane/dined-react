@@ -73,18 +73,12 @@ export class Navigation extends Component {
                     <Modal.Title>About Us</Modal.Title>
                   </Modal.Header>
                   <Modal.Body>
-                    <h4>Gee Li</h4>
-                    <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                    <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-                    <h4>Martin Crane</h4>
-                    <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                    <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-                    <h4>Arthur Roncey</h4>
-                    <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                    <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                    <h2>Gee Li</h2>
+                    <p className='p-modal'>Gee loves data and doing his taxes. He's weird like that. You can find him currently focused on building web applications and trying to keep up with his two kids. Read his blog at <a href='https://medium.com/@codeparachute'>on Medium.</a></p>
+                    <h2>Arthur Roncey</h2>
+                    <p className='p-modal'>Arthur is a French New Yorker who is psyched about starting a career in Software Development. He is passionate about Plants, the Internet of Things and the place where these interests meet. Read his blog at <a href='https://medium.com/@arthurroncey'>on Medium.</a></p>
+                    <h2>Martin Crane</h2>
+                    <p className='p-modal'>Martin is a web developer and musician from NYC. Read his blog on <a href='https://martincrane.github.io'> Github</a> or <a href='https://www.martincrane.net'>listen to his music</a>. </p>
                   </Modal.Body>
                   <Modal.Footer>
                     <Button onClick={this.close_modal}>Close</Button>

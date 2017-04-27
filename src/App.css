@@ -18,6 +18,11 @@ p {
   font-family: 'Anton', sans-serif;
 }
 
+.p-modal{
+  font-family: 'Poppins', sans-serif;
+
+}
+
 button {
   font-family: 'Poppins', sans-serif;
 }
@@ -75,15 +80,11 @@ body {
   height: 50%;
 }
 
-<<<<<<< HEAD
-.aboutModal{
+/*.aboutModal {
   position: relative;
-}
-=======
+}*/
 
->>>>>>> 501a616f61cf390691809b66f8c5af35d87d04c3
 /*MAIN WINDOWS*/
-
 .mainWindow {
   left: 40px;
   position: absolute;
