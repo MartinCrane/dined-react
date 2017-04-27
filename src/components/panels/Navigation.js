@@ -73,10 +73,24 @@ export class Navigation extends Component {
                     <Modal.Title>About Us</Modal.Title>
                   </Modal.Header>
                   <Modal.Body>
-                    <h2>Gee Li</h2>
-                    <p className='p-modal'>Gee loves data and doing his taxes. He's weird like that. You can find him currently focused on building web applications and trying to keep up with his two kids. Read his blog at <a href='https://medium.com/@codeparachute'>on Medium.</a></p>
-                    <h2>Arthur Roncey</h2>
-                    <p className='p-modal'>Arthur is a French New Yorker who is psyched about starting a career in Software Development. He is passionate about Plants, the Internet of Things and the place where these interests meet. Read his blog at <a href='https://medium.com/@arthurroncey'>on Medium.</a></p>
+
+                <img className='img_modal' src={require('../../images/gee_profile.jpg')}></img>
+                    <div className='aboutStyle'>
+                      <h2>Gee Li</h2>
+                      <p className='p-modal'>Gee loves data and doing his taxes. He's weird like that. You can find him currently focused on building web applications and trying to keep up with his two kids. Read his blog at <a href='https://medium.com/@codeparachute'>on Medium.</a></p>
+                    </div>
+
+              <br></br>
+              <br></br>
+              <br></br>
+
+              <img className='img_modal' src={require('../../images/arthur_profile.jpg')}></img>
+                    <div className='aboutStyle'>
+                        <h2>Arthur Roncey</h2>
+                        <p className='p-modal'>Arthur is a French New Yorker who is psyched about starting a career in Software Development. He is passionate about Plants, the Internet of Things and the place where these interests meet. Read his blog at <a href='https://medium.com/@arthurroncey'>on Medium.</a></p>
+                      </div>
+
+              <br></br>
                     <h2>Martin Crane</h2>
                     <p className='p-modal'>Martin is a web developer and musician from NYC. Read his blog on <a href='https://martincrane.github.io'> Github</a> or <a href='https://www.martincrane.net'>listen to his music</a>. </p>
                   </Modal.Body>

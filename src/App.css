@@ -80,9 +80,17 @@ body {
   height: 50%;
 }
 
-/*.aboutModal {
-  position: relative;
-}*/
+.aboutStyle {
+  display: inline;
+  padding-right: 20px;
+}
+
+.img_modal {
+  height: 50%;
+  width: 20%;
+  border-radius: 50%;
+  float: left;
+}
 
 /*MAIN WINDOWS*/
 .mainWindow {
@@ -121,7 +129,7 @@ body {
   border: 3px solid #e37655;
 }
 
-<<<<<<< HEAD
+
 .modal-container{
   positions: relative;
 }
@@ -129,8 +137,6 @@ body {
 .modal-container .modal, .modal-container .modal-backdrop{
   postion: relative;
 }
-=======
->>>>>>> 501a616f61cf390691809b66f8c5af35d87d04c3
 
 /*--- ButtonToolBar Centering ---*/
 
