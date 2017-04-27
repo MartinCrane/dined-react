@@ -1,28 +1,98 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { Button, Modals, Image } from 'react-bootstrap';
+import { Button, Modal } from 'react-bootstrap';
+import ReactDOM from 'react';
 
 
 export class About extends Component {
+  constructor(){
+    super()
+    this.state = {
+      showModal: false
+    }
+    this.close = this.close.bind(this)
+    this.open = this.open.bind(this)
+  }
 
-  render(){
-    return(
-        <div className="resultsContainer">
+  close() {
+    this.setState({ showModal: false });
+  }
 
-          <h1 style={{display: 'flex', justifyContent: 'center', fontSize: '5em'}}>
-            <img style={{height: 60}}src={require('../../images/logoPic.png')}></img>
-            <b>  {this.props.navigation}</b>
+  open() {
+    this.setState({ showModal: true });
+  }
 
-          </h1>
-        </div>
-    )
+  render() {
+    return (
+      <div>
+        <Button className='aboutModal' bsStyle="small" bsSize="small" onClick={this.open}>
+          About
+        </Button>
+
+        <Modal show={this.state.showModal} onHide={this.close}>
+          <Modal.Header closeButton>
+            <Modal.Title>About Us</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <h4>Gee Li</h4>
+            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+            <h4>Martin Crane</h4>
+            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+            <h4>Arthur Roncey</h4>
+            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={this.close}>Close</Button>
+          </Modal.Footer>
+        </Modal>
+      </div>
+    );
   }
 }
 
-const mapStateToProps = (state)=>{
-  return{
-    navigation: state.navigation,
-  }
-}
 
-export const ConnectedAbout= connect(mapStateToProps)(About)
+//
+// export class About extends Component {
+//
+//   // getInitialState() {
+//   //    return { showModal: false };
+//   //  }
+//   //
+//   //  close() {
+//   //    this.setState({ showModal: false });
+//   //  }
+//   //
+//   //  open() {
+//   //    this.setState({ showModal: true });
+//   //  }
+//   //
+//
+//   render(){
+//     // let close = () => this.setState({show: false});
+//
+//     const aboutModal = (
+//       <div>
+//         <Button bsStyle="small" bsSize="large" onClick={this.open}>Launch demo modal</Button>
+//         <Modal show={this.state.showModal} onHide={this.close}>
+//           <Modal.Body>
+//             BEEF
+//           </Modal.Body>
+//           <Modal.Footer>
+//             <Button onClick={this.close}>Close</Button>
+//           </Modal.Footer>
+//         </Modal>
+//       </div>
+//     )
+//     return(
+//         <div>
+//           {aboutModal}
+//         </div>
+//     )
+//   }
+// }

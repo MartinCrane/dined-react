@@ -65,6 +65,10 @@ body {
   position: relative;
   top: -8px;
 }
+
+.aboutModal{
+  position: relative;
+}
 /*MAIN WINDOWS*/
 
 .mainWindow {
@@ -100,6 +104,14 @@ body {
   padding: .2em;
   font-size: 1.3em;
   border: 3px solid #e37655;
+}
+
+.modal-container{
+  positions: relative;
+}
+
+.modal-container .modal, .modal-container .modal-backdrop{
+  postion: relative;
 }
 
 /*--- ButtonToolBar Centering ---*/
