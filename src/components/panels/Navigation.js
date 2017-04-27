@@ -6,7 +6,7 @@ import { setLogin } from '../../actions/setLogin'
 import { clearFavorites } from '../../actions/favorites'
 import { selectNavigation } from '../../actions/navigation'
 import { StickyContainer, Sticky } from 'react-sticky';
-
+import { Modal } from 'react-bootstrap';
 
 export class Navigation extends Component {
 
@@ -15,11 +15,14 @@ export class Navigation extends Component {
     this.state= {
       menu: false,
       offset: '0px',
-      style: ' '
+      style: ' ',
+      showModal: false
     }
     this.logout = this.logout.bind(this)
     this.handleClick = this.handleClick.bind(this)
     this.expandMenu = this.expandMenu.bind(this)
+    this.open_modal = this.open_modal.bind(this)
+    this.close_modal = this.close_modal.bind(this)
   }
 
   logout() {
@@ -34,6 +37,16 @@ export class Navigation extends Component {
 
   handleClick(field, event) {
     this.props.selectNavigation(field)
+  }
+
+  close_modal() {
+    this.setState({ showModal: false });
+  }
+
+  open_modal() {
+    debugger
+    this.setState({ showModal: true });
+    debugger
   }
 
   expandMenu() {
@@ -54,6 +67,24 @@ export class Navigation extends Component {
 
 
   render(){
+  const about_modal = <div>
+                <Modal show={this.state.showModal} onHide={this.close_modal}>
+                  <Modal.Header closeButton>
+                    <Modal.Title>About Us</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                    <h2>Gee Li</h2>
+                    <p className='p-modal'>Gee loves data and doing his taxes. He's weird like that. You can find him currently focused on building web applications and trying to keep up with his two kids. Read his blog at <a href='https://medium.com/@codeparachute'>on Medium.</a></p>
+                    <h2>Arthur Roncey</h2>
+                    <p className='p-modal'>Arthur is a French New Yorker who is psyched about starting a career in Software Development. He is passionate about Plants, the Internet of Things and the place where these interests meet. Read his blog at <a href='https://medium.com/@arthurroncey'>on Medium.</a></p>
+                    <h2>Martin Crane</h2>
+                    <p className='p-modal'>Martin is a web developer and musician from NYC. Read his blog on <a href='https://martincrane.github.io'> Github</a> or <a href='https://www.martincrane.net'>listen to his music</a>. </p>
+                  </Modal.Body>
+                  <Modal.Footer>
+                    <Button onClick={this.close_modal}>Close</Button>
+                  </Modal.Footer>
+                </Modal>
+            </div>
 
   const sideBar = <div>
                     <button key={1} className="verticalNavButton"
@@ -81,6 +112,11 @@ export class Navigation extends Component {
                             Roulette
                             <img src={require('../../images/roulette.png')}></img>
                           </button>
+                    <button key={7} className="verticalNavButton"
+                                  onClick={this.open_modal}>
+                                  About
+                                  <img src={require('../../images/question-mark.png')}></img>
+                                </button>
                     <button key={6} className="verticalNavButton"
                             onClick={this.logout}>Logout
                             <img src={require('../../images/logout.png')}></img>
@@ -89,6 +125,7 @@ export class Navigation extends Component {
   return(
       <div className={this.state.menu ? 'menuSide open' : 'menuSide'} >
         {sideBar}
+        {about_modal}
       </div>
     )
   }

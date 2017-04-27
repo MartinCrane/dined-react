@@ -18,6 +18,11 @@ p {
   font-family: 'Anton', sans-serif;
 }
 
+.p-modal{
+  font-family: 'Poppins', sans-serif;
+
+}
+
 button {
   font-family: 'Poppins', sans-serif;
 }
@@ -75,9 +80,11 @@ body {
   height: 50%;
 }
 
+/*.aboutModal {
+  position: relative;
+}*/
 
 /*MAIN WINDOWS*/
-
 .mainWindow {
   left: 40px;
   position: absolute;
@@ -114,6 +121,16 @@ body {
   border: 3px solid #e37655;
 }
 
+<<<<<<< HEAD
+.modal-container{
+  positions: relative;
+}
+
+.modal-container .modal, .modal-container .modal-backdrop{
+  postion: relative;
+}
+=======
+>>>>>>> 501a616f61cf390691809b66f8c5af35d87d04c3
 
 /*--- ButtonToolBar Centering ---*/
 

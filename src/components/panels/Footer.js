@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
+import { Button, Modal, Row } from 'react-bootstrap';
 
 export class Footer extends Component {
 
@@ -12,6 +12,7 @@ export class Footer extends Component {
         <img src={require('../../images/logoSmall.png')}></img> {this.props.email}
       </div>
     </div>
+
     )
   }
 }
