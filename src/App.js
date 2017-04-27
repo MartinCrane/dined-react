@@ -17,17 +17,17 @@ class App extends Component {
 
     let logout = <div>
                   <Row style={{padding: '20px', paddingBottom: '50px'}}>
+                    <Col lg={4} sm={4}>
+                    </Col>
                     <Col lg={4} sm={4} xs={12}>
                     <Logo/>
                     <ConnectedLogin/>
+                    <ConnectedRegister />
                     </Col>
                     <Col lg={4} sm={4} xs={12}>
                     <br></br>
-                    <ConnectedRegister />
                     </Col>
-                    <Col lg={4} sm={4}>
-
-                    </Col>
+                    
                   </Row>
                 </div>
 
