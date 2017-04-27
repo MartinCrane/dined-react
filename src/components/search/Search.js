@@ -37,8 +37,8 @@ export class Search extends Component {
    }
 
   handleSubmit(event) {
-    const foreignApi = 'https://mysterious-meadow-52290.herokuapp.com/'
-    let localApi = 'http://localhost:4000/'
+    const foreignApi = 'https://mysterious-meadow-52290.herokuapp.com/yelpApiSearch/'
+    let localApi = 'http://localhost:4000/yelpApiSearch/'
     event.preventDefault()
     let submission = formatApiCallString(this.state)
     fetch(foreignApi + `${submission}`,
