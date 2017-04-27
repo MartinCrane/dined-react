@@ -15,14 +15,27 @@ class App extends Component {
 
   render() {
 
-    let logout = <div><Logo/><ConnectedLogin /><ConnectedRegister /></div>
+    let logout = <div>
+                  <Row style={{padding: '20px', paddingBottom: '50px'}}>
+                    <Col lg={4} sm={4}>
+                    </Col>
+                    <Col lg={4} sm={4} xs={12}>
+                    <Logo/>
+                    <ConnectedLogin/>
+                    <ConnectedRegister />
+                    </Col>
+                    <Col lg={4} sm={4} xs={12}>
+                    <br></br>
+                    </Col>
+                    
+                  </Row>
+                </div>
 
     return (
       <div>
-        {this.props.login ? <ConnectedMain /> : logout}
+        {!!localStorage.jwt ? <ConnectedMain /> : logout}
         <ConnectedFooter/>
       </div>
-
     );
   }
 }

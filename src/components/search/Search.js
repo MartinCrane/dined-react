@@ -37,15 +37,16 @@ export class Search extends Component {
    }
 
   handleSubmit(event) {
+    const foreignApi = 'https://mysterious-meadow-52290.herokuapp.com/'
+    let localApi = 'http://localhost:4000/'
     event.preventDefault()
     let submission = formatApiCallString(this.state)
-    fetch(`https://mysterious-meadow-52290.herokuapp.com/yelpApiSearch/${submission}`,
+    fetch(foreignApi + `${submission}`,
       {
       method: 'get',
       headers: {
         Authorization: `${localStorage.jwt}`
-      },
-      data: "gold"
+      }
     }).then(res => res.json())
       .then(res => {
         let resultsFormatted = formatResults(res)
@@ -80,10 +81,10 @@ export class Search extends Component {
                                   </Col>
                                   <Col componentClass={ControlLabel} sm={10}>
                                     <FormControl  type="text"
-                                      value={this.state.field}
-                                      placeholder="Add a Location"
-                                      onChange={this.handleChange.bind(null, "location")}
-                                      />
+                                                  value={this.state.field}
+                                                  placeholder="Add a Location"
+                                                  onChange={this.handleChange.bind(null, "location")}
+                                                  />
                                   </Col>
                               </FormGroup>
 
@@ -93,7 +94,7 @@ export class Search extends Component {
                             </form>
                       </div>
     return(
-      <div className="centered" >
+      <div>
         <Sticky style={{zIndex: 2000}}>
           {searchBar}
         </Sticky>

@@ -6,7 +6,7 @@ import { setLogin } from '../../actions/setLogin'
 import { clearFavorites } from '../../actions/favorites'
 import { selectNavigation } from '../../actions/navigation'
 import { StickyContainer, Sticky } from 'react-sticky';
-
+import { Modal } from 'react-bootstrap';
 
 export class Navigation extends Component {
 
@@ -15,11 +15,14 @@ export class Navigation extends Component {
     this.state= {
       menu: false,
       offset: '0px',
-      style: ' '
+      style: ' ',
+      showModal: false
     }
     this.logout = this.logout.bind(this)
     this.handleClick = this.handleClick.bind(this)
     this.expandMenu = this.expandMenu.bind(this)
+    this.open_modal = this.open_modal.bind(this)
+    this.close_modal = this.close_modal.bind(this)
   }
 
   logout() {
@@ -34,6 +37,16 @@ export class Navigation extends Component {
 
   handleClick(field, event) {
     this.props.selectNavigation(field)
+  }
+
+  close_modal() {
+    this.setState({ showModal: false });
+  }
+
+  open_modal() {
+    debugger
+    this.setState({ showModal: true });
+    debugger
   }
 
   expandMenu() {
@@ -54,6 +67,30 @@ export class Navigation extends Component {
 
 
   render(){
+  const about_modal = <div>
+                <Modal show={this.state.showModal} onHide={this.close_modal}>
+                  <Modal.Header closeButton>
+                    <Modal.Title>About Us</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                    <h4>Gee Li</h4>
+                    <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                    <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                    <h4>Martin Crane</h4>
+                    <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                    <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                    <h4>Arthur Roncey</h4>
+                    <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                    <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                  </Modal.Body>
+                  <Modal.Footer>
+                    <Button onClick={this.close_modal}>Close</Button>
+                  </Modal.Footer>
+                </Modal>
+            </div>
 
   const sideBar = <div>
                     <button key={1} className="verticalNavButton"
@@ -81,6 +118,11 @@ export class Navigation extends Component {
                             Roulette
                             <img src={require('../../images/roulette.png')}></img>
                           </button>
+                    <button key={7} className="verticalNavButton"
+                                  onClick={this.open_modal}>
+                                  About
+                                  <img src={require('../../images/question-mark.png')}></img>
+                                </button>
                     <button key={6} className="verticalNavButton"
                             onClick={this.logout}>Logout
                             <img src={require('../../images/logout.png')}></img>
@@ -89,6 +131,7 @@ export class Navigation extends Component {
   return(
       <div className={this.state.menu ? 'menuSide open' : 'menuSide'} >
         {sideBar}
+        {about_modal}
       </div>
     )
   }

@@ -2,18 +2,22 @@ h1 {
   font-family: 'Poppins', sans-serif;
   font-size: 2em
 }
+
 h2 {
   font-family: 'Poppins', sans-serif;
   font-size: 1.5em
 }
+
 h3 {
   font-family: 'Poppins', sans-serif;
   font-size: 1.2em
 }
+
 p {
   font-family: 'Poppins', sans-serif;
   font-family: 'Anton', sans-serif;
 }
+
 button {
   font-family: 'Poppins', sans-serif;
 }
@@ -23,18 +27,20 @@ form {
 }
 
 input[type="text"] {
-    font-family: 'Poppins', sans-serif;
-    font-size:14px;
-    margin-left: 30px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  margin-left: 10px;
 }
+
 input[type="password"] {
-    font-family: 'Poppins', sans-serif;
-    font-size:14px;
-    margin-left: 30px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  margin-left: 10px;
 }
+
 label {
   font-family: 'Poppins', sans-serif;
-  font-size:14px;
+  font-size: 14px;
 }
 
 body {
@@ -51,24 +57,31 @@ body {
 
 .footerCentered {
   border-top: 5px solid #e37674;
-  height: 60px;
+  height: 2em;
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
-  overflow:hidden;
   text-align: center;
   background-color: white
 }
 
 .footerContent {
   position: relative;
-  top: -8px;
+  height: inherit;
 }
 
+.footerContent img {
+  height: 50%;
+}
+
+<<<<<<< HEAD
 .aboutModal{
   position: relative;
 }
+=======
+
+>>>>>>> 501a616f61cf390691809b66f8c5af35d87d04c3
 /*MAIN WINDOWS*/
 
 .mainWindow {
@@ -80,19 +93,20 @@ body {
 }
 
 .centered {
-  margin-left: auto;
-  margin-right: auto;
+  display: flex;
 }
 
 .login {
-  padding-left: 100px;
-  padding-top: 40px;
+  text-align: center;
+  height: inherit;
 }
-    /*GENERAL BUTTONS*/
+
+
+/*GENERAL BUTTONS*/
 
 .buttonMain {
   border-radius: 1px;
-  background:  #e73b38;
+  background: #e73b38;
   padding: .2em;
   font-size: 1.3em;
   border: 3px solid #e37674;
@@ -100,12 +114,13 @@ body {
 
 .buttonMain:hover {
   border-radius: 1px;
-  background:  #e73b15;
+  background: #e73b15;
   padding: .2em;
   font-size: 1.3em;
   border: 3px solid #e37655;
 }
 
+<<<<<<< HEAD
 .modal-container{
   positions: relative;
 }
@@ -113,15 +128,21 @@ body {
 .modal-container .modal, .modal-container .modal-backdrop{
   postion: relative;
 }
+=======
+>>>>>>> 501a616f61cf390691809b66f8c5af35d87d04c3
 
 /*--- ButtonToolBar Centering ---*/
 
-.btn-toolbar{
+.btn-toolbar {
   text-align: center;
-}​
+}
 
+​
 /*--- End ButtonToolBar Centering ---*/
-  /*FILTERBAR STYLE*/
+
+
+/*FILTERBAR STYLE*/
+
 .searchForm {
   width: inherit;
   background-color: inherit;
@@ -133,32 +154,34 @@ body {
   opacity: .85;
   border-radius: 0px;
 }
+
 .filterBarSticky {
   z-Index: 1000;
   height: 5em;
 }
 
 .bFilter {
-  height:3em;
+  height: 3em;
   font-size: 1.3em;
   color: black;
   border: 0px solid black;
   border-radius: 0px;
   background: #FDFAF5;
-
 }
-  /*NAVBAR STYLE*/
+
+
+/*NAVBAR STYLE*/
+
 .menuSide {
   position: fixed;
   width: 300px;
   left: -250px;
   z-index: 3000;
-
   transition: all .5s;
- -webkit-transition: all .5s;
- -moz-transition: all .5s;
- -o-transition: all .5s;
- -ms-transition: all .5s;
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+  -o-transition: all .5s;
+  -ms-transition: all .5s;
 }
 
 .menuSide.open {
@@ -170,7 +193,7 @@ body {
   font-size: 1.6em;
   width: 100%;
   color: black;
-  background:  rgba(231,59,56,0.2);
+  background: rgba(231, 59, 56, 0.2);
   height: 2.2em;
   display: block;
   border: 0px solid;
@@ -179,13 +202,14 @@ body {
 }
 
 .verticalNavButton img {
-  position:absolute;
-  left:258px;
-  height:30px;
+  position: absolute;
+  left: 258px;
+  height: 30px;
   opacity: 1.5;
 }
+
 .verticalNavButton:hover {
-  background:  rgba(231,59,56,0.5);
+  background: rgba(231, 59, 56, 0.5);
 }
 
 .verticalNavButton h1 {
@@ -198,7 +222,7 @@ body {
   opacity: 1
 }
 
-.resultsContainer{
+.resultsContainer {
   z-index: -3;
 }
 
@@ -208,7 +232,9 @@ body {
   z-Index: 101;
 }
 
+
 /*RestaurantThumb*/
+
 .restaurantThumb {
   text-align: center;
   border-left: 1px;
@@ -216,35 +242,34 @@ body {
   padding: 2em;
   border-color: #eee;
   opacity: 0.9;
-
 }
 
 
 /*--Spinner CSS ---*/
 
 .map {
-    width: 100%;
-    height: 500px;
+  width: 100%;
+  height: 500px;
 }
 
 .rouletteMap {
-    width: 100%;
-    height: 475px;
+  width: 100%;
+  height: 475px;
 }
 
 .filterMap {
-    height: 30em;
-    width: 60%;
-    margin-left: auto;
-    margin-right: auto;
+  height: 30em;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .mainViewport {
   padding-top: 4em;
 }
 
-/*Roulette CSS*/
 
+/*Roulette CSS*/
 
 .spinner {
   margin: 0;
@@ -255,6 +280,7 @@ body {
   width: 100%;
   z-index: 100;
 }
+
 .spinner footer {
   position: absolute;
   top: 0;
@@ -262,10 +288,12 @@ body {
   width: 15vw;
   height: 2em;
 }
+
 .spinner footer .stop {
   width: 100%;
   height: 2em;
 }
+
 .spinner .stop {
   display: block;
   margin: 0;
@@ -291,6 +319,7 @@ body {
   position: relative;
   overflow: hidden;
 }
+
 .roller ul {
   width: 100%;
   position: absolute;
@@ -301,19 +330,23 @@ body {
   line-height: 2em;
   height: 2em;
 }
+
 .roller ul li {
   display: block;
   text-align: center;
   height: 2em;
 }
 
-@include keyframes(scroll-numbers){
-	from { top: 0;  }
-	to {  top: -28em;  }
+@include keyframes(scroll-numbers) {
+  from {
+    top: 0;
+  }
+  to {
+    top: -28em;
+  }
 }
 
 @import url(http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
-
 @-moz-keyframes scroll-numbers {
   from {
     top: 0;
@@ -322,6 +355,7 @@ body {
     top: -20em;
   }
 }
+
 @-webkit-keyframes scroll-numbers {
   from {
     top: 0em;
@@ -330,6 +364,7 @@ body {
     top: -20em;
   }
 }
+
 @keyframes scroll-numbers {
   from {
     top: 0em;
@@ -339,28 +374,37 @@ body {
   }
 }
 
+
 /*End of Spinner CSS*/
+
 
 /*Loading*/
 
 .loader {
-    border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid #3498db; /* Blue */
-    border-bottom: 16px solid #3498db;
-    border-radius: 50%;
-    text-align: center;
-    width: 120px;
-    height: 120px;
-    margin-left: auto;
-    margin-right: auto;
-    animation: spin 2s linear infinite;
+  border: 16px solid #f3f3f3;
+  /* Light grey */
+  border-top: 16px solid #3498db;
+  /* Blue */
+  border-bottom: 16px solid #3498db;
+  border-radius: 50%;
+  text-align: center;
+  width: 120px;
+  height: 120px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: spin 2s linear infinite;
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-.popover{
-    width: 250px; /* Max Width of the popover (depending on the container!) */
+.popover {
+  width: 250px;
+  /* Max Width of the popover (depending on the container!) */
 }
